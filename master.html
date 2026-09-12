@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Master Johnson Relvent | Reartval Wiki</title>
 
 <style>
-
 *{
     box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 html{
@@ -17,60 +17,51 @@ html{
 }
 
 body{
-    margin:0;
     font-family:Arial, Helvetica, sans-serif;
-    background:#f4f6f8;
-    color:#202124;
-    line-height:1.75;
+    background:#0d1117;
+    color:#e6edf3;
+    line-height:1.8;
 }
 
 a{
-    color:#2563eb;
+    color:inherit;
     text-decoration:none;
 }
-
-a:hover{
-    text-decoration:underline;
-}
-
-/* TOPBAR */
 
 .topbar{
     position:sticky;
     top:0;
     z-index:1000;
-    background:#111827;
-    color:white;
-    padding:14px 24px;
-    box-shadow:0 2px 10px rgba(0,0,0,.18);
+    background:#161b22;
+    border-bottom:1px solid #30363d;
+    padding:14px 20px;
 }
 
 .topbar-inner{
     max-width:1200px;
     margin:auto;
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
     gap:20px;
 }
 
 .logo{
     font-size:22px;
-    font-weight:800;
-    letter-spacing:.5px;
+    font-weight:bold;
+    color:#fff;
 }
 
-.logo span{
-    color:#60a5fa;
+.home{
+    color:#8b949e;
+    transition:.2s;
 }
 
-.topbar a{
-    color:white;
+.home:hover{
+    color:#fff;
 }
 
-/* PAGE */
-
-.page{
+.container{
     max-width:1200px;
     margin:30px auto;
     padding:0 20px;
@@ -79,261 +70,245 @@ a:hover{
 .back{
     display:inline-block;
     margin-bottom:20px;
-    padding:9px 15px;
-    background:white;
-    border:1px solid #d1d5db;
+    padding:8px 14px;
+    border:1px solid #30363d;
     border-radius:8px;
-    color:#374151;
-    font-weight:600;
+    color:#c9d1d9;
+    background:#161b22;
 }
 
 .back:hover{
-    background:#f3f4f6;
-    text-decoration:none;
+    background:#21262d;
 }
 
-/* HEADER */
-
 .character-header{
-    background:white;
-    border:1px solid #d9dee5;
-    border-radius:14px;
-    padding:28px;
-    margin-bottom:22px;
-    box-shadow:0 3px 12px rgba(0,0,0,.05);
+    margin-bottom:25px;
 }
 
 .character-header h1{
-    margin:0;
     font-size:38px;
-    line-height:1.2;
+    line-height:1.3;
+    color:#fff;
 }
 
 .subtitle{
-    margin-top:7px;
-    color:#6b7280;
-    font-size:18px;
+    color:#8b949e;
+    font-size:16px;
+    margin-top:5px;
 }
 
-.character-layout{
+.layout{
     display:grid;
-    grid-template-columns:280px minmax(0,1fr);
-    gap:24px;
+    grid-template-columns:300px 1fr;
+    gap:30px;
     align-items:start;
 }
 
-/* SIDEBAR */
-
 .sidebar{
-    display:flex;
-    flex-direction:column;
-    gap:18px;
+    position:sticky;
+    top:85px;
 }
 
 .image-box{
-    background:white;
-    border:1px solid #d9dee5;
-    border-radius:14px;
+    background:#161b22;
+    border:1px solid #30363d;
+    border-radius:12px;
     overflow:hidden;
-    box-shadow:0 3px 12px rgba(0,0,0,.05);
+    margin-bottom:20px;
 }
 
 .image-box img{
     width:100%;
     display:block;
-    aspect-ratio:1/1;
+    aspect-ratio:3/4;
     object-fit:cover;
-    background:#e5e7eb;
+    background:#0d1117;
 }
 
 .image-caption{
-    padding:10px 14px;
+    padding:10px;
     text-align:center;
-    color:#6b7280;
+    color:#8b949e;
     font-size:13px;
 }
 
-/* INFO BOX */
-
 .infobox{
-    background:white;
-    border:1px solid #d9dee5;
-    border-radius:14px;
-    overflow:hidden;
-    box-shadow:0 3px 12px rgba(0,0,0,.05);
-}
-
-.infobox-title{
-    padding:13px 15px;
-    background:#1f2937;
-    color:white;
-    text-align:center;
-    font-weight:800;
-}
-
-.infobox table{
     width:100%;
     border-collapse:collapse;
+    background:#161b22;
+    border:1px solid #30363d;
+    border-radius:12px;
+    overflow:hidden;
 }
 
+.infobox th,
 .infobox td{
-    padding:9px 12px;
-    border-bottom:1px solid #e5e7eb;
+    border-bottom:1px solid #30363d;
+    padding:10px;
     vertical-align:top;
-    font-size:14px;
+    text-align:left;
 }
 
-.infobox td:first-child{
-    width:38%;
-    font-weight:700;
-    color:#4b5563;
+.infobox th{
+    width:40%;
+    color:#8b949e;
+    font-weight:600;
 }
 
-/* CONTENT */
+.infobox tr:last-child th,
+.infobox tr:last-child td{
+    border-bottom:none;
+}
 
 .content{
     min-width:0;
 }
 
-.section{
-    background:white;
-    border:1px solid #d9dee5;
-    border-radius:14px;
-    padding:25px;
-    margin-bottom:22px;
-    box-shadow:0 3px 12px rgba(0,0,0,.04);
+.notice{
+    background:#161b22;
+    border-left:4px solid #58a6ff;
+    padding:14px 16px;
+    margin-bottom:25px;
+    border-radius:6px;
+    color:#c9d1d9;
+}
+
+.toc{
+    background:#161b22;
+    border:1px solid #30363d;
+    border-radius:10px;
+    padding:18px 22px;
+    margin-bottom:30px;
+}
+
+.toc-title{
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.toc ol{
+    padding-left:25px;
+}
+
+.toc li{
+    margin:4px 0;
+}
+
+.toc a{
+    color:#58a6ff;
+}
+
+section{
+    margin-bottom:45px;
     scroll-margin-top:90px;
 }
 
-.section h2{
-    margin:0 0 15px;
-    padding-bottom:9px;
-    border-bottom:2px solid #e5e7eb;
+section h2{
     font-size:26px;
+    color:#fff;
+    border-bottom:1px solid #30363d;
+    padding-bottom:8px;
+    margin-bottom:18px;
 }
 
-.section h3{
-    margin-top:22px;
-    margin-bottom:7px;
+section h3{
     font-size:19px;
+    color:#c9d1d9;
+    margin:20px 0 8px;
 }
 
-.section p{
-    margin:9px 0;
-}
-
-.section ul{
-    margin-top:8px;
-}
-
-.section li{
-    margin:5px 0;
-}
-
-/* NAVIGATION */
-
-.wiki-nav{
-    background:white;
-    border:1px solid #d9dee5;
-    border-radius:14px;
-    padding:17px;
-    margin-bottom:22px;
-    box-shadow:0 3px 12px rgba(0,0,0,.04);
-}
-
-.wiki-nav-title{
-    font-size:18px;
-    font-weight:800;
+p{
     margin-bottom:12px;
 }
 
-.wiki-nav a{
+ul{
+    padding-left:25px;
+}
+
+li{
+    margin:5px 0;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.info-card{
+    background:#161b22;
+    border:1px solid #30363d;
+    border-radius:10px;
+    padding:15px;
+}
+
+.info-card strong{
     display:block;
-    padding:7px 9px;
-    border-radius:6px;
-    color:#374151;
-    font-size:14px;
+    color:#8b949e;
+    font-size:13px;
+    margin-bottom:4px;
 }
-
-.wiki-nav a:hover{
-    background:#f3f4f6;
-    color:#2563eb;
-    text-decoration:none;
-}
-
-.wiki-nav a span{
-    color:#6b7280;
-    margin-right:5px;
-}
-
-/* NOTICE */
-
-.notice{
-    background:#eff6ff;
-    border-left:5px solid #3b82f6;
-    padding:15px 18px;
-    border-radius:8px;
-    margin-bottom:22px;
-}
-
-.notice strong{
-    color:#1d4ed8;
-}
-
-/* POWER BOX */
 
 .power-grid{
     display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-template-columns:repeat(2,1fr);
     gap:15px;
 }
 
 .power-box{
-    border:1px solid #d9dee5;
+    background:#161b22;
+    border:1px solid #30363d;
     border-radius:10px;
     padding:17px;
-    background:#fafafa;
 }
 
 .power-box h3{
-    margin:0 0 7px;
-    font-size:17px;
+    margin-top:0;
+    color:#58a6ff;
 }
-
-.power-box p{
-    font-size:14px;
-}
-
-/* TIMELINE */
 
 .timeline{
-    border-left:3px solid #d1d5db;
-    margin-left:8px;
-    padding-left:20px;
+    position:relative;
+    margin-left:10px;
+    padding-left:25px;
+    border-left:2px solid #30363d;
 }
 
 .timeline-item{
     position:relative;
-    margin-bottom:22px;
+    margin-bottom:25px;
 }
 
 .timeline-item::before{
     content:"";
     position:absolute;
-    left:-28px;
-    top:9px;
-    width:11px;
-    height:11px;
-    background:#2563eb;
+    left:-32px;
+    top:7px;
+    width:12px;
+    height:12px;
     border-radius:50%;
+    background:#58a6ff;
+    border:2px solid #0d1117;
 }
 
 .timeline-year{
-    font-weight:800;
-    color:#2563eb;
+    font-weight:bold;
+    color:#58a6ff;
+    margin-bottom:3px;
 }
 
-/* TAGS */
+.relationship{
+    background:#161b22;
+    border:1px solid #30363d;
+    border-radius:10px;
+    padding:15px;
+    margin-bottom:12px;
+}
+
+.relationship strong{
+    color:#58a6ff;
+}
 
 .tags{
     display:flex;
@@ -342,72 +317,56 @@ a:hover{
 }
 
 .tag{
+    background:#21262d;
+    border:1px solid #30363d;
+    color:#c9d1d9;
     padding:5px 10px;
     border-radius:20px;
-    background:#eef2ff;
-    color:#3730a3;
     font-size:13px;
 }
 
-/* FOOTER */
-
 footer{
-    margin-top:35px;
+    margin-top:50px;
     padding:25px;
     text-align:center;
-    color:#6b7280;
-    font-size:14px;
+    color:#8b949e;
+    border-top:1px solid #30363d;
 }
 
-/* MOBILE */
-
 @media(max-width:850px){
-
-    .character-layout{
+    .layout{
         grid-template-columns:1fr;
     }
 
     .sidebar{
-        max-width:420px;
-        margin:auto;
-        width:100%;
+        position:static;
     }
 
+    .info-grid,
     .power-grid{
         grid-template-columns:1fr;
     }
 
+    .character-header h1{
+        font-size:30px;
+    }
 }
 
-@media(max-width:600px){
-
-    .page{
+@media(max-width:500px){
+    .container{
         padding:0 12px;
-        margin-top:20px;
-    }
-
-    .character-header{
-        padding:20px;
-    }
-
-    .character-header h1{
-        font-size:29px;
-    }
-
-    .section{
-        padding:19px;
-    }
-
-    .section h2{
-        font-size:22px;
     }
 
     .topbar{
-        padding:12px 15px;
+        padding:12px;
     }
 
+    .topbar-inner{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:5px;
+    }
 }
-
 </style>
 </head>
 
@@ -415,697 +374,496 @@ footer{
 
 <header class="topbar">
     <div class="topbar-inner">
-        <div class="logo">
-            Reartval <span>Wiki</span>
-        </div>
-
-        <a href="/Reartval-Wiki/index.html">
-            หน้าหลัก
-        </a>
+        <a class="logo" href="/Reartval-Wiki/index.html">Reartval Wiki</a>
+        <a class="home" href="/Reartval-Wiki/index.html">หน้าหลัก</a>
     </div>
 </header>
 
-<main class="page">
+<main class="container">
 
-<a class="back" href="/Reartval-Wiki/index.html">
-    ← กลับหน้าหลัก
-</a>
+<a class="back" href="/Reartval-Wiki/index.html">← กลับหน้าหลัก</a>
 
 <div class="character-header">
     <h1>Master Johnson Relvent</h1>
-    <div class="subtitle">
-        Master / John — ตัวละครสำคัญแห่งจักรวาล Reartval
-    </div>
+    <div class="subtitle">Master / John — ตัวละครสำคัญแห่งจักรวาล Reartval</div>
 </div>
 
-<div class="character-layout">
+<div class="layout">
 
 <aside class="sidebar">
 
-    <div class="image-box">
-        <img src="master.jpg" alt="Master Johnson Relvent">
-        <div class="image-caption">
-            Master Johnson Relvent
-        </div>
-    </div>
+<div class="image-box">
+    <img src="master.jpg" alt="Master Johnson Relvent">
+    <div class="image-caption">Master Johnson Relvent</div>
+</div>
 
-    <div class="infobox">
-
-        <div class="infobox-title">
-            ข้อมูลตัวละคร
-        </div>
-
-        <table>
-
-            <tr>
-                <td>ชื่อ</td>
-                <td>Master Johnson Relvent</td>
-            </tr>
-
-            <tr>
-                <td>ชื่อที่ใช้</td>
-                <td>Master, John, Master Relvent</td>
-            </tr>
-
-            <tr>
-                <td>เพศ</td>
-                <td>ชาย</td>
-            </tr>
-
-            <tr>
-                <td>สายพันธุ์</td>
-                <td>ครึ่งมนุษย์ / ครึ่ง Fountaine</td>
-            </tr>
-
-            <tr>
-                <td>สัญชาติ</td>
-                <td>อเมริกัน</td>
-            </tr>
-
-            <tr>
-                <td>วันเกิด</td>
-                <td>8 กันยายน 1963</td>
-            </tr>
-
-            <tr>
-                <td>สถานที่เกิด</td>
-                <td>Chicago, Illinois</td>
-            </tr>
-
-            <tr>
-                <td>สถานะ</td>
-                <td>มีชีวิตอยู่</td>
-            </tr>
-
-        </table>
-
-    </div>
+<table class="infobox">
+<tr>
+    <th>ชื่อ</th>
+    <td>Master Johnson Relvent</td>
+</tr>
+<tr>
+    <th>ชื่อเรียก</th>
+    <td>Master, John, Master Relvent</td>
+</tr>
+<tr>
+    <th>เพศ</th>
+    <td>ชาย</td>
+</tr>
+<tr>
+    <th>เผ่าพันธุ์</th>
+    <td>ลูกครึ่งมนุษย์ / Fountaine</td>
+</tr>
+<tr>
+    <th>สัญชาติ</th>
+    <td>อเมริกัน</td>
+</tr>
+<tr>
+    <th>วันเกิด</th>
+    <td>8 กันยายน 1963</td>
+</tr>
+<tr>
+    <th>สถานที่เกิด</th>
+    <td>Chicago, Illinois</td>
+</tr>
+<tr>
+    <th>สถานะ</th>
+    <td>มีชีวิตอยู่</td>
+</tr>
+</table>
 
 </aside>
 
-
-<div class="content">
-
-<nav class="wiki-nav">
-
-    <div class="wiki-nav-title">
-        สารบัญ
-    </div>
-
-    <a href="#names"><span>1.</span> ชื่อและชื่อเรียก</a>
-    <a href="#identity"><span>2.</span> ข้อมูลทั่วไป</a>
-    <a href="#personality"><span>5.</span> บุคลิก</a>
-    <a href="#likes"><span>6.</span> สิ่งที่ชอบและไม่ชอบ</a>
-    <a href="#dreams"><span>7.</span> ความฝัน</a>
-    <a href="#history"><span>9.</span> ประวัติ</a>
-    <a href="#powers"><span>10.</span> ความสามารถและพลังปัจจุบัน</a>
-    <a href="#technology"><span>11.</span> เทคโนโลยี</a>
-    <a href="#weapons"><span>12.</span> อุปกรณ์ต่อสู้</a>
-    <a href="#weaknesses"><span>14.</span> จุดอ่อน</a>
-    <a href="#relationships"><span>15.</span> ความสัมพันธ์</a>
-    <a href="#timeline"><span>17.</span> Timeline</a>
-    <a href="#appearances"><span>18.</span> เรื่องที่ปรากฏ</a>
-    <a href="#additional"><span>19.</span> ข้อมูลเพิ่มเติม</a>
-
-</nav>
-
+<article class="content">
 
 <div class="notice">
+    หน้านี้เป็นข้อมูลตัวละคร Master Johnson Relvent ในจักรวาล Reartval
+    โดยเนื้อหาสามารถเพิ่มเติมและแก้ไขตาม Canon ของเรื่องได้
+</div>
 
-<strong>หมายเหตุ:</strong>
-ข้อมูลในหน้านี้แบ่งระหว่างข้อมูลพื้นฐานของตัวละคร,
-ข้อมูลจาก Canon และข้อมูลที่เกี่ยวข้องกับพัฒนาการของ Master
-ในแต่ละช่วงของเรื่อง หากข้อมูลในนิยายฉบับปัจจุบันมีการเปลี่ยนแปลง
-ควรยึดข้อมูลฉบับล่าสุดเป็นหลัก
+<nav class="toc">
+    <div class="toc-title">สารบัญ</div>
+    <ol>
+        <li><a href="#names">ชื่อและชื่อเรียก</a></li>
+        <li><a href="#identity">ข้อมูลทั่วไป</a></li>
+        <li><a href="#personality">บุคลิก</a></li>
+        <li><a href="#likes">สิ่งที่ชอบและไม่ชอบ</a></li>
+        <li><a href="#dreams">ความฝัน</a></li>
+        <li><a href="#history">ประวัติ</a></li>
+        <li><a href="#powers">ความสามารถและพลังปัจจุบัน</a></li>
+        <li><a href="#technology">เทคโนโลยี</a></li>
+        <li><a href="#weapons">อุปกรณ์ต่อสู้</a></li>
+        <li><a href="#weaknesses">จุดอ่อน</a></li>
+        <li><a href="#relationships">ความสัมพันธ์</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#appearances">เรื่องที่ปรากฏ</a></li>
+        <li><a href="#additional">ข้อมูลเพิ่มเติม</a></li>
+    </ol>
+</nav>
+
+<section id="names">
+<h2>1. ชื่อและชื่อเรียก</h2>
+
+<ul>
+<li><strong>Master Johnson Relvent</strong> — ชื่อหลัก</li>
+<li><strong>Master</strong> — ชื่อที่ใช้โดยคนใกล้ชิดและเป็นชื่อหลักของตัวละคร</li>
+<li><strong>John</strong> — ชื่อที่คนทั่วไปหรือคนรู้จักมักใช้เรียก</li>
+<li><strong>Master Relvent</strong> — ชื่อเรียกตามตระกูล</li>
+<li><strong>Master Johnson Clarkson</strong> — ชื่อที่เกี่ยวข้องกับช่วงชีวิตในตระกูล Clarkson</li>
+</ul>
+</section>
+
+<section id="identity">
+<h2>2. ข้อมูลทั่วไป</h2>
+
+<div class="info-grid">
+
+<div class="info-card">
+<strong>เผ่าพันธุ์</strong>
+ลูกครึ่งมนุษย์และ Fountaine
+</div>
+
+<div class="info-card">
+<strong>เชื้อสาย</strong>
+มีลักษณะทางพันธุกรรมจากทั้งมนุษย์และ Fountaine
+</div>
+
+<div class="info-card">
+<strong>ลักษณะทางการแพทย์</strong>
+มีภาวะเผือกและความไวต่อแสงสูง
+</div>
+
+<div class="info-card">
+<strong>หัวใจ</strong>
+มีหัวใจเทียมจากเหตุการณ์ในอดีต
+</div>
 
 </div>
 
-
-<section class="section" id="names">
-
-<h2>1. ชื่อและชื่อเรียก</h2>
-
-<h3>ชื่อหลัก</h3>
-
 <p>
-<b>Master Johnson Relvent</b>
-คือชื่อหลักที่ใช้ระบุตัวละครในปัจจุบัน
+ร่างกายของ Master เป็นผลจากพันธุกรรมลูกผสมระหว่างมนุษย์กับ Fountaine
+ทำให้เขามีคุณสมบัติทางกายภาพบางอย่างที่แตกต่างจากมนุษย์ทั่วไป
 </p>
 
-<h3>ชื่อที่ใช้เรียก</h3>
-
-<ul>
-<li><b>Master</b> — ชื่อที่มีความเป็นส่วนตัวและใช้โดยคนใกล้ชิด</li>
-<li><b>John</b> — ชื่อที่คนทั่วไปหรือคนรู้จักมักใช้เรียก</li>
-<li><b>Master Relvent</b> — การเรียกด้วยชื่อและตระกูล</li>
-<li><b>Master Johnson Clarkson</b> — ชื่อที่เกี่ยวข้องกับช่วงชีวิตและครอบครัว Clarkson</li>
-</ul>
-
+<p>
+ดวงตาของเขามีปัญหาด้านการมองเห็นและความไวต่อแสงอย่างรุนแรง
+รวมถึงข้อจำกัดด้านการรับรู้สี
+</p>
 </section>
 
-
-<section class="section" id="identity">
-
-<h2>2. ข้อมูลทั่วไป</h2>
+<section id="personality">
+<h2>3. บุคลิก</h2>
 
 <p>
-Master เป็นตัวละครที่มีสายเลือดผสมระหว่างมนุษย์กับ Fountaine
-ทำให้ร่างกายของเขามีคุณสมบัติที่แตกต่างจากมนุษย์ทั่วไป
-ขณะเดียวกันก็มีข้อจำกัดทางชีวภาพหลายอย่างที่เกิดจากพันธุกรรมของทั้งสองสายเลือด
+Master เป็นคนเงียบ สุภาพ และมีความเมตตาต่อผู้อื่น
+เขามักช่วยเหลือคนอื่นแม้จะเป็นคนที่ตนเองไม่รู้จัก
 </p>
-
-<h3>ลักษณะทางชีวภาพที่สำคัญ</h3>
-
-<ul>
-<li>เป็นลูกครึ่งมนุษย์และ Fountaine</li>
-<li>มีความแข็งแรงทางกายภาพสูงเมื่อเทียบกับรูปร่าง</li>
-<li>มีอุณหภูมิร่างกายต่ำกว่ามนุษย์ทั่วไป</li>
-<li>มีความไวต่อความเย็น</li>
-<li>มีความไวต่อแสงอย่างรุนแรง</li>
-<li>มีภาวะเผือกและปัญหาด้านการมองเห็น</li>
-<li>การรับรู้สีมีข้อจำกัดอย่างมาก</li>
-<li>มีข้อจำกัดเกี่ยวกับการสัมผัสน้ำจากพันธุกรรม Fountaine</li>
-<li>มีความไวบริเวณมุมกรามมากเป็นพิเศษ</li>
-</ul>
-
-<h3>ร่างกายเทียม</h3>
 
 <p>
-Master เคยได้รับการเปลี่ยนแปลงร่างกายครั้งสำคัญ
-รวมถึงการใช้หัวใจเทียมในช่วงหนึ่งของชีวิต
-การเปลี่ยนแปลงดังกล่าวกลายเป็นส่วนหนึ่งของประวัติและสภาพร่างกายของเขา
+เขามักเก็บความรู้สึกของตัวเองไว้และไม่ต้องการทำให้คนอื่นเป็นห่วง
+ภายนอกจึงดูสงบและควบคุมตัวเองได้ดี
 </p>
 
+<p>
+อย่างไรก็ตาม ภายในเขามีความกดดัน ความกลัว และความไม่มั่นใจในตัวเองสูง
+โดยเฉพาะเรื่องคุณค่าของตัวเอง
+</p>
+
+<p>
+Master เข้าใจ ให้อภัย และมอบความเมตตาแก่ผู้อื่นได้ง่าย
+แต่กลับทำสิ่งเดียวกันกับตัวเองได้ยากมาก
+</p>
 </section>
 
-
-<section class="section" id="personality">
-
-<h2>5. บุคลิก</h2>
-
-<p>
-Master เป็นคนเงียบ สุภาพ และมักพยายามช่วยเหลือผู้อื่น
-แม้ภายในจะมีความรู้สึกกดดันและความไม่มั่นคงต่อตัวเองอยู่มาก
-</p>
-
-<h3>ต่อคนทั่วไป</h3>
-
-<ul>
-<li>สุภาพและใจดี</li>
-<li>ค่อนข้างเงียบและเก็บความรู้สึก</li>
-<li>มักพยายามช่วยคนอื่นก่อนคิดถึงตัวเอง</li>
-<li>ไม่ต้องการสร้างปัญหาให้คนรอบตัว</li>
-<li>มักพยายามควบคุมอารมณ์ของตัวเอง</li>
-</ul>
-
-<h3>ต่อคนที่ไว้ใจ</h3>
-
-<p>
-เมื่ออยู่กับคนที่เขาไว้ใจ Master สามารถแสดงด้านที่อ่อนโยนและเป็นธรรมชาติมากขึ้น
-เขาสามารถพูดมากขึ้น แสดงความรู้สึกมากขึ้น และต้องการความอบอุ่นจากคนใกล้ตัว
-</p>
-
-<h3>ความสัมพันธ์กับตัวเอง</h3>
-
-<p>
-Master มีแนวโน้มที่จะเข้าใจ ให้อภัย และเห็นคุณค่าของผู้อื่น
-แต่กลับทำสิ่งเหล่านั้นกับตัวเองได้ยากมาก
-เขามักมองตัวเองต่ำกว่าคนอื่นและรู้สึกว่าตัวเองไม่สมควรได้รับสิ่งดี ๆ
-</p>
-
-</section>
-
-
-<section class="section" id="likes">
-
-<h2>6. สิ่งที่ชอบและไม่ชอบ</h2>
+<section id="likes">
+<h2>4. สิ่งที่ชอบและไม่ชอบ</h2>
 
 <h3>สิ่งที่ชอบ</h3>
-
 <ul>
-<li>การเขียนการ์ตูน</li>
-<li>การวาดรูป</li>
+<li>การวาดภาพ</li>
+<li>การเขียน Comics</li>
 <li>วิทยาศาสตร์</li>
 <li>ดาราศาสตร์</li>
 <li>เครื่องจักรและเทคโนโลยี</li>
-<li>ป่าและธรรมชาติ</li>
-<li>สถานที่สงบและเงียบ</li>
-<li>คนที่เขาไว้ใจและรัก</li>
+<li>ป่าไม้และธรรมชาติ</li>
+<li>สถานที่เงียบสงบ</li>
+<li>คนที่เขาไว้ใจ</li>
 </ul>
 
 <h3>สิ่งที่ไม่ชอบ</h3>
-
 <ul>
 <li>เสียงดัง</li>
 <li>น้ำ</li>
 <li>การถูกตะโกนใส่</li>
-<li>การถูกบังคับควบคุม</li>
-<li>การถูกปฏิเสธจากคนสำคัญ</li>
-<li>การทำร้ายคนที่เขารัก</li>
-<li>การทำให้ผู้อื่นต้องเจ็บปวดเพราะตัวเอง</li>
+<li>การถูกบังคับ</li>
+<li>การถูกปฏิเสธ</li>
+<li>การเห็นคนใกล้ตัวได้รับอันตราย</li>
+<li>การทำร้ายผู้อื่นโดยไม่จำเป็น</li>
 </ul>
-
 </section>
 
-
-<section class="section" id="dreams">
-
-<h2>7. ความฝัน</h2>
+<section id="dreams">
+<h2>5. ความฝัน</h2>
 
 <p>
-ความฝันของ Master ไม่ได้มีเพียงเรื่องการเป็นผู้แข็งแกร่ง
-แต่เกี่ยวข้องกับการสร้างสิ่งใหม่และทำให้โลกสามารถมีวันที่ดีขึ้นได้
+Master ต้องการใช้ชีวิตกับสิ่งที่เขารัก เช่น วิทยาศาสตร์ การวาดภาพ
+การเขียน และการสร้างสิ่งใหม่ ๆ
 </p>
 
 <p>
-หนึ่งในสิ่งที่สะท้อนความคิดของเขาคือแนวคิด
-<b>“He who made new day.”</b>
-ซึ่งเชื่อมโยงกับความต้องการของเขาที่อยากสร้างสิ่งที่มีความหมาย
-และมอบความหวังให้กับผู้อื่น
+แนวคิดสำคัญที่เกี่ยวข้องกับตัวละครคือ
+<strong>“He who made new day.”</strong>
+ซึ่งสะท้อนความต้องการที่จะสร้างอนาคตที่ดีกว่าเดิม
 </p>
-
 </section>
 
-
-<section class="section" id="history">
-
-<h2>9. ประวัติ</h2>
+<section id="history">
+<h2>6. ประวัติ</h2>
 
 <h3>วัยเด็ก</h3>
-
 <p>
-Master เกิดใน Chicago และเติบโตในตระกูล Relvent
-ช่วงวัยเด็กของเขาได้รับผลกระทบจากปัญหาภายในครอบครัว
-ซึ่งกลายเป็นหนึ่งในรากฐานสำคัญของบุคลิกในเวลาต่อมา
+Master เกิดใน Chicago และเติบโตท่ามกลางปัญหาภายในครอบครัว
+เหตุการณ์ความขัดแย้งระหว่างพ่อแม่ในวัยเด็กส่งผลต่อชีวิตของเขาอย่างมาก
 </p>
 
-<h3>การสูญเสียครอบครัว</h3>
-
+<h3>อายุ 8 ปี</h3>
 <p>
-เมื่อเข้าสู่วัยรุ่น Master ต้องเผชิญกับเหตุการณ์ครั้งใหญ่ที่เกี่ยวข้องกับครอบครัว
-รวมถึงการออกตามหา Amber Relvent เป็นเวลานาน
-เหตุการณ์เหล่านี้เปลี่ยนมุมมองที่เขามีต่อครอบครัวและตัวเองอย่างมาก
+เขาเริ่มมีบทบาทในการช่วยเหลือคนอื่นและแสดงให้เห็นถึงความเมตตาตั้งแต่วัยเด็ก
 </p>
 
-<h3>Jeremy Del Clarkson</h3>
-
+<h3>อายุ 13 ปี</h3>
 <p>
-เมื่ออายุประมาณ 14 ปี Master ได้รับการรับเลี้ยงโดย Jeremy Del Clarkson
-ในช่วงแรกเขารู้สึกว่าตัวเองได้รับการยอมรับและมีครอบครัวอีกครั้ง
-แต่ความสัมพันธ์ดังกล่าวพัฒนาไปในทิศทางที่ทำให้ Master
-รู้สึกว่าตัวเองต้องเป็นไปตามสิ่งที่อีกฝ่ายต้องการ
+Master ออกตามหา Amber เป็นเวลานานหลายเดือน
+ก่อนจะกลับมาพบกับเหตุการณ์ที่รุนแรงภายในตระกูล Relvent
 </p>
 
-<h3>หัวใจเทียม</h3>
-
+<h3>อายุ 14 ปี</h3>
 <p>
-ในช่วงวัยรุ่น Master ได้รับหัวใจเทียม
-ซึ่งกลายเป็นหนึ่งในเหตุการณ์สำคัญที่สุดที่เปลี่ยนแปลงร่างกายของเขา
+Jeremy Del Clarkson รับ Master มาเลี้ยง
+ในช่วงแรก Master รู้สึกว่าตนเองได้รับการยอมรับเป็นครั้งแรก
+แต่ความสัมพันธ์ในเวลาต่อมากลับกลายเป็นแหล่งของแรงกดดัน
 </p>
 
-<h3>ช่วงอายุ 18 ปี</h3>
-
+<h3>อายุ 17 ปี</h3>
 <p>
-หลังจากความสัมพันธ์กับ Jeremy สิ้นสุดลง Master เข้าสู่ช่วงชีวิตที่โดดเดี่ยวมากขึ้น
-เขาค่อย ๆ ปิดตัวเองและไม่สามารถแสดงความรู้สึกได้เหมือนเดิม
+Master ได้รับหัวใจเทียมหลังจากหัวใจเดิมได้รับความเสียหายอย่างรุนแรง
 </p>
 
-<h3>ช่วงวัยผู้ใหญ่</h3>
-
+<h3>อายุ 18 ปี</h3>
 <p>
-เมื่อเวลาผ่านไป Master เริ่มกลับมาสนใจวิทยาศาสตร์ เทคโนโลยี
-และการสร้างสิ่งใหม่อีกครั้ง
-แม้บาดแผลทางจิตใจจากอดีตยังคงส่งผลต่อเขา
+Jeremy จากไปพร้อมกับคำพูดที่ส่งผลต่อความรู้สึกและคุณค่าที่ Master มีต่อตัวเอง
 </p>
 
+<h3>อายุ 20 ปี</h3>
+<p>
+Master แยกตัวออกจากผู้คนมากขึ้นและเข้าสู่ช่วงชีวิตที่โดดเดี่ยวอย่างหนัก
+</p>
+
+<h3>ช่วงเวลาต่อมา</h3>
+<p>
+เขาเริ่มกลับเข้าสู่เส้นทางด้านวิทยาศาสตร์ เทคโนโลยี
+และการสร้างสรรค์ผลงานของตัวเอง
+</p>
 </section>
 
-
-<section class="section" id="powers">
-
-<h2>10. ความสามารถและพลังปัจจุบัน</h2>
-
-<p>
-ความสามารถของ Master เกิดจากการผสมกันระหว่างพันธุกรรม Fountaine,
-ความสามารถทางกายภาพ และการเปลี่ยนแปลงทางเทคโนโลยีของร่างกาย
-</p>
+<section id="powers">
+<h2>7. ความสามารถและพลังปัจจุบัน</h2>
 
 <div class="power-grid">
 
 <div class="power-box">
-<h3>พละกำลัง</h3>
+<h3>พละกำลังของ Fountaine</h3>
 <p>
-มีพละกำลังทางกายภาพสูงผิดปกติเมื่อเทียบกับร่างกายของมนุษย์ทั่วไป
-และสามารถใช้แรงได้มากกว่าที่รูปร่างภายนอกทำให้คาดคิด
+มีพละกำลังเหนือมนุษย์จากพันธุกรรม Fountaine
+และสามารถใช้แรงกายได้มากกว่าร่างกายมนุษย์ทั่วไปอย่างมาก
 </p>
 </div>
 
 <div class="power-box">
-<h3>ความทนทาน</h3>
+<h3>ความทนทานของร่างกาย</h3>
 <p>
-ร่างกายลูกครึ่ง Fountaine ทำให้เขามีความทนทานสูง
-และสามารถรับแรงกระแทกได้มากกว่ามนุษย์ทั่วไป
-</p>
-</div>
-
-<div class="power-box">
-<h3>ความสามารถของ Fountaine</h3>
-<p>
-เลือด Fountaine ทำให้ Master มีคุณสมบัติทางกายภาพและชีวภาพเฉพาะตัว
-ซึ่งแตกต่างจากมนุษย์ปกติ
+ร่างกายมีความแข็งแกร่งจากพันธุกรรมลูกผสม
+และสามารถทนต่อสภาวะที่มนุษย์ทั่วไปไม่สามารถรับมือได้
 </p>
 </div>
 
 <div class="power-box">
 <h3>การปรับตัว</h3>
 <p>
-พันธุกรรมผสมทำให้ร่างกายสามารถปรับตัวต่อสภาพแวดล้อมบางประเภทได้ดี
-แต่ก็สร้างข้อจำกัดเฉพาะตัวเช่นกัน
+ลักษณะทางพันธุกรรมของ Fountaine ช่วยให้ร่างกายสามารถปรับตัวต่อสภาพแวดล้อมบางประเภทได้
 </p>
 </div>
 
 <div class="power-box">
-<h3>ความสามารถด้านวิทยาศาสตร์</h3>
+<h3>วิทยาศาสตร์และวิศวกรรม</h3>
 <p>
-Master มีความสามารถด้านวิทยาศาสตร์ เครื่องจักร กลไก
-และเทคโนโลยี โดยเฉพาะสิ่งที่เกี่ยวข้องกับการสร้างและดัดแปลงอุปกรณ์
+มีความรู้และความสามารถสูงด้านวิทยาศาสตร์ เครื่องจักร เทคโนโลยี
+และการประดิษฐ์
 </p>
 </div>
 
 <div class="power-box">
-<h3>ความสามารถในการสร้าง</h3>
+<h3>การสร้าง</h3>
 <p>
-เขาสามารถนำความรู้ทางวิทยาศาสตร์และเทคโนโลยีมาใช้สร้างสิ่งใหม่
-รวมถึงนำความคิดจากจินตนาการมาพัฒนาเป็นผลงานจริง
+มีความสามารถในการสร้างและพัฒนาเทคโนโลยีเพื่อแก้ปัญหาที่ซับซ้อน
 </p>
 </div>
 
 </div>
-
 </section>
 
-
-<section class="section" id="technology">
-
-<h2>11. เทคโนโลยี</h2>
-
-<h3>หัวใจเทียม</h3>
-
-<p>
-หัวใจเทียมเป็นส่วนสำคัญของร่างกาย Master
-และเป็นผลจากการเปลี่ยนแปลงทางเทคโนโลยีที่เขาได้รับในช่วงวัยรุ่น
-</p>
-
-<h3>เทคโนโลยีของ Master</h3>
-
-<p>
-Master มีความรู้ด้านเครื่องจักรและเทคโนโลยีในระดับสูง
-โดยสามารถศึกษา วิเคราะห์ ซ่อมแซม และพัฒนาเทคโนโลยีต่าง ๆ
-ได้ตามสถานการณ์
-</p>
-
-<h3>เทคโนโลยีภายในร่างกาย</h3>
-
-<p>
-ร่างกายของ Master มีส่วนประกอบที่ได้รับการดัดแปลงด้วยเทคโนโลยี
-ทำให้ร่างกายไม่ได้เป็นเพียงสิ่งมีชีวิตตามธรรมชาติทั้งหมด
-</p>
-
-</section>
-
-
-<section class="section" id="weapons">
-
-<h2>12. อุปกรณ์ต่อสู้</h2>
-
-<p>
-Master มีความเกี่ยวข้องกับเทคโนโลยีและอุปกรณ์ที่สามารถใช้ในการต่อสู้
-อย่างไรก็ตาม รายละเอียดของอุปกรณ์แต่ละชนิดควรอ้างอิงจากเหตุการณ์ที่ปรากฏในนิยาย
-และข้อมูล Canon ล่าสุด
-</p>
-
-<h3>อุปกรณ์เทคโนโลยี</h3>
+<section id="technology">
+<h2>8. เทคโนโลยี</h2>
 
 <ul>
-<li>อุปกรณ์เสริมร่างกาย</li>
-<li>เทคโนโลยีป้องกัน</li>
-<li>เครื่องมือทางวิทยาศาสตร์</li>
-<li>อุปกรณ์ที่สร้างหรือดัดแปลงขึ้นเอง</li>
+<li>หัวใจเทียม</li>
+<li>ความรู้ด้านเครื่องจักรและวิศวกรรม</li>
+<li>เทคโนโลยีที่เกี่ยวข้องกับร่างกาย</li>
+<li>เทคโนโลยีที่สร้างขึ้นเพื่อสนับสนุนการทำงานของตัวเอง</li>
 </ul>
-
 </section>
 
-
-<section class="section" id="weaknesses">
-
-<h2>14. จุดอ่อน</h2>
+<section id="weapons">
+<h2>9. อุปกรณ์ต่อสู้</h2>
 
 <p>
-แม้ Master จะมีความสามารถทางกายภาพสูง
-แต่ร่างกายลูกครึ่งมนุษย์และ Fountaine ทำให้เขามีข้อจำกัดเฉพาะตัว
+Master มีความรู้ในการสร้างและใช้อุปกรณ์ทางเทคโนโลยีหลายรูปแบบ
+รายละเอียดของอุปกรณ์แต่ละชนิดขึ้นอยู่กับช่วงเวลาของเนื้อเรื่อง
 </p>
+</section>
+
+<section id="weaknesses">
+<h2>10. จุดอ่อน</h2>
 
 <ul>
-<li>ไวต่อแสงอย่างมาก</li>
-<li>มีปัญหาด้านการมองเห็น</li>
-<li>การรับรู้สีมีข้อจำกัด</li>
-<li>ไม่ทนต่อความเย็น</li>
-<li>มีข้อจำกัดเกี่ยวกับน้ำจากพันธุกรรม Fountaine</li>
-<li>มีจุดไวต่อความรู้สึกบริเวณมุมกราม</li>
-<li>สภาพร่างกายได้รับผลกระทบจากการผสมพันธุกรรม</li>
-<li>หัวใจเทียมและการดัดแปลงร่างกายเป็นส่วนสำคัญต่อการดำรงชีวิตของเขา</li>
+<li>ความไวต่อแสงสูง</li>
+<li>ปัญหาด้านการมองเห็น</li>
+<li>ข้อจำกัดด้านการรับรู้สี</li>
+<li>ความทนต่อความเย็นต่ำ</li>
+<li>ข้อจำกัดเกี่ยวกับน้ำจากพันธุกรรม Fountaine</li>
+<li>บริเวณมุมกรามมีความไวต่อการสัมผัสมาก</li>
+<li>การพึ่งพาหัวใจเทียมและการดัดแปลงร่างกาย</li>
+<li>ความเปราะบางทางจิตใจจากประสบการณ์ในอดีต</li>
 </ul>
-
-<h3>จุดอ่อนทางจิตใจ</h3>
-
-<ul>
-<li>ไม่มั่นใจในคุณค่าของตัวเอง</li>
-<li>มีแนวโน้มเก็บความรู้สึก</li>
-<li>ไวต่อการถูกปฏิเสธ</li>
-<li>ไวต่อการถูกตะโกนหรือกดดัน</li>
-<li>มักให้อภัยผู้อื่นได้ง่ายกว่าการให้อภัยตัวเอง</li>
-</ul>
-
 </section>
 
+<section id="relationships">
+<h2>11. ความสัมพันธ์</h2>
 
-<section class="section" id="relationships">
-
-<h2>15. ความสัมพันธ์</h2>
-
-<h3>Vein Thompson</h3>
-
+<div class="relationship">
+<strong>Vein Thompson</strong>
 <p>
-Vein เป็นเพื่อนสนิทและหนึ่งในคนที่รู้จัก Master มาตั้งแต่วัยเด็ก
-ทั้งสองรู้จักกันตั้งแต่อายุประมาณ 6 ปี
-และมีสายสัมพันธ์ที่ลึกซึ้งมาก
+เพื่อนสนิทที่สุดของ Master และเป็นหนึ่งในคนที่เขาไว้ใจมากที่สุด
+ทั้งสองรู้จักกันมาตั้งแต่วัยเด็ก
 </p>
+</div>
 
-<h3>Jennifer Starfaller</h3>
-
+<div class="relationship">
+<strong>Jennifer Starfaller</strong>
 <p>
-Jennifer เป็นบุคคลสำคัญในชีวิตของ Master
-และเป็นหนึ่งในคนที่สามารถเข้าถึงด้านที่อ่อนโยนและเปราะบางของเขาได้
+บุคคลสำคัญที่ Master มีความผูกพันและความรู้สึกอย่างลึกซึ้ง
 </p>
+</div>
 
-<h3>Ava Octilavber Relvent</h3>
-
+<div class="relationship">
+<strong>Ava Octilavber Relvent</strong>
 <p>
-Ava เป็นแม่ของ Master และเป็นส่วนสำคัญของปมครอบครัวในอดีตของเขา
+มารดาของ Master
 </p>
+</div>
 
-<h3>Liam Relvent</h3>
-
+<div class="relationship">
+<strong>Liam Relvent</strong>
 <p>
-Liam เป็นพ่อของ Master และเป็นสมาชิกสายเลือด Fountaine
-ปัจจุบันเสียชีวิตแล้ว
+บิดาของ Master และเป็นผู้มีสายเลือด Fountaine
+สถานะปัจจุบัน: เสียชีวิตแล้ว
 </p>
+</div>
 
-<h3>Jeremy Del Clarkson</h3>
-
+<div class="relationship">
+<strong>Jeremy Del Clarkson</strong>
 <p>
-Jeremy เป็นพ่อบุญธรรมของ Master
-ความสัมพันธ์ของทั้งสองมีอิทธิพลอย่างมากต่อพัฒนาการทางจิตใจของ Master
+บิดาบุญธรรมของ Master
 </p>
+</div>
 
-<h3>Amber Relvent</h3>
-
+<div class="relationship">
+<strong>Amber Relvent</strong>
 <p>
-Amber เป็นสมาชิกตระกูล Relvent ที่ Master เคยออกตามหา
-ปัจจุบันเธอยังมีชีวิตอยู่และกลายเป็น Captain Reartval
+สมาชิกตระกูล Relvent และเป็นบุคคลที่ Master เคยออกตามหา
+ปัจจุบันกลายเป็น Captain Reartval
 </p>
+</div>
 
-<h3>Evan Relvent</h3>
-
+<div class="relationship">
+<strong>Evan Relvent</strong>
 <p>
-Evan เป็นสมาชิกครอบครัวที่มีความสำคัญต่อชีวิตวัยเด็กของ Master
-ปัจจุบันเสียชีวิตแล้ว
+สมาชิกในครอบครัวของ Master
+สถานะปัจจุบัน: เสียชีวิตแล้ว
 </p>
+</div>
 
-<h3>Ryan Relvent</h3>
-
+<div class="relationship">
+<strong>Ryan Relvent</strong>
 <p>
-Ryan เป็นลูกชายของ Master
-แต่สถานะปัจจุบันของ Ryan ยังไม่มีข้อมูลที่แน่ชัดในข้อมูลตัวละคร
+บุตรของ Master
+Master ไม่แน่ใจว่ายังคงมีชีวิตอยู่หรือไม่
 </p>
-
+</div>
 </section>
 
-
-<section class="section" id="timeline">
-
-<h2>17. Timeline</h2>
+<section id="timeline">
+<h2>12. Timeline</h2>
 
 <div class="timeline">
 
 <div class="timeline-item">
 <div class="timeline-year">อายุ 4 ปี</div>
-<p>
-เกิดเหตุการณ์สำคัญภายในครอบครัวซึ่งนำไปสู่การแยกทางของพ่อแม่
-และเป็นจุดเริ่มต้นของบาดแผลในวัยเด็ก
-</p>
-</div>
-
-<div class="timeline-item">
-<div class="timeline-year">อายุ 5–7 ปี</div>
-<p>
-Master เริ่มห่างจากความทรงจำเกี่ยวกับแม่และใช้ชีวิตในช่วงวัยเด็กต่อไป
-</p>
+<p>เกิดเหตุการณ์ความขัดแย้งรุนแรงภายในครอบครัวและพ่อแม่แยกทางกัน</p>
 </div>
 
 <div class="timeline-item">
 <div class="timeline-year">อายุ 6 ปี</div>
-<p>
-Master เริ่มรู้จัก Vein Thompson และทั้งสองกลายเป็นเพื่อนสนิทกัน
-</p>
+<p>เริ่มมีความสัมพันธ์อันแน่นแฟ้นกับ Vein Thompson</p>
 </div>
 
 <div class="timeline-item">
 <div class="timeline-year">อายุ 8 ปี</div>
-<p>
-Master เริ่มแสดงความสามารถในการช่วยเหลือและปกป้องผู้อื่น
-รวมถึงการปกป้อง Evan
-</p>
+<p>เริ่มช่วยเหลือผู้อื่นอย่างจริงจัง</p>
 </div>
 
 <div class="timeline-item">
 <div class="timeline-year">อายุ 13 ปี</div>
-<p>
-Master ออกตามหา Amber เป็นเวลาหลายเดือน
-และพบกับเหตุการณ์ครั้งใหญ่ที่เปลี่ยนชีวิตของเขา
-</p>
+<p>ออกตามหา Amber และพบเหตุการณ์ที่ทำให้ชีวิตเปลี่ยนแปลง</p>
 </div>
 
 <div class="timeline-item">
 <div class="timeline-year">อายุ 14 ปี</div>
-<p>
-Jeremy Del Clarkson รับ Master เป็นบุตรบุญธรรม
-</p>
+<p>Jeremy รับ Master ไปเลี้ยง</p>
 </div>
 
 <div class="timeline-item">
 <div class="timeline-year">อายุ 17 ปี</div>
-<p>
-Master ได้รับหัวใจเทียมและเกิดการเปลี่ยนแปลงสำคัญต่อร่างกาย
-</p>
+<p>ได้รับหัวใจเทียม</p>
 </div>
 
 <div class="timeline-item">
 <div class="timeline-year">อายุ 18 ปี</div>
-<p>
-ความสัมพันธ์ระหว่าง Master กับ Jeremy สิ้นสุดลง
-และ Master เข้าสู่ช่วงชีวิตที่โดดเดี่ยวมากขึ้น
-</p>
+<p>Jeremy จากไป</p>
 </div>
 
 <div class="timeline-item">
 <div class="timeline-year">อายุ 20 ปี</div>
-<p>
-Master ใช้ชีวิตอย่างโดดเดี่ยวและเริ่มสูญเสียความสามารถในการแสดงออกทางอารมณ์
-</p>
+<p>เข้าสู่ช่วงชีวิตที่โดดเดี่ยวอย่างหนัก</p>
 </div>
 
 <div class="timeline-item">
 <div class="timeline-year">ช่วงเวลาต่อมา</div>
-<p>
-Master เริ่มกลับมาสนใจวิทยาศาสตร์ เทคโนโลยี
-และการสร้างสิ่งใหม่ พร้อมกับค่อย ๆ กลับมามีความหวังอีกครั้ง
-</p>
+<p>กลับเข้าสู่เส้นทางวิทยาศาสตร์ เทคโนโลยี และการสร้างสรรค์</p>
 </div>
 
 </div>
-
 </section>
 
+<section id="appearances">
+<h2>13. เรื่องที่ปรากฏ</h2>
 
-<section class="section" id="appearances">
-
-<h2>18. เรื่องที่ปรากฏ</h2>
+<!-- ผู้ใช้สามารถเพิ่มรายชื่อนิยาย / ตอน / Chapter ที่ Master ปรากฏได้ที่นี่ -->
 
 <p>
-ส่วนนี้สำหรับรวบรวมรายชื่อเรื่อง ตอน หรือเหตุการณ์ต่าง ๆ
-ที่ Master Johnson Relvent ปรากฏตัว
+ยังไม่ได้ระบุ
 </p>
-
-<div class="notice">
-<strong>สำหรับเพิ่มข้อมูล:</strong>
-สามารถเขียนรายชื่อเรื่อง ตอนที่ปรากฏ
-บทบาทของ Master และเหตุการณ์สำคัญในแต่ละเรื่องได้ที่ส่วนนี้
-</div>
-
-<!-- เขียนข้อมูลเรื่องที่ปรากฏเพิ่มเติมตรงนี้ -->
-
 </section>
 
-
-<section class="section" id="additional">
-
-<h2>19. ข้อมูลเพิ่มเติม</h2>
-
-<h3>แนวคิดของตัวละคร</h3>
+<section id="additional">
+<h2>14. ข้อมูลเพิ่มเติม</h2>
 
 <p>
-Master เป็นตัวละครที่มีความขัดแย้งระหว่าง
-“การเห็นคุณค่าของผู้อื่น” กับ “การไม่เห็นคุณค่าของตัวเอง”
-อย่างชัดเจน
+Master เป็นตัวละครที่มีแก่นสำคัญเกี่ยวกับการช่วยเหลือผู้อื่น
+การให้อภัย และการเรียนรู้ที่จะมองเห็นคุณค่าของตัวเอง
 </p>
 
 <p>
-เขาสามารถเข้าใจความเจ็บปวดของคนอื่น
-แสดงความเมตตา ช่วยเหลือ และให้อภัยผู้อื่น
-แต่กลับมีปัญหาอย่างมากในการมอบสิ่งเดียวกันให้กับตัวเอง
+ความขัดแย้งสำคัญของตัวละครไม่ได้อยู่ที่ความสามารถเพียงอย่างเดียว
+แต่เป็นการต่อสู้ภายในระหว่างสิ่งที่เขามอบให้ผู้อื่น
+กับสิ่งที่เขาไม่สามารถมอบให้ตัวเองได้
 </p>
-
-<h3>พัฒนาการ</h3>
-
-<p>
-พัฒนาการของ Master ไม่ได้หมายถึงการกลายเป็นคนที่ไม่เจ็บปวดอีกต่อไป
-แต่เป็นการค่อย ๆ เรียนรู้ว่าตัวเขาเองก็สมควรได้รับความเข้าใจ
-การให้อภัย และความอบอุ่นเช่นเดียวกับคนอื่น
-</p>
-
-<h3>คำสำคัญ</h3>
 
 <div class="tags">
-
+<span class="tag">Reartval</span>
 <span class="tag">Master</span>
 <span class="tag">Relvent</span>
 <span class="tag">Fountaine</span>
-<span class="tag">Dealviver</span>
+<span class="tag">Hero</span>
 <span class="tag">Science</span>
-<span class="tag">Technology</span>
-<span class="tag">Reartval</span>
-
 </div>
-
 </section>
 
-</div>
-
+</article>
 </div>
 
 <footer>
-    Reartval Wiki — Master Johnson Relvent
+Reartval Wiki — Character Database
 </footer>
 
 </main>
