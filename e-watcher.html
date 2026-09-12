@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The E Watcher | Reartval Wiki</title>
+
+<style>
+
+:root {
+  color-scheme: dark;
+  --bg: #0d1117;
+  --card: #161b22;
+  --card-hover: #1c2128;
+  --border: #30363d;
+  --text: #e6edf3;
+  --secondary: #8b949e;
+  --accent: #58a6ff;
+  --accent-hover: #79c0ff;
+  --topbar: #010409;
+  --tag: #21262d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    Arial,
+    "Noto Sans Thai",
+    sans-serif;
+  line-height: 1.7;
+}
+
+/* =========================
+   TOP BAR
+========================= */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background: var(--topbar);
+  border-bottom: 1px solid var(--border);
+
+  padding: 14px 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.home-link {
+  color: var(--secondary);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.home-link:hover {
+  color: var(--accent);
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px 20px 60px;
+}
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+.back {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: #c9d1d9;
+  background: var(--card);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.back:hover {
+  background: var(--tag);
+  color: #ffffff;
+}
+
+/* =========================
+   CHARACTER HEADER
+========================= */
+
+.character-header {
+  background: var(--card);
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  padding: 28px;
+
+  margin-bottom: 25px;
+}
+
+.character-header h1 {
+  margin: 0;
+
+  font-size: 36px;
+}
+
+.subtitle {
+  margin-top: 5px;
+
+  color: var(--secondary);
+
+  font-size: 17px;
+}
+
+/* =========================
+   TWO COLUMN LAYOUT
+========================= */
+
+.layout {
+  display: grid;
+
+  grid-template-columns: 300px 1fr;
+
+  gap: 25px;
+
+  align-items: start;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+  position: sticky;
+  top: 85px;
+}
+
+.image-box {
+  width: 100%;
+  min-height: 380px;
+
+  background: var(--card);
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
+  margin-bottom: 20px;
+}
+
+.image-box img {
+  width: 100%;
+  height: auto;
+
+  display: block;
+}
+
+.image-placeholder {
+  color: var(--secondary);
+  text-align: center;
+  padding: 30px;
+}
+
+/* =========================
+   INFOBOX
+========================= */
+
+.infobox {
+  background: var(--card);
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  overflow: hidden;
+}
+
+.infobox-title {
+  background: var(--topbar);
+
+  color: var(--text);
+
+  text-align: center;
+
+  padding: 14px;
+
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.infobox table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+.infobox td {
+  padding: 10px 12px;
+
+  border-top: 1px solid var(--border);
+
+  vertical-align: top;
+
+  font-size: 14px;
+}
+
+.infobox td:first-child {
+  width: 38%;
+
+  color: var(--secondary);
+
+  font-weight: bold;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.content {
+  min-width: 0;
+}
+
+.notice {
+  background: #161b22;
+
+  border-left: 4px solid var(--accent);
+
+  border-radius: 8px;
+
+  padding: 15px 18px;
+
+  margin-bottom: 25px;
+
+  color: var(--secondary);
+}
+
+/* =========================
+   TABLE OF CONTENTS
+========================= */
+
+.toc {
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: 12px;
+
+  padding: 20px;
+
+  margin-bottom: 30px;
+}
+
+.toc h3 {
+  margin-top: 0;
+}
+
+.toc ol {
+  margin-bottom: 0;
+  padding-left: 25px;
+}
+
+.toc a {
+  color: var(--accent);
+
+  text-decoration: none;
+}
+
+.toc a:hover {
+  color: var(--accent-hover);
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section {
+  margin-bottom: 45px;
+}
+
+.section h2 {
+  color: var(--text);
+
+  font-size: 25px;
+
+  border-bottom: 1px solid var(--border);
+
+  padding-bottom: 8px;
+
+  margin-bottom: 18px;
+}
+
+.section h3 {
+  color: var(--accent);
+
+  font-size: 19px;
+
+  margin-top: 25px;
+}
+
+.section p {
+  color: var(--text);
+}
+
+.section ul {
+  padding-left: 25px;
+}
+
+.section li {
+  margin-bottom: 7px;
+}
+
+/* =========================
+   POWER GRID
+========================= */
+
+.power-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(220px, 1fr));
+
+  gap: 15px;
+}
+
+.power-box {
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: 10px;
+
+  padding: 18px;
+
+  transition: 0.2s;
+}
+
+.power-box:hover {
+  background: var(--card-hover);
+
+  border-color: var(--accent);
+}
+
+.power-box h3 {
+  margin-top: 0;
+
+  color: var(--accent);
+
+  font-size: 18px;
+}
+
+.power-box p {
+  color: var(--secondary);
+
+  font-size: 14px;
+}
+
+/* =========================
+   EQUIPMENT
+========================= */
+
+.equipment {
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: 10px;
+
+  padding: 18px;
+
+  margin-bottom: 15px;
+}
+
+.equipment h3 {
+  margin-top: 0;
+
+  color: var(--accent);
+}
+
+.equipment p {
+  color: var(--secondary);
+}
+
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline {
+  position: relative;
+
+  margin-left: 10px;
+
+  padding-left: 30px;
+
+  border-left: 2px solid var(--border);
+}
+
+.timeline-item {
+  position: relative;
+
+  margin-bottom: 30px;
+}
+
+.timeline-item::before {
+  content: "";
+
+  position: absolute;
+
+  left: -39px;
+  top: 7px;
+
+  width: 14px;
+  height: 14px;
+
+  background: var(--accent);
+
+  border: 3px solid var(--bg);
+
+  border-radius: 50%;
+}
+
+.timeline-year {
+  color: var(--accent);
+
+  font-weight: bold;
+
+  margin-bottom: 5px;
+}
+
+.timeline-item p {
+  margin-top: 0;
+
+  color: var(--secondary);
+}
+
+/* =========================
+   TAGS
+========================= */
+
+.tags {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-top: 30px;
+}
+
+.tag {
+  background: var(--tag);
+
+  border: 1px solid var(--border);
+
+  border-radius: 20px;
+
+  padding: 5px 12px;
+
+  color: var(--secondary);
+
+  font-size: 13px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  border-top: 1px solid var(--border);
+
+  margin-top: 50px;
+
+  padding: 25px 20px;
+
+  text-align: center;
+
+  color: var(--secondary);
+
+  font-size: 13px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+  }
+
+  .image-box {
+    max-width: 400px;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .character-header h1 {
+    font-size: 28px;
+  }
+
+  .topbar {
+    padding: 12px 15px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .home-link {
+    font-size: 12px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     TOP BAR
+========================= -->
+
+<div class="topbar">
+
+  <a href="/Reartval-Wiki/index.html" class="logo">
+    Reartval <span>Wiki</span>
+  </a>
+
+  <a href="/Reartval-Wiki/index.html" class="home-link">
+    Official Universe Database
+  </a>
+
+</div>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="container">
+
+<a class="back" href="/Reartval-Wiki/index.html">
+  ← กลับหน้าหลัก
+</a>
+
+
+<!-- =========================
+     CHARACTER HEADER
+========================= -->
+
+<div class="character-header">
+
+  <h1>The E Watcher</h1>
+
+  <div class="subtitle">
+    King Superhero
+  </div>
+
+</div>
+
+
+<div class="layout">
+
+
+<!-- =========================
+     SIDEBAR
+========================= -->
+
+<aside class="sidebar">
+
+  <div class="image-box">
+
+    <!-- รูปของ The E Watcher -->
+    <img
+      src="EWatcher.png"
+      alt="The E Watcher"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+    >
+
+    <div class="image-placeholder" style="display:none;">
+      ยังไม่มีรูปภาพของ The E Watcher
+    </div>
+
+  </div>
+
+
+  <div class="infobox">
+
+    <div class="infobox-title">
+      The E Watcher
+    </div>
+
+    <table>
+
+      <tr>
+        <td>ชื่อ</td>
+        <td>EWatcher</td>
+      </tr>
+
+      <tr>
+        <td>ฉายา</td>
+        <td>King Superhero</td>
+      </tr>
+
+      <tr>
+        <td>เพศ</td>
+        <td>ชาย</td>
+      </tr>
+
+      <tr>
+        <td>เผ่าพันธุ์</td>
+        <td>The Seake</td>
+      </tr>
+
+      <tr>
+        <td>อายุ</td>
+        <td>เกิดก่อนจักรวาล</td>
+      </tr>
+
+      <tr>
+        <td>ส่วนสูง</td>
+        <td>180 ซม.</td>
+      </tr>
+
+      <tr>
+        <td>ระดับพลัง</td>
+        <td>Low 2-C</td>
+      </tr>
+
+      <tr>
+        <td>อาชีพปัจจุบัน</td>
+        <td>ผู้อำนวยการโรงเรียนรีคซวามี</td>
+      </tr>
+
+      <tr>
+        <td>สถานะ</td>
+        <td>มีชีวิตอยู่</td>
+      </tr>
+
+    </table>
+
+  </div>
+
+</aside>
+
+
+<!-- =========================
+     CONTENT
+========================= -->
+
+<div class="content">
+
+
+<div class="notice">
+
+  หน้านี้เป็นข้อมูลตัวละครจากจักรวาล Reartval
+  ข้อมูลบางส่วนอาจมีการเปลี่ยนแปลงตามเนื้อเรื่องและฉบับนิยายล่าสุด
+
+</div>
+
+
+<!-- =========================
+     TABLE OF CONTENTS
+========================= -->
+
+<div class="toc">
+
+  <h3>สารบัญ</h3>
+
+  <ol>
+
+    <li><a href="#names">ชื่อและชื่อเรียก</a></li>
+
+    <li><a href="#identity">ข้อมูลทั่วไป</a></li>
+
+    <li><a href="#personality">บุคลิก</a></li>
+
+    <li><a href="#likes">สิ่งที่ชอบและไม่ชอบ</a></li>
+
+    <li><a href="#dreams">ความฝัน</a></li>
+
+    <li><a href="#history">ประวัติ</a></li>
+
+    <li><a href="#powers">ความสามารถและพลังปัจจุบัน</a></li>
+
+    <li><a href="#technology">เทคโนโลยี</a></li>
+
+    <li><a href="#weapons">อุปกรณ์ต่อสู้</a></li>
+
+    <li><a href="#weaknesses">จุดอ่อน</a></li>
+
+    <li><a href="#relationships">ความสัมพันธ์</a></li>
+
+    <li><a href="#timeline">Timeline</a></li>
+
+    <li><a href="#appearances">เรื่องที่ปรากฏ</a></li>
+
+    <li><a href="#additional">ข้อมูลเพิ่มเติม</a></li>
+
+  </ol>
+
+</div>
+
+
+<!-- =========================
+     1. NAMES
+========================= -->
+
+<section class="section" id="names">
+
+  <h2>1. ชื่อและชื่อเรียก</h2>
+
+  <h3>EWatcher</h3>
+
+  <p>
+    ชื่อจริงของ The E Watcher คือ
+    <strong>EWatcher</strong>
+  </p>
+
+  <h3>King Superhero</h3>
+
+  <p>
+    The E Watcher ได้รับฉายาว่า
+    <strong>King Superhero</strong>
+    หรือ
+    <strong>มหากษัตริย์ซุปเปอร์ฮีโร่</strong>
+    ซึ่งสะท้อนถึงสถานะและบทบาทอันยิ่งใหญ่ของเขาในหมู่เหล่าฮีโร่
+  </p>
+
+</section>
+
+
+<!-- =========================
+     2. IDENTITY
+========================= -->
+
+<section class="section" id="identity">
+
+  <h2>2. ข้อมูลทั่วไป</h2>
+
+  <ul>
+
+    <li><strong>ชื่อ:</strong> EWatcher</li>
+
+    <li><strong>ฉายา:</strong> King Superhero</li>
+
+    <li><strong>เพศ:</strong> ชาย</li>
+
+    <li><strong>เผ่าพันธุ์:</strong> The Seake</li>
+
+    <li><strong>กำเนิด:</strong> เกิดก่อนจักรวาล</li>
+
+    <li><strong>ส่วนสูง:</strong> 180 ซม.</li>
+
+    <li><strong>ระดับพลัง:</strong> Low 2-C</li>
+
+    <li>
+      <strong>อาชีพปัจจุบัน:</strong>
+      ผู้อำนวยการโรงเรียนรีคซวามี
+    </li>
+
+    <li><strong>สถานะ:</strong> มีชีวิตอยู่</li>
+
+  </ul>
+
+  <h3>ตำแหน่งปัจจุบัน</h3>
+
+  <p>
+    ในยุคปัจจุบัน The E Watcher ดำรงตำแหน่ง
+    <strong>ผู้อำนวยการโรงเรียนรีคซวามี</strong>
+    โดยทำหน้าที่ดูแลและบริหารโรงเรียน
+    แม้เขาจะเป็นหนึ่งในตัวตนที่มีพลังมหาศาลของจักรวาล Reartval
+    แต่ในชีวิตประจำวันเขามีบทบาทเป็นผู้บริหารสถานศึกษา
+  </p>
+
+</section>
+
+
+<!-- =========================
+     3. PERSONALITY
+========================= -->
+
+<section class="section" id="personality">
+
+  <h2>3. บุคลิก</h2>
+
+  <p>
+    ยังไม่มีข้อมูลรายละเอียดเกี่ยวกับบุคลิกส่วนตัวของ
+    The E Watcher ในข้อมูลปัจจุบัน
+  </p>
+
+  <p>
+    อย่างไรก็ตาม จากตำแหน่ง King Superhero
+    และบทบาทของเขาในเหตุการณ์สำคัญของจักรวาล
+    เขาเป็นบุคคลที่มีความสำคัญอย่างมากต่อเหล่าฮีโร่
+  </p>
+
+</section>
+
+
+<!-- =========================
+     4. LIKES
+========================= -->
+
+<section class="section" id="likes">
+
+  <h2>4. สิ่งที่ชอบและไม่ชอบ</h2>
+
+  <h3>สิ่งที่ชอบ</h3>
+
+  <p>
+    ยังไม่มีข้อมูลที่ยืนยันอย่างชัดเจน
+  </p>
+
+  <h3>สิ่งที่ไม่ชอบ</h3>
+
+  <p>
+    ยังไม่มีข้อมูลที่ยืนยันอย่างชัดเจน
+  </p>
+
+</section>
+
+
+<!-- =========================
+     5. DREAMS
+========================= -->
+
+<section class="section" id="dreams">
+
+  <h2>5. ความฝัน</h2>
+
+  <p>
+    ยังไม่มีข้อมูลเกี่ยวกับความฝันส่วนตัวของ
+    The E Watcher
+  </p>
+
+</section>
+
+
+<!-- =========================
+     6. HISTORY
+========================= -->
+
+<section class="section" id="history">
+
+  <h2>6. ประวัติ</h2>
+
+  <h3>กำเนิด</h3>
+
+  <p>
+    The E Watcher เป็นสิ่งมีชีวิตเผ่าพันธุ์
+    <strong>The Seake</strong>
+    และเกิดขึ้นก่อนการกำเนิดของจักรวาล
+  </p>
+
+  <p>
+    เขาเกิดมาพร้อมกับพลังมหาศาล
+    ทำให้สามารถควบคุมกาลเวลาและใช้ความสามารถ
+    ในระดับที่ส่งผลต่อโครงสร้างของจักรวาลและมัลติเวิร์สได้
+  </p>
+
+  <h3>ยุคปัจจุบัน</h3>
+
+  <p>
+    ในปัจจุบัน The E Watcher ทำหน้าที่เป็น
+    <strong>ผู้อำนวยการโรงเรียนรีคซวามี</strong>
+    ซึ่งถือเป็นบทบาทสำคัญของเขาในยุคปัจจุบัน
+  </p>
+
+</section>
+
+
+<!-- =========================
+     7. POWERS
+========================= -->
+
+<section class="section" id="powers">
+
+  <h2>7. ความสามารถและพลังปัจจุบัน</h2>
+
+  <div class="power-grid">
+
+
+    <div class="power-box">
+
+      <h3>ควบคุมกาลเวลา</h3>
+
+      <p>
+        สามารถควบคุมเวลาได้หลากหลายรูปแบบ
+        รวมถึงชะลอเวลา เร่งเวลา หยุดเวลา
+        ย้อนเวลา และบิดเบือนเวลา
+      </p>
+
+    </div>
+
+
+    <div class="power-box">
+
+      <h3>Time Stop</h3>
+
+      <p>
+        สามารถหยุดการไหลของเวลา
+        รวมถึงการหยุดเวลาในระดับที่ครอบคลุม
+        มัลติเวิร์สจำนวนมหาศาล
+      </p>
+
+    </div>
+
+
+    <div class="power-box">
+
+      <h3>Time Rewind</h3>
+
+      <p>
+        สามารถย้อนเวลากลับไปยังช่วงเวลาก่อนหน้า
+        รวมถึงใช้พลังย้อนเหตุการณ์เพื่อเปลี่ยนแปลงผลลัพธ์
+      </p>
+
+    </div>
+
+
+    <div class="power-box">
+
+      <h3>Time Travel</h3>
+
+      <p>
+        สามารถเดินทางผ่านกาลเวลา
+        และเข้าถึงเหตุการณ์ในอดีต ปัจจุบัน
+        หรืออนาคต
+      </p>
+
+    </div>
+
+
+    <div class="power-box">
+
+      <h3>Time Loop</h3>
+
+      <p>
+        สามารถสร้างหรือควบคุมวังวนของเวลา
+        ทำให้เหตุการณ์บางอย่างเกิดขึ้นซ้ำตามที่ต้องการ
+      </p>
+
+    </div>
+
+
+    <div class="power-box">
+
+      <h3>Target Time Manipulation</h3>
+
+      <p>
+        สามารถควบคุมกาลเวลาของเป้าหมายเฉพาะเจาะจง
+        โดยไม่จำเป็นต้องเปลี่ยนแปลงเวลาของทุกสิ่งรอบตัว
+      </p>
+
+    </div>
+
+
+    <div class="power-box">
+
+      <h3>เปลี่ยนแปลงอดีต</h3>
+
+      <p>
+        สามารถย้อนกลับไปยังอดีตและเปลี่ยนแปลงเหตุการณ์
+        ซึ่งอาจส่งผลต่อเหตุการณ์ในช่วงเวลาต่อมา
+      </p>
+
+    </div>
+
+
+    <div class="power-box">
+
+      <h3>การมองเห็นกาลเวลา</h3>
+
+      <p>
+        สามารถมองเห็นเหตุการณ์ต่าง ๆ
+        ในอดีต ปัจจุบัน และอนาคตของจักรวาล
+      </p>
+
+    </div>
+
+
+    <div class="power-box">
+
+      <h3>ความทนทานสูงมาก</h3>
+
+      <p>
+        มีความทนทานต่อพลังระดับสูงอย่างมาก
+        และสามารถใช้พลังแห่งกาลเวลาเพื่อย้อนกลับ
+        สภาพของตนเองเมื่อยังเหลือพลังชีวิตอยู่
+      </p>
+
+    </div>
+
+
+    <div class="power-box">
+
+      <h3>ดูดซับพลัง</h3>
+
+      <p>
+        สามารถดูดซับพลังของสิ่งมีชีวิต
+        และนำพลังที่ได้รับมาใช้ประโยชน์
+      </p>
+
+    </div>
+
+
+    <div class="power-box">
+
+      <h3>คัดลอกพลัง</h3>
+
+      <p>
+        สามารถคัดลอกพลังของสิ่งมีชีวิตที่ยังมีชีวิตอยู่
+        และนำความสามารถเหล่านั้นมาใช้
+      </p>
+
+    </div>
+
+
+    <div class="power-box">
+
+      <h3>การบิน</h3>
+
+      <p>
+        สามารถบินได้ด้วยความเร็วสูง
+        โดยความเร็วในการเดินทางสามารถครอบคลุมระยะทางระดับกาแล็กซี
+      </p>
+
+    </div>
+
+
+    <div class="power-box">
+
+      <h3>เวทมนตร์</h3>
+
+      <p>
+        สามารถใช้เวทมนตร์เพื่อสร้างคาถา
+        โจมตี ป้องกัน ควบคุมพลังงาน
+        และสร้างผลลัพธ์ทางเวทมนตร์รูปแบบต่าง ๆ
+      </p>
+
+    </div>
+
+
+    <div class="power-box">
+
+      <h3>Magical Shield</h3>
+
+      <p>
+        สามารถสร้างเกราะเวทมนตร์หลายชั้น
+        เพื่อป้องกันตนเองจากการโจมตี
+      </p>
+
+    </div>
+
+
+    <div class="power-box">
+
+      <h3>Magical Energy</h3>
+
+      <p>
+        สามารถปล่อยพลังงานเวทมนตร์
+        ออกมาเพื่อใช้ต่อสู้หรือป้องกันตัว
+      </p>
+
+    </div>
+
+
+    <div class="power-box">
+
+      <h3>Magic Weapon Creation</h3>
+
+      <p>
+        สามารถสร้างอาวุธจากเวทมนตร์
+        เช่น หอก แส้ และอาวุธพลังงานรูปแบบต่าง ๆ
+      </p>
+
+    </div>
+
+
+    <div class="power-box">
+
+      <h3>Portal</h3>
+
+      <p>
+        สามารถสร้างวงแหวนพอร์ทัล
+        เพื่อเดินทางไปยังสถานที่ต่าง ๆ
+      </p>
+
+    </div>
+
+
+    <div class="power-box">
+
+      <h3>Artificial Dimension</h3>
+
+      <p>
+        สามารถสร้างมิติแยกออกมา
+        เพื่อใช้เป็นพื้นที่เฉพาะสำหรับการต่อสู้
+        หรือกักเก็บสิ่งต่าง ๆ
+      </p>
+
+    </div>
+
+
+    <div class="power-box">
+
+      <h3>Spirit / Consciousness</h3>
+
+      <p>
+        สามารถแยกจิตสำนึกออกจากร่างกาย
+        และเดินทางในรูปแบบจิตวิญญาณ
+      </p>
+
+    </div>
+
+
+    <div class="power-box">
+
+      <h3>Telekinesis</h3>
+
+      <p>
+        สามารถควบคุมวัตถุต่าง ๆ
+        ด้วยพลังจิต
+      </p>
+
+    </div>
+
+
+    <div class="power-box">
+
+      <h3>Dimensional Travel</h3>
+
+      <p>
+        สามารถเปิดเส้นทางไปยังมิติอื่น
+        และใช้พลังจากมิติที่แตกต่างกัน
+      </p>
+
+    </div>
+
+
+    <div class="power-box">
+
+      <h3>Magical Binding</h3>
+
+      <p>
+        สามารถใช้เวทมนตร์เพื่อผูกมัด
+        และจำกัดการเคลื่อนไหวของเป้าหมาย
+      </p>
+
+    </div>
+
+
+    <div class="power-box">
+
+      <h3>Illusion</h3>
+
+      <p>
+        สามารถสร้างภาพลวงตาที่มีความสมจริงสูง
+      </p>
+
+    </div>
+
+
+    <div class="power-box">
+
+      <h3>Runes</h3>
+
+      <p>
+        สามารถใช้รูนเพื่อเพิ่มพลัง
+        ผนึกพลัง หรือสร้างการป้องกัน
+      </p>
+
+    </div>
+
+
+    <div class="power-box">
+
+      <h3>Magic Resistance</h3>
+
+      <p>
+        มีความต้านทานต่อเวทมนตร์ในระดับสูงมาก
+        โดยเวทมนตร์ไม่สามารถส่งผลต่อเขาได้
+      </p>
+
+    </div>
+
+
+    <div class="power-box">
+
+      <h3>Immortality</h3>
+
+      <p>
+        มีความเป็นอมตะในระดับสูง
+        และสามารถดำรงอยู่และฟื้นฟูได้ตราบเท่าที่
+        พลังแห่งกาลเวลายังคงอยู่รอบตัวเขา
+      </p>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     8. TECHNOLOGY
+========================= -->
+
+<section class="section" id="technology">
+
+  <h2>8. เทคโนโลยี</h2>
+
+  <p>
+    แม้ความสามารถหลักของ The E Watcher
+    จะเกี่ยวข้องกับกาลเวลา เวทมนตร์ และพลังเหนือธรรมชาติ
+    แต่เขายังมีอุปกรณ์ที่สร้างขึ้นเพื่อช่วยในการควบคุมพลังของตน
+  </p>
+
+  <h3>Grejenius Core</h3>
+
+  <p>
+    Grejenius Core คือสิ่งที่ถูกเรียกว่า
+    <strong>หัวใจหรือศูนย์กลางของจักรวาล</strong>
+    โดยมีจำนวน 5 ชิ้นต่อหนึ่งจักรวาล
+  </p>
+
+  <p>
+    The E Watcher ได้รวบรวม Grejenius Core
+    จากจักรวาลต่าง ๆ และเก็บไว้เป็นพลังสำรอง
+    สำหรับสถานการณ์ที่รุนแรงอย่างยิ่ง
+  </p>
+
+  <p>
+    พลังของ Grejenius Core สามารถส่งผลต่อ
+    กฎของจักรวาลและโครงสร้างของความเป็นจริงได้
+    จึงไม่ใช่พลังที่ควรถูกนำมาใช้โดยทั่วไป
+  </p>
+
+</section>
+
+
+<!-- =========================
+     9. WEAPONS / EQUIPMENT
+========================= -->
+
+<section class="section" id="weapons">
+
+  <h2>9. อุปกรณ์ต่อสู้</h2>
+
+
+  <div class="equipment">
+
+    <h3>Time Spear — หอกกาลเวลา</h3>
+
+    <p>
+      อุปกรณ์ที่เป็นตัวแทนของพลังแห่งกาลเวลาของ
+      The E Watcher และสามารถใช้ร่วมกับความสามารถ
+      ในการควบคุมเวลาโดยตรง
+    </p>
+
+  </div>
+
+
+  <div class="equipment">
+
+    <h3>Time Gun — ปืนกาลเวลา</h3>
+
+    <p>
+      อุปกรณ์ควบคุมกาลเวลาที่ใช้หยุดการเคลื่อนไหว
+      ของเป้าหมายเป็นระยะเวลาหนึ่ง
+      โดยเป็นหนึ่งในอุปกรณ์เฉพาะตัวของ The E Watcher
+    </p>
+
+  </div>
+
+
+  <div class="equipment">
+
+    <h3>Grejenius Core</h3>
+
+    <p>
+      แหล่งพลังงานระดับจักรวาลที่ The E Watcher
+      เก็บรวบรวมไว้ และจะถูกสงวนไว้สำหรับสถานการณ์
+      ที่รุนแรงอย่างยิ่ง
+    </p>
+
+    <p>
+      ในเหตุการณ์สำคัญช่วงท้ายของเรื่อง
+      Grejenius Core มีบทบาทในการเปลี่ยนแปลงกฎของจักรวาล
+      โดยข้อมูลล่าสุดระบุว่า Phon ใช้ Grejenius Core จำนวน 5 ชิ้น
+      ร่วมกับ Difisneat Stones จำนวน 2 ชิ้น
+      จนสามารถฟื้นฟูสิ่งที่ถูกทำลายไปทั่วทุกความเป็นจริงได้
+    </p>
+
+  </div>
+
+
+</section>
+
+
+<!-- =========================
+     10. WEAKNESSES
+========================= -->
+
+<section class="section" id="weaknesses">
+
+  <h2>10. จุดอ่อน</h2>
+
+  <p>
+    แม้ The E Watcher จะมีพลังในระดับสูงมาก
+    แต่ข้อมูลปัจจุบันยังไม่ได้ระบุจุดอ่อนเฉพาะ
+    ของเขาไว้อย่างชัดเจน
+  </p>
+
+  <h3>ข้อจำกัดของ Grejenius Core</h3>
+
+  <p>
+    Grejenius Core มีพลังในระดับที่สูงมาก
+    และถูกสงวนไว้สำหรับสถานการณ์ที่จำเป็นอย่างแท้จริง
+    เนื่องจากการใช้พลังระดับดังกล่าวสามารถส่งผลกระทบ
+    ต่อกฎและโครงสร้างของจักรวาล
+  </p>
+
+</section>
+
+
+<!-- =========================
+     11. RELATIONSHIPS
+========================= -->
+
+<section class="section" id="relationships">
+
+  <h2>11. ความสัมพันธ์</h2>
+
+  <h3>Hero Federation</h3>
+
+  <p>
+    The E Watcher มีความเกี่ยวข้องอย่างใกล้ชิดกับ
+    เหล่าฮีโร่และ Hero Federation
+  </p>
+
+  <h3>Phon H. Wulthrodaite</h3>
+
+  <p>
+    The E Watcher มีความเกี่ยวข้องกับ Phon
+    ในเหตุการณ์สำคัญช่วงท้ายของเรื่อง
+    โดยเขาเป็นหนึ่งในผู้ที่อยู่ร่วมกับ Phon
+    ในช่วงเวลาสุดท้ายของการต่อสู้ครั้งใหญ่
+  </p>
+
+  <h3>Master Johnson Relvent</h3>
+
+  <p>
+    The E Watcher มีความเกี่ยวข้องกับ Master
+    ในเหตุการณ์สำคัญของจักรวาล Reartval
+  </p>
+
+  <h3>โรงเรียนรีคซวามี</h3>
+
+  <p>
+    ในยุคปัจจุบัน The E Watcher ดำรงตำแหน่ง
+    ผู้อำนวยการของโรงเรียนรีคซวามี
+    ทำให้เขามีบทบาทโดยตรงต่อสถานศึกษาแห่งนี้
+  </p>
+
+</section>
+
+
+<!-- =========================
+     12. TIMELINE
+========================= -->
+
+<section class="section" id="timeline">
+
+  <h2>12. Timeline</h2>
+
+  <div class="timeline">
+
+
+    <div class="timeline-item">
+
+      <div class="timeline-year">
+        ก่อนการกำเนิดจักรวาล
+      </div>
+
+      <p>
+        The E Watcher ถือกำเนิดขึ้นในฐานะสิ่งมีชีวิตเผ่าพันธุ์
+        The Seake ก่อนที่จักรวาลจะถือกำเนิด
+      </p>
+
+    </div>
+
+
+    <div class="timeline-item">
+
+      <div class="timeline-year">
+        ยุคของเหล่าฮีโร่
+      </div>
+
+      <p>
+        The E Watcher กลายเป็นหนึ่งในตัวตนสำคัญ
+        ของเหล่าซุปเปอร์ฮีโร่ และได้รับฉายา
+        King Superhero
+      </p>
+
+    </div>
+
+
+    <div class="timeline-item">
+
+      <div class="timeline-year">
+        เหตุการณ์การต่อสู้ครั้งใหญ่
+      </div>
+
+      <p>
+        The E Watcher มีส่วนเกี่ยวข้องกับเหตุการณ์
+        ที่ Phon H. Wulthrodaite ต่อสู้กับ Father Prime
+        และเหตุการณ์การฟื้นฟูความเป็นจริงหลังการต่อสู้
+      </p>
+
+    </div>
+
+
+    <div class="timeline-item">
+
+      <div class="timeline-year">
+        หลังเหตุการณ์ของ Phon
+      </div>
+
+      <p>
+        หลังการเสียชีวิตของ Phon
+        The E Watcher เป็นหนึ่งในผู้ที่รับรู้ถึงการสูญเสีย
+        และการส่งต่อหน้าที่ให้กับคนรุ่นต่อไป
+      </p>
+
+    </div>
+
+
+    <div class="timeline-item">
+
+      <div class="timeline-year">
+        ยุคปัจจุบัน
+      </div>
+
+      <p>
+        The E Watcher ดำรงตำแหน่ง
+        <strong>ผู้อำนวยการโรงเรียนรีคซวามี</strong>
+      </p>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     13. APPEARANCES
+========================= -->
+
+<section class="section" id="appearances">
+
+  <h2>13. เรื่องที่ปรากฏ</h2>
+
+  <p>
+    ส่วนนี้สามารถเพิ่มรายชื่อเรื่อง ตอน หรือเหตุการณ์
+    ที่ The E Watcher ปรากฏตัวได้
+  </p>
+
+  <ul>
+
+    <li>
+      <strong>Reartval</strong>
+      — รายละเอียดเพิ่มเติม
+    </li>
+
+    <li>
+      <strong>Reartval: Brave New Story</strong>
+      — รายละเอียดเพิ่มเติม
+    </li>
+
+  </ul>
+
+</section>
+
+
+<!-- =========================
+     14. ADDITIONAL
+========================= -->
+
+<section class="section" id="additional">
+
+  <h2>14. ข้อมูลเพิ่มเติม</h2>
+
+  <ul>
+
+    <li>
+      The E Watcher เป็นสิ่งมีชีวิตเผ่าพันธุ์ The Seake
+    </li>
+
+    <li>
+      เขาเกิดก่อนการกำเนิดของจักรวาล
+    </li>
+
+    <li>
+      ฉายาของเขาคือ King Superhero
+    </li>
+
+    <li>
+      พลังหลักของเขาคือการควบคุมกาลเวลา
+    </li>
+
+    <li>
+      สามารถควบคุมเวลาได้ตั้งแต่ระดับเหตุการณ์เฉพาะจุด
+      ไปจนถึงระดับมัลติเวิร์ส
+    </li>
+
+    <li>
+      สามารถใช้เวทมนตร์และความสามารถทางจิตได้
+    </li>
+
+    <li>
+      มีความสามารถในการเดินทางข้ามเวลาและมิติ
+    </li>
+
+    <li>
+      มีความสามารถในการดูดซับและคัดลอกพลัง
+    </li>
+
+    <li>
+      มีความเป็นอมตะและสามารถฟื้นฟูตนเองผ่านพลังแห่งกาลเวลา
+    </li>
+
+    <li>
+      ปัจจุบันดำรงตำแหน่งผู้อำนวยการโรงเรียนรีคซวามี
+    </li>
+
+  </ul>
+
+
+  <!-- TAGS -->
+
+  <div class="tags">
+
+    <span class="tag">ตัวละคร</span>
+
+    <span class="tag">ฮีโร่</span>
+
+    <span class="tag">King Superhero</span>
+
+    <span class="tag">The Seake</span>
+
+    <span class="tag">Time Manipulation</span>
+
+    <span class="tag">Magic</span>
+
+    <span class="tag">Low 2-C</span>
+
+    <span class="tag">Hero Federation</span>
+
+    <span class="tag">โรงเรียนรีคซวามี</span>
+
+  </div>
+
+</section>
+
+
+</div>
+
+</div>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+  Reartval Wiki<br>
+
+  Fan-made database for the Reartval Universe
+
+</footer>
+
+</body>
+</html>
