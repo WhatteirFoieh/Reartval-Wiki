@@ -1,1949 +1,1243 @@
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>Phon H. Wulthrodaite | Reartval Wiki</title>
-
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
-
-        body {
-            margin: 0;
-
-            font-family:
-                Arial,
-                "Noto Sans Thai",
-                sans-serif;
-
-            background: #f5f5f5;
-
-            color: #202124;
-
-            line-height: 1.7;
-        }
-
-
-        /* =========================
-           TOP BAR
-        ========================= */
-
-        .topbar {
-
-            height: 64px;
-
-            background: white;
-
-            border-bottom: 1px solid #ddd;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            padding: 0 30px;
-
-            position: sticky;
-
-            top: 0;
-
-            z-index: 100;
-        }
-
-
-        .logo {
-
-            font-size: 22px;
-
-            font-weight: bold;
-        }
-
-
-        .logo small {
-
-            font-size: 12px;
-
-            font-weight: normal;
-
-            color: #777;
-
-            margin-left: 8px;
-        }
-
-
-        /* =========================
-           PAGE
-        ========================= */
-
-        .page {
-
-            max-width: 1150px;
-
-            margin: auto;
-
-            padding: 25px 20px 50px;
-        }
-
-
-        /* =========================
-           BACK BUTTON
-        ========================= */
-
-        .back {
-
-            display: inline-block;
-
-            margin-bottom: 18px;
-
-            color: #0757c9;
-
-            text-decoration: none;
-
-            font-size: 14px;
-        }
-
-
-        .back:hover {
-
-            text-decoration: underline;
-        }
-
-
-        /* =========================
-           ARTICLE HEADER
-        ========================= */
-
-        .article-header {
-
-            background: white;
-
-            border: 1px solid #ccc;
-
-            padding: 25px;
-
-            margin-bottom: 20px;
-        }
-
-
-        .article-header h1 {
-
-            margin: 0;
-
-            font-size: 32px;
-        }
-
-
-        .subtitle {
-
-            margin-top: 4px;
-
-            color: #666;
-
-            font-size: 15px;
-        }
-
-
-        /* =========================
-           IMAGE
-        ========================= */
-
-        .character-image {
-
-            margin-top: 20px;
-
-            width: 100%;
-
-            height: 320px;
-
-            background: #eee;
-
-            border: 1px solid #ccc;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            overflow: hidden;
-        }
-
-
-        .character-image img {
-
-            width: 100%;
-
-            height: 100%;
-
-            object-fit: contain;
-
-            display: block;
-        }
-
-
-        .image-placeholder {
-
-            display: none;
-
-            width: 100%;
-
-            height: 100%;
-
-            align-items: center;
-
-            justify-content: center;
-
-            flex-direction: column;
-
-            color: #888;
-
-            text-align: center;
-        }
-
-
-        .image-placeholder strong {
-
-            font-size: 20px;
-
-            margin-bottom: 5px;
-        }
-
-
-        /* =========================
-           CONTENT GRID
-        ========================= */
-
-        .content-layout {
-
-            display: grid;
-
-            grid-template-columns: 1fr 300px;
-
-            gap: 20px;
-
-            align-items: start;
-        }
-
-
-        /* =========================
-           MAIN ARTICLE
-        ========================= */
-
-        .article {
-
-            background: white;
-
-            border: 1px solid #ccc;
-
-            padding: 25px;
-        }
-
-
-        .article h2 {
-
-            font-size: 23px;
-
-            border-bottom: 1px solid #ddd;
-
-            padding-bottom: 7px;
-
-            margin-top: 30px;
-        }
-
-
-        .article h2:first-child {
-
-            margin-top: 0;
-        }
-
-
-        .article h3 {
-
-            font-size: 18px;
-
-            margin-top: 24px;
-        }
-
-
-        .article p {
-
-            margin: 10px 0;
-        }
-
-
-        /* =========================
-           INFO BOX
-        ========================= */
-
-        .infobox {
-
-            background: white;
-
-            border: 1px solid #ccc;
-
-            padding: 18px;
-
-            position: sticky;
-
-            top: 85px;
-        }
-
-
-        .infobox-title {
-
-            text-align: center;
-
-            font-size: 20px;
-
-            font-weight: bold;
-
-            padding-bottom: 10px;
-
-            border-bottom: 1px solid #ddd;
-
-            margin-bottom: 10px;
-        }
-
-
-        .info-row {
-
-            display: grid;
-
-            grid-template-columns: 100px 1fr;
-
-            gap: 8px;
-
-            padding: 7px 0;
-
-            border-bottom: 1px solid #eee;
-
-            font-size: 14px;
-        }
-
-
-        .info-row strong {
-
-            color: #444;
-        }
-
-
-        /* =========================
-           NOTICE
-        ========================= */
-
-        .notice {
-
-            background: #f1f5fb;
-
-            border-left: 4px solid #315fa8;
-
-            padding: 14px 16px;
-
-            margin: 18px 0;
-        }
-
-
-        .notice strong {
-
-            display: block;
-
-            margin-bottom: 4px;
-        }
-
-
-        /* =========================
-           POWER BOX
-        ========================= */
-
-        .power-box {
-
-            background: #fafafa;
-
-            border: 1px solid #ddd;
-
-            border-radius: 5px;
-
-            padding: 16px;
-
-            margin: 14px 0;
-        }
-
-
-        .power-box h3 {
-
-            margin: 0 0 7px;
-
-            color: #222;
-        }
-
-
-        .power-level {
-
-            display: inline-block;
-
-            background: #eceff3;
-
-            border: 1px solid #d5d8dc;
-
-            border-radius: 4px;
-
-            padding: 3px 8px;
-
-            font-size: 12px;
-
-            color: #555;
-
-            margin-bottom: 8px;
-        }
-
-
-        /* =========================
-           SCALE TABLE
-        ========================= */
-
-        .scale-table {
-
-            width: 100%;
-
-            border-collapse: collapse;
-
-            margin-top: 15px;
-
-            font-size: 14px;
-        }
-
-
-        .scale-table th,
-        .scale-table td {
-
-            border: 1px solid #ccc;
-
-            padding: 10px;
-
-            text-align: left;
-
-            vertical-align: top;
-        }
-
-
-        .scale-table th {
-
-            background: #f0f0f0;
-        }
-
-
-        /* =========================
-           TAG
-        ========================= */
-
-        .tag {
-
-            display: inline-block;
-
-            background: #eef0f3;
-
-            border: 1px solid #ddd;
-
-            border-radius: 3px;
-
-            padding: 3px 8px;
-
-            margin: 3px 3px 3px 0;
-
-            font-size: 12px;
-
-            color: #555;
-        }
-
-
-        /* =========================
-           TIMELINE
-        ========================= */
-
-        .timeline {
-
-            border-left: 3px solid #ddd;
-
-            margin: 18px 0;
-
-            padding-left: 20px;
-        }
-
-
-        .timeline-item {
-
-            margin-bottom: 20px;
-
-            position: relative;
-        }
-
-
-        .timeline-item::before {
-
-            content: "";
-
-            position: absolute;
-
-            width: 9px;
-
-            height: 9px;
-
-            background: #777;
-
-            border-radius: 50%;
-
-            left: -26px;
-
-            top: 9px;
-        }
-
-
-        .timeline-year {
-
-            font-weight: bold;
-
-            color: #444;
-        }
-
-
-        /* =========================
-           QUOTE
-        ========================= */
-
-        .quote {
-
-            border-left: 4px solid #aaa;
-
-            padding: 10px 15px;
-
-            margin: 18px 0;
-
-            color: #555;
-
-            background: #fafafa;
-
-            font-style: italic;
-        }
-
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-
-            text-align: center;
-
-            color: #777;
-
-            font-size: 13px;
-
-            margin-top: 30px;
-
-            padding-top: 20px;
-
-            border-top: 1px solid #ddd;
-        }
-
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 850px) {
-
-            .content-layout {
-
-                grid-template-columns: 1fr;
-            }
-
-
-            .infobox {
-
-                position: static;
-            }
-
-        }
-
-
-        @media (max-width: 600px) {
-
-            .topbar {
-
-                padding: 0 15px;
-            }
-
-
-            .logo small {
-
-                display: none;
-            }
-
-
-            .article-header h1 {
-
-                font-size: 25px;
-            }
-
-
-            .article {
-
-                padding: 18px;
-            }
-
-
-            .character-image {
-
-                height: 240px;
-            }
-
-
-            .info-row {
-
-                grid-template-columns: 90px 1fr;
-            }
-
-        }
-
-    </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Phon H. Wulthrodaite | Reartval Wiki</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f6f8;
+    color:#202124;
+    line-height:1.75;
+}
+
+a{
+    color:#2563eb;
+    text-decoration:none;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+/* TOPBAR */
+
+.topbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#111827;
+    color:white;
+    padding:14px 24px;
+    box-shadow:0 2px 10px rgba(0,0,0,.18);
+}
+
+.topbar-inner{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:800;
+}
+
+.logo span{
+    color:#60a5fa;
+}
+
+.topbar a{
+    color:white;
+}
+
+/* PAGE */
+
+.page{
+    max-width:1200px;
+    margin:30px auto;
+    padding:0 20px;
+}
+
+.back{
+    display:inline-block;
+    margin-bottom:20px;
+    padding:9px 15px;
+    background:white;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    color:#374151;
+    font-weight:600;
+}
+
+.back:hover{
+    background:#f3f4f6;
+    text-decoration:none;
+}
+
+/* HEADER */
+
+.character-header{
+    background:white;
+    border:1px solid #d9dee5;
+    border-radius:14px;
+    padding:28px;
+    margin-bottom:22px;
+    box-shadow:0 3px 12px rgba(0,0,0,.05);
+}
+
+.character-header h1{
+    margin:0;
+    font-size:38px;
+    line-height:1.2;
+}
+
+.subtitle{
+    margin-top:7px;
+    color:#6b7280;
+    font-size:18px;
+}
+
+.character-layout{
+    display:grid;
+    grid-template-columns:280px minmax(0,1fr);
+    gap:24px;
+    align-items:start;
+}
+
+.sidebar{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.image-box{
+    background:white;
+    border:1px solid #d9dee5;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 3px 12px rgba(0,0,0,.05);
+}
+
+.image-box img{
+    width:100%;
+    display:block;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    background:#e5e7eb;
+}
+
+.image-caption{
+    padding:10px 14px;
+    text-align:center;
+    color:#6b7280;
+    font-size:13px;
+}
+
+.infobox{
+    background:white;
+    border:1px solid #d9dee5;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 3px 12px rgba(0,0,0,.05);
+}
+
+.infobox-title{
+    padding:13px 15px;
+    background:#1f2937;
+    color:white;
+    text-align:center;
+    font-weight:800;
+}
+
+.infobox table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.infobox td{
+    padding:9px 12px;
+    border-bottom:1px solid #e5e7eb;
+    vertical-align:top;
+    font-size:14px;
+}
+
+.infobox td:first-child{
+    width:38%;
+    font-weight:700;
+    color:#4b5563;
+}
+
+/* CONTENT */
+
+.content{
+    min-width:0;
+}
+
+.section{
+    background:white;
+    border:1px solid #d9dee5;
+    border-radius:14px;
+    padding:25px;
+    margin-bottom:22px;
+    box-shadow:0 3px 12px rgba(0,0,0,.04);
+    scroll-margin-top:90px;
+}
+
+.section h2{
+    margin:0 0 15px;
+    padding-bottom:9px;
+    border-bottom:2px solid #e5e7eb;
+    font-size:26px;
+}
+
+.section h3{
+    margin-top:22px;
+    margin-bottom:7px;
+    font-size:19px;
+}
+
+.section p{
+    margin:9px 0;
+}
+
+.section ul{
+    margin-top:8px;
+}
+
+.section li{
+    margin:5px 0;
+}
+
+/* NAVIGATION */
+
+.wiki-nav{
+    background:white;
+    border:1px solid #d9dee5;
+    border-radius:14px;
+    padding:17px;
+    margin-bottom:22px;
+    box-shadow:0 3px 12px rgba(0,0,0,.04);
+}
+
+.wiki-nav-title{
+    font-size:18px;
+    font-weight:800;
+    margin-bottom:12px;
+}
+
+.wiki-nav a{
+    display:block;
+    padding:7px 9px;
+    border-radius:6px;
+    color:#374151;
+    font-size:14px;
+}
+
+.wiki-nav a:hover{
+    background:#f3f4f6;
+    color:#2563eb;
+    text-decoration:none;
+}
+
+.wiki-nav a span{
+    color:#6b7280;
+    margin-right:5px;
+}
+
+/* NOTICE */
+
+.notice{
+    background:#eff6ff;
+    border-left:5px solid #3b82f6;
+    padding:15px 18px;
+    border-radius:8px;
+    margin-bottom:22px;
+}
+
+.notice strong{
+    color:#1d4ed8;
+}
+
+/* POWER */
+
+.power-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:15px;
+}
+
+.power-box{
+    border:1px solid #d9dee5;
+    border-radius:10px;
+    padding:17px;
+    background:#fafafa;
+}
+
+.power-box h3{
+    margin:0 0 7px;
+    font-size:17px;
+}
+
+.power-box p{
+    font-size:14px;
+}
+
+/* SCALE */
+
+.scale{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-top:15px;
+}
+
+.scale-box{
+    border:1px solid #d9dee5;
+    border-radius:10px;
+    padding:15px;
+    text-align:center;
+    background:#fafafa;
+}
+
+.scale-title{
+    font-weight:800;
+    margin-bottom:5px;
+}
+
+.scale-value{
+    color:#2563eb;
+    font-weight:700;
+}
+
+/* TIMELINE */
+
+.timeline{
+    border-left:3px solid #d1d5db;
+    margin-left:8px;
+    padding-left:20px;
+}
+
+.timeline-item{
+    position:relative;
+    margin-bottom:22px;
+}
+
+.timeline-item::before{
+    content:"";
+    position:absolute;
+    left:-28px;
+    top:9px;
+    width:11px;
+    height:11px;
+    background:#2563eb;
+    border-radius:50%;
+}
+
+.timeline-year{
+    font-weight:800;
+    color:#2563eb;
+}
+
+/* TAGS */
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.tag{
+    padding:5px 10px;
+    border-radius:20px;
+    background:#eef2ff;
+    color:#3730a3;
+    font-size:13px;
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:35px;
+    padding:25px;
+    text-align:center;
+    color:#6b7280;
+    font-size:14px;
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    .character-layout{
+        grid-template-columns:1fr;
+    }
+
+    .sidebar{
+        max-width:420px;
+        margin:auto;
+        width:100%;
+    }
+
+    .power-grid{
+        grid-template-columns:1fr;
+    }
+
+    .scale{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .page{
+        padding:0 12px;
+        margin-top:20px;
+    }
+
+    .character-header{
+        padding:20px;
+    }
+
+    .character-header h1{
+        font-size:29px;
+    }
+
+    .section{
+        padding:19px;
+    }
+
+    .section h2{
+        font-size:22px;
+    }
+
+    .topbar{
+        padding:12px 15px;
+    }
+
+}
+
+</style>
 </head>
-
 
 <body>
 
-
-<!-- =========================
-     TOP BAR
-========================= -->
-
 <header class="topbar">
 
-    <div class="logo">
+<div class="topbar-inner">
 
-        Reartval Wiki
+<div class="logo">
+Reartval <span>Wiki</span>
+</div>
 
-        <small>
-            สารานุกรมจักรวาล Reartval
-        </small>
+<a href="/Reartval-Wiki/index.html">
+หน้าหลัก
+</a>
 
-    </div>
+</div>
 
 </header>
 
 
+<main class="page">
 
-<!-- =========================
-     PAGE
-========================= -->
+<a class="back" href="/Reartval-Wiki/index.html">
+← กลับหน้าหลัก
+</a>
 
-<div class="page">
 
+<div class="character-header">
 
-    <!-- =========================
-         BACK
-    ========================= -->
+<h1>Phon H. Wulthrodaite</h1>
 
-    <a
-        class="back"
-        href="/Reartval-Wiki/index.html"
-    >
-        ← กลับหน้าหลัก
-    </a>
-
-
-
-    <!-- =========================
-         HEADER
-    ========================= -->
-
-    <section class="article-header">
-
-        <h1>
-            Phon H. Wulthrodaite
-        </h1>
-
-        <div class="subtitle">
-            พล · Phon Hyper Wulthrodaite · Emperor Superhero
-        </div>
-
-
-        <div class="character-image">
-
-            <img
-                src="Phon.jpg"
-                alt="Phon H. Wulthrodaite"
-                onerror="
-                    this.style.display='none';
-                    this.nextElementSibling.style.display='flex';
-                "
-            >
-
-            <div class="image-placeholder">
-
-                <strong>
-                    Phon H. Wulthrodaite
-                </strong>
-
-                <span>
-                    ใส่รูป Phon.jpg ไว้ในโฟลเดอร์เดียวกับ Phon.html
-                </span>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         CONTENT
-    ========================= -->
-
-    <div class="content-layout">
-
-
-        <!-- =========================
-             ARTICLE
-        ========================= -->
-
-        <main class="article">
-
-
-            <!-- OVERVIEW -->
-
-            <h2>
-                ภาพรวม
-            </h2>
-
-            <p>
-                Phon H. Wulthrodaite หรือ พล
-                คือหนึ่งในบุคคลสำคัญที่สุดของจักรวาล Reartval
-                และเป็นจักรพรรดิซูเปอร์ฮีโร่
-                ผู้มีบทบาทสำคัญต่อ Hero Federation
-            </p>
-
-            <p>
-                จุดเด่นของ Phon ไม่ได้อยู่เพียงแค่พลังทำลายล้าง
-                แต่คือแนวคิดที่ว่า
-                <strong>
-                    ทุกคนควรได้รับโอกาส
-                </strong>
-                และฮีโร่ไม่จำเป็นต้องเป็นคนที่แข็งแกร่งที่สุด
-                แต่เป็นคนที่ยังคงพยายามช่วยเหลือผู้อื่น
-            </p>
-
-
-            <div class="notice">
-
-                <strong>
-                    ระดับพลังฉบับปัจจุบัน
-                </strong>
-
-                Phon อยู่ในระดับ
-                <strong>
-                    Multiverse ระดับต้น ๆ
-                </strong>
-                เป็นระดับพื้นฐานของตัวละคร
-                และสามารถเพิ่มขึ้นไปถึงระดับ Multiversal+
-                เมื่อดึงพลังในระดับสูง
-                ส่วนระดับสูงสุดอยู่เหนือ Multiverse
-                เพียงเล็กน้อยและต้องแลกด้วยผลกระทบต่อร่างกายอย่างรุนแรง
-
-            </div>
-
-
-
-            <!-- BASIC -->
-
-            <h2>
-                ข้อมูลพื้นฐาน
-            </h2>
-
-            <p>
-                Phon Hyper Wulthrodaite
-                เป็นชายอายุ 77 ปี
-                สูงประมาณ 200 เซนติเมตร
-            </p>
-
-            <p>
-                เขามีสายเลือดผสมระหว่างมนุษย์กับ
-                Wulthrodaite ราชวงศ์
-                ทำให้มีศักยภาพทางร่างกายและพลังสูงกว่ามนุษย์ทั่วไป
-            </p>
-
-
-
-            <!-- NAMES -->
-
-            <h2>
-                ชื่อและชื่อเรียก
-            </h2>
-
-            <p>
-
-                <span class="tag">
-                    Phon
-                </span>
-
-                <span class="tag">
-                    พล
-                </span>
-
-                <span class="tag">
-                    Phon Hyper Wulthrodaite
-                </span>
-
-                <span class="tag">
-                    Emperor Superhero
-                </span>
-
-            </p>
-
-
-
-            <!-- SPECIES -->
-
-            <h2>
-                เผ่าพันธุ์และสายเลือด
-            </h2>
-
-            <p>
-                Phon เป็นลูกผสมระหว่างมนุษย์และ
-                Wulthrodaite สายราชวงศ์
-            </p>
-
-            <p>
-                แม้สายเลือด Wulthrodaite จะทำให้เขามีศักยภาพสูงมาก
-                แต่พันธุกรรมมนุษย์มีอิทธิพลอย่างมากต่อร่างกายของเขา
-                ส่งผลให้เขาไม่ได้มีอายุขัยและศักยภาพทั้งหมด
-                แบบ Wulthrodaite บริสุทธิ์
-            </p>
-
-
-
-            <!-- HISTORY -->
-
-            <h2>
-                ประวัติ
-            </h2>
-
-            <div class="timeline">
-
-
-                <div class="timeline-item">
-
-                    <div class="timeline-year">
-                        ช่วงต้นชีวิต
-                    </div>
-
-                    <p>
-                        Phon เติบโตมาพร้อมกับชีวิตที่ยากลำบาก
-                        และต้องผ่านเหตุการณ์จำนวนมาก
-                        ก่อนจะก้าวขึ้นมาเป็นบุคคลสำคัญ
-                    </p>
-
-                </div>
-
-
-                <div class="timeline-item">
-
-                    <div class="timeline-year">
-                        การสร้างเส้นทางฮีโร่
-                    </div>
-
-                    <p>
-                        เขากลายเป็นประธานของบริษัท Proar
-                        และต่อมาได้ร่วมมือกับ Suprememan
-                        เพื่อก่อตั้ง Hero Federation
-                    </p>
-
-                </div>
-
-
-                <div class="timeline-item">
-
-                    <div class="timeline-year">
-                        การเพิ่มพลัง
-                    </div>
-
-                    <p>
-                        Phon ได้รับการฉีดสารและพลังหลายชนิด
-                        รวมถึง Impact Rival,
-                        Survice Divine,
-                        Scourge V1,
-                        Scourge V2 และ Scourge V Extra
-                        รวมถึงเลือดจากสิ่งมีชีวิตต่างดาวจำนวนมาก
-                    </p>
-
-                </div>
-
-
-                <div class="timeline-item">
-
-                    <div class="timeline-year">
-                        Hero Federation
-                    </div>
-
-                    <p>
-                        Hero Federation กลายเป็นสิ่งที่ Phon
-                        ให้ความสำคัญอย่างมาก
-                        และเขาพยายามปกป้องทั้งสหพันธ์
-                        และผู้คนโดยไม่แบ่งว่าเป็นฝ่ายใด
-                    </p>
-
-                </div>
-
-
-            </div>
-
-
-
-            <!-- X SHAPESHIFTER -->
-
-            <h2>
-                The X Shapeshifter
-            </h2>
-
-            <p>
-                The X Shapeshifter เป็นตัวตนที่มีความเกี่ยวข้องกับ Phon
-                ในเหตุการณ์สำคัญของเรื่อง
-                และไม่ควรถูกนับรวมเป็นพลังปกติของ Phon
-                ทุกอย่างโดยอัตโนมัติ
-            </p>
-
-            <p>
-                ในเหตุการณ์หนึ่ง The X Shapeshifter
-                ถูกควบคุมและทำภารกิจให้ฝ่ายศัตรู
-                ก่อนที่ความทรงจำของ Phon จะเริ่มกลับคืนมา
-            </p>
-
-            <p>
-                ภายหลัง The X Shapeshifter สามารถสื่อสารกับ
-                The E Watcher และแสดงเจตนาว่า
-                ต้องการกลับมาช่วยเหลือทุกคนอีกครั้ง
-                เหมือนที่ Phon เคยทำในอดีต
-            </p>
-
-            <div class="quote">
-
-                "ฉันอยากจะช่วยเหลือทุกคนอีกสักครั้ง
-                เหมือนเมื่อก่อนไง"
-
-            </div>
-
-
-
-            <!-- POWERS -->
-
-            <h2>
-                ความสามารถและพลัง
-            </h2>
-
-
-            <div class="power-box">
-
-                <span class="power-level">
-                    Multiverse ระดับต้น ๆ
-                </span>
-
-                <h3>
-                    พละกำลังเหนือมนุษย์
-                </h3>
-
-                <p>
-                    Phon มีพละกำลังมหาศาล
-                    สามารถต่อสู้กับสิ่งมีชีวิตระดับสูง
-                    และสร้างแรงปะทะที่ส่งผลต่อโครงสร้างระดับจักรวาล
-                </p>
-
-            </div>
-
-
-            <div class="power-box">
-
-                <span class="power-level">
-                    Multiverse
-                </span>
-
-                <h3>
-                    ความทนทาน
-                </h3>
-
-                <p>
-                    ร่างกายของ Phon สามารถรับการโจมตีระดับจักรวาล
-                    และยังสามารถต่อสู้ต่อได้แม้ได้รับความเสียหายอย่างหนัก
-                </p>
-
-            </div>
-
-
-            <div class="power-box">
-
-                <span class="power-level">
-                    ระดับสูง
-                </span>
-
-                <h3>
-                    ความเร็ว
-                </h3>
-
-                <p>
-                    Phon สามารถเคลื่อนที่ด้วยความเร็วมหาศาล
-                    และในเหตุการณ์สำคัญของนิยาย
-                    เขาถูกบรรยายว่าสามารถพุ่งเข้าโจมตีด้วย
-                    "ความเร็วอนันต์"
-                </p>
-
-            </div>
-
-
-            <div class="power-box">
-
-                <span class="power-level">
-                    Multiverse+
-                </span>
-
-                <h3>
-                    Heat Vision
-                </h3>
-
-                <p>
-                    Phon สามารถปล่อยพลังงานออกจากดวงตา
-                    ในรูปแบบลำแสงพลังงานความร้อนสูง
-                    และสามารถเพิ่มระดับพลังของการโจมตีได้
-                </p>
-
-                <p>
-                    ในเหตุการณ์สงครามครั้งสุดท้าย
-                    เขาใช้ Heat Vision โจมตี Father Prime
-                    ร่วมกับพลังงานจำนวนมหาศาลจาก Exotent
-                </p>
-
-            </div>
-
-
-            <div class="power-box">
-
-                <span class="power-level">
-                    Multiverse+
-                </span>
-
-                <h3>
-                    การควบคุมแรงโน้มถ่วง
-                </h3>
-
-                <p>
-                    Phon สามารถสร้างแรงกระแทกและเบี่ยงเบนแรงโน้มถ่วง
-                    เพื่อเปลี่ยนทิศทางของสิ่งที่อยู่รอบตัว
-                </p>
-
-                <p>
-                    ความสามารถนี้ถูกแสดงให้เห็นในฉากต่อสู้
-                    เมื่อเขาใช้แรงจากการปะทะและการอัดอากาศ
-                    จนแรงโน้มถ่วงในพื้นที่ถูกเบี่ยงเบน
-                </p>
-
-            </div>
-
-
-            <div class="power-box">
-
-                <span class="power-level">
-                    ระดับสูง
-                </span>
-
-                <h3>
-                    การควบคุมพลังงาน
-                </h3>
-
-                <p>
-                    Phon สามารถเรียกและควบคุมพลังงานจำนวนมหาศาล
-                    รวมถึงพลังจากแหล่งพลังงานพิเศษ
-                    และสามารถรวมพลังหลายแหล่งเข้าด้วยกัน
-                </p>
-
-            </div>
-
-
-            <div class="power-box">
-
-                <span class="power-level">
-                    Multiverse+
-                </span>
-
-                <h3>
-                    Grejenius Core
-                </h3>
-
-                <p>
-                    Grejenius Core เป็นหนึ่งในแหล่งพลังสำคัญ
-                    ที่ Phon สามารถนำมาใช้ในการเพิ่มพลัง
-                    โดยเฉพาะในสถานการณ์ที่ต้องการพลังจำนวนมหาศาล
-                </p>
-
-            </div>
-
-
-            <div class="power-box">
-
-                <span class="power-level">
-                    Multiverse+
-                </span>
-
-                <h3>
-                    Difisneat
-                </h3>
-
-                <p>
-                    Difisneat เป็นอีกหนึ่งแหล่งพลังที่สามารถทำงานร่วมกับ
-                    Grejenius Core และเพิ่มระดับพลังของ Phon
-                    ได้อย่างมาก
-                </p>
-
-            </div>
-
-
-            <div class="power-box">
-
-                <span class="power-level">
-                    ระดับสูง
-                </span>
-
-                <h3>
-                    ประสาทสัมผัส
-                </h3>
-
-                <p>
-                    Phon มีประสาทสัมผัสที่ละเอียดมาก
-                    สามารถตรวจจับการเคลื่อนไหว
-                    พลังงาน และสิ่งผิดปกติในพื้นที่ต่อสู้ได้
-                </p>
-
-            </div>
-
-
-            <div class="power-box">
-
-                <span class="power-level">
-                    ระดับสูง
-                </span>
-
-                <h3>
-                    การรับรู้ทางจิต
-                </h3>
-
-                <p>
-                    Phon สามารถรับรู้และอ่านความคิด
-                    ของสิ่งมีชีวิตบางประเภทได้
-                    และสามารถใช้การรับรู้เพื่อคาดการณ์การเคลื่อนไหว
-                    ของคู่ต่อสู้
-                </p>
-
-            </div>
-
-
-            <div class="power-box">
-
-                <span class="power-level">
-                    จำกัด
-                </span>
-
-                <h3>
-                    การบิดเบือนกาลเวลาและแรงโน้มถ่วง
-                </h3>
-
-                <p>
-                    Phon มีศักยภาพในการรบกวนโครงสร้างของเวลา
-                    และแรงโน้มถ่วง
-                    แต่ความสามารถเหล่านี้ไม่ควรถูกตีความว่า
-                    เขาสามารถควบคุมกาลเวลาและความเป็นจริงได้อย่างไร้ขีดจำกัด
-                </p>
-
-            </div>
-
-
-            <div class="power-box">
-
-                <span class="power-level">
-                    Multiverse+
-                </span>
-
-                <h3>
-                    การฟื้นฟูร่างกาย
-                </h3>
-
-                <p>
-                    Phon มีความสามารถในการฟื้นฟูร่างกายระดับสูง
-                    ทำให้การทำลายร่างกายทั่วไปไม่เพียงพอ
-                    ที่จะหยุดเขาได้ง่าย ๆ
-                </p>
-
-            </div>
-
-
-
-            <!-- BODY -->
-
-            <h2>
-                การดัดแปลงร่างกาย
-            </h2>
-
-            <p>
-                ร่างกายของ Phon ผ่านการดัดแปลงจำนวนมาก
-                เพื่อให้สามารถรองรับพลังที่เกินขีดจำกัดของมนุษย์
-            </p>
-
-
-            <h3>
-                Frytdemthart
-            </h3>
-
-            <p>
-                กระดูกของ Phon ถูกแทนที่ด้วย
-                Frytdemthart
-                แร่โลหะพิเศษที่มีอยู่ในจักรวาล Reartval
-                และมีความแข็งแกร่งสูงมาก
-            </p>
-
-
-            <h3>
-                Celestial Divine
-            </h3>
-
-            <p>
-                เลือดของ Phon ผสมกับแร่ Celestial Divine
-                ซึ่งช่วยกระตุ้นและเพิ่มประสิทธิภาพของพลัง
-                โดยเฉพาะในสถานการณ์ที่ร่างกายอยู่ภายใต้แรงกดดันสูง
-            </p>
-
-
-            <h3>
-                Cyborg Body
-            </h3>
-
-            <p>
-                ร่างกายของ Phon ได้รับการปรับเปลี่ยนเป็นระบบไซบอร์ก
-                ทำให้เทคโนโลยีสามารถทำงานร่วมกับร่างกาย
-                และเพิ่มความสามารถในการป้องกันและสนับสนุนร่างกาย
-            </p>
-
-
-            <h3>
-                ระบบเทคโนโลยีภายใน
-            </h3>
-
-            <p>
-                เทคโนโลยีภายในร่างกายสามารถเปลี่ยนรูปแบบ
-                และทำงานร่วมกับระบบเลือดและโครงสร้างร่างกาย
-                ทำให้ Phon สามารถใช้ความสามารถหลายประเภท
-                โดยไม่ต้องพึ่งพาอุปกรณ์ภายนอก
-            </p>
-
-
-
-            <!-- INJECTIONS -->
-
-            <h2>
-                สารและพลังที่ได้รับ
-            </h2>
-
-            <p>
-                Phon ได้รับการเสริมพลังผ่านสารและองค์ประกอบหลายชนิด
-                ได้แก่
-            </p>
-
-            <p>
-
-                <span class="tag">
-                    Impact Rival
-                </span>
-
-                <span class="tag">
-                    Survice Divine
-                </span>
-
-                <span class="tag">
-                    Scourge V1
-                </span>
-
-                <span class="tag">
-                    Scourge V2
-                </span>
-
-                <span class="tag">
-                    Scourge V Extra
-                </span>
-
-                <span class="tag">
-                    Alien Blood
-                </span>
-
-            </p>
-
-            <p>
-                นอกจากนี้ยังมีการผสมเลือดจากสิ่งมีชีวิตต่างดาวหลายสายพันธุ์
-                เพื่อเพิ่มศักยภาพของร่างกาย
-            </p>
-
-
-
-            <!-- POWER SCALE -->
-
-            <h2>
-                ระดับพลัง
-            </h2>
-
-            <table class="scale-table">
-
-                <tr>
-
-                    <th>
-                        สภาวะ
-                    </th>
-
-                    <th>
-                        ระดับ
-                    </th>
-
-                    <th>
-                        คำอธิบาย
-                    </th>
-
-                </tr>
-
-
-                <tr>
-
-                    <td>
-                        ปกติ
-                    </td>
-
-                    <td>
-                        Multiverse ระดับต้น ๆ
-                    </td>
-
-                    <td>
-                        ระดับพลังหลักของ Phon
-                        สามารถต่อสู้กับตัวละครระดับสูง
-                        และส่งผลต่อโครงสร้างระดับ Multiverse
-                    </td>
-
-                </tr>
-
-
-                <tr>
-
-                    <td>
-                        เร่งพลัง
-                    </td>
-
-                    <td>
-                        Multiversal+
-                    </td>
-
-                    <td>
-                        ดึงพลังจากแหล่งพลังและร่างกาย
-                        ได้มากกว่าปกติ
-                        ทำให้ความสามารถโดยรวมเพิ่มขึ้นอย่างมาก
-                    </td>
-
-                </tr>
-
-
-                <tr>
-
-                    <td>
-                        จุดสูงสุด
-                    </td>
-
-                    <td>
-                        เหนือ Multiverse เล็กน้อย
-                    </td>
-
-                    <td>
-                        เป็นสภาวะที่ใช้พลังมหาศาล
-                        ในช่วงท้ายของเหตุการณ์
-                        และไม่สามารถใช้ได้อย่างต่อเนื่อง
-                    </td>
-
-                </tr>
-
-            </table>
-
-
-            <div class="notice">
-
-                <strong>
-                    ข้อจำกัดของสเกล
-                </strong>
-
-                Phon ไม่ได้ถูกวางให้เป็นตัวละครระดับ
-                Omniverse ที่สามารถทำลายทุกสิ่งได้ตามต้องการ
-                และไม่ได้มีพลังงานไม่จำกัด
-                ระดับสูงสุดของเขาเกิดจากการรวบรวมพลังจำนวนมหาศาล
-                และมีต้นทุนต่อร่างกายอย่างหนัก
-
-            </div>
-
-
-
-            <!-- NOVEL BATTLE -->
-
-            <h2>
-                เหตุการณ์สำคัญในนิยาย
-            </h2>
-
-            <h3>
-                สงคราม Phon กับ Father Prime
-            </h3>
-
-            <p>
-                ในเหตุการณ์
-                <strong>
-                    Reartval: Horizon Phl | Phase 1
-                </strong>
-                มหากาพย์เหตุการณ์สองพี่น้อง #20
-                Phon ถูกปล่อยออกจากกรงโดย The E Watcher
-                และประกาศให้ Reartval Federation ถอนกำลัง
-                ก่อนจะเข้าสู่การต่อสู้ด้วยตัวเอง
-            </p>
-
-            <p>
-                เขาแสดงความเร็วระดับอนันต์
-                เข้าปะทะกับ Transcendentman
-                และโจมตี Father Prime
-                ด้วยพลังของตนเอง รวมถึง Heat Vision
-                และพลังงานจาก Exotent
-            </p>
-
-            <p>
-                การต่อสู้ดังกล่าวเกิดขึ้นในระดับที่เกี่ยวข้องกับ
-                โครงสร้างของเวลา กฎเกณฑ์ จักรวาล
-                และ Multiverse
-            </p>
-
-            <p>
-                หลังจากการปะทะครั้งใหญ่
-                Phon เหลือพลังไม่มาก
-                แต่ยังคงพยายามปกป้องทุกคน
-            </p>
-
-
-
-            <!-- FINAL POWER -->
-
-            <h2>
-                พลังสุดท้าย
-            </h2>
-
-            <p>
-                ในช่วงสุดท้ายของการต่อสู้
-                Grejenius Core ทั้ง 5 เม็ด
-                และ Difisneat ทั้ง 2 เม็ด
-                ได้รวมพลังเข้ากับ Phon
-            </p>
-
-            <p>
-                พลังที่ปล่อยออกมาสูงถึงระดับที่สามารถ
-                เปลี่ยนแปลงกฎเกณฑ์ของจักรวาล
-                และนำไปสู่การฟื้นคืนสิ่งที่ Father Prime
-                ทำลายไปในหลาย Multiverse
-            </p>
-
-            <p>
-                อย่างไรก็ตาม พลังระดับนั้นเกินกว่าที่ร่างกายของ Phon
-                จะรับได้ และทำให้ร่างกายของเขาเสียหายอย่างหนัก
-                จนหลังจากใช้พลังสำเร็จ เขาไม่สามารถพูดหรือเคลื่อนไหวได้อีก
-            </p>
-
-            <div class="quote">
-
-                "...เพราะพวกเราทั้งหมดคือ 'ฮีโร่'"
-
-            </div>
-
-
-
-            <!-- DEATH -->
-
-            <h2>
-                การเสียชีวิต
-            </h2>
-
-            <p>
-                หลังจาก Phon ใช้พลังสุดท้าย
-                ทุกคนที่ถูก Father Prime ทำลายได้กลับคืนมา
-                และสิ่งที่ถูกทำลายทั่วทั้งหลาย Multiverse
-                ได้รับการฟื้นฟู
-            </p>
-
-            <p>
-                แต่ Phon ยังคงนั่งอยู่ที่เดิม
-                โดยไม่สามารถพูดหรือขยับร่างกายได้
-                The E Watcher สามารถรับรู้ความคิดของเขา
-                และ Phon ฝากให้ The E Watcher ดำเนินหน้าที่ต่อ
-            </p>
-
-            <p>
-                Master เข้ามาขอบคุณ Phon
-                และบอกให้เขาพักได้แล้ว
-                ก่อนที่ Phon จะมองทุกคนเป็นครั้งสุดท้าย
-                และจากไปอย่างสงบ
-            </p>
-
-            <div class="quote">
-
-                "อย่างน้อย... ครั้งนี้...
-                ฉันก็ไม่ได้ปล่อยให้ใครต้องอยู่คนเดียว..."
-
-            </div>
-
-            <p>
-                คำพูดสุดท้ายของ Phon คือ
-                <strong>
-                    "...รวมกันเราอยู่"
-                </strong>
-            </p>
-
-            <p>
-                การเสียชีวิตของเขาไม่ได้เกิดขึ้นจากการถูกทำลาย
-                ในการต่อสู้โดยตรง
-                แต่เป็นผลจากการใช้พลังสุดท้าย
-                เพื่อช่วยเหลือและนำทุกคนกลับคืนมา
-            </p>
-
-            <p>
-                หลังจากนั้น The E Watcher ยืนยันว่า
-                Phon เสียชีวิตแล้วจริง ๆ
-            </p>
-
-            ข้อมูลฉากเสียชีวิตและคำพูดช่วงสุดท้ายตรงกับต้นฉบับนิยายที่ระบุว่า Phon ไม่สามารถเคลื่อนไหวหรือพูดได้อีกหลังการใช้พลัง และจากไปอย่างสงบหลังเห็นว่าทุกคนยังมีชีวิตอยู่ :contentReference[oaicite:5]{index=5} :contentReference[oaicite:6]{index=6}
-
-
-
-            <!-- FUNERAL -->
-
-            <h2>
-                งานศพ
-            </h2>
-
-            <p>
-                สี่วันหลังเหตุการณ์ครั้งใหญ่
-                มีการจัดงานศพของ Phon ที่เมือง Horizon Phl
-                โดยมีทั้งฮีโร่ อดีตศัตรู และประชาชนเข้าร่วม
-            </p>
-
-            <p>
-                The E Watcher กล่าวถึงแนวคิดของ Phon
-                ว่า
-                <strong>
-                    ทุกคนควรได้รับโอกาส
-                </strong>
-                และยอมรับว่า Phon ไม่ได้เป็นคนที่แข็งแกร่งที่สุด
-                หรือสมบูรณ์แบบที่สุด
-                แต่เขาไม่เคยหยุดพยายามช่วยเหลือผู้อื่น
-            </p>
-
-            <p>
-                แม้กระทั่งคนที่เคยทำผิด
-                หลงทาง
-                หรือเคยพยายามทำร้ายเขา
-                Phon ก็ยังเลือกที่จะให้โอกาส
-            </p>
-
-            <div class="quote">
-
-                "สิ่งนี้ทำให้พวกเราทุกคนมีหัวใจนะ พล"
-
-            </div>
-
-            <p>
-                หลังพิธี ผู้คนยืนสงบนิ่งเป็นเวลาหลายนาที
-                ก่อนจะแยกย้ายกันไป
-                โดย Master กล่าวขอบคุณ Phon เป็นครั้งสุดท้าย
-            </p>
-
-            ข้อมูลส่วนงานศพ รวมถึงคำกล่าวของ The E Watcher
-            และการที่ผู้คนยืนไว้อาลัยหลายนาที
-            ปรากฏในบทท้ายของนิยายโดยตรง :contentReference[oaicite:7]{index=7} :contentReference[oaicite:8]{index=8} :contentReference[oaicite:9]{index=9}
-
-
-
-            <!-- PERSONALITY -->
-
-            <h2>
-                บุคลิกและค่านิยม
-            </h2>
-
-            <h3>
-                ผู้ปกป้อง
-            </h3>
-
-            <p>
-                Phon ให้ความสำคัญกับการปกป้องผู้คน
-                มากกว่าการรักษาสถานะหรือชื่อเสียงของตัวเอง
-            </p>
-
-
-            <h3>
-                Hero Federation คือบ้าน
-            </h3>
-
-            <p>
-                Hero Federation เป็นสิ่งที่มีความหมายอย่างมากต่อ Phon
-                หากสหพันธ์ตกอยู่ในอันตราย
-                เขาจะพยายามปกป้องมันอย่างเต็มที่
-            </p>
-
-
-            <h3>
-                เชื่อว่าคนสามารถเปลี่ยนแปลงได้
-            </h3>
-
-            <p>
-                Phon ไม่เชื่อว่าคนที่เคยเป็นศัตรู
-                จะต้องเป็นศัตรูตลอดไป
-            </p>
-
-            <p>
-                หากใครเคยทำผิดเพราะความเจ็บปวดในอดีต
-                Phon จะพยายามหาวิธีให้คนคนนั้นกลับมาเป็นคนดี
-                แทนที่จะตัดสินว่าพวกเขาไม่มีทางเปลี่ยนแปลง
-            </p>
-
-
-            <h3>
-                ช่วยโดยไม่ถามว่าคู่ควรหรือไม่
-            </h3>
-
-            <p>
-                Phon สามารถช่วยเหลือผู้คนได้โดยไม่สนใจว่า
-                พวกเขาจะเคยเป็นฝ่ายตรงข้ามหรือไม่
-                สิ่งสำคัญสำหรับเขาคือ
-                คนคนนั้นยังสามารถได้รับโอกาสในการมีชีวิตต่อไป
-            </p>
-
-
-
-            <!-- HERO IDEOLOGY -->
-
-            <h2>
-                แนวคิดเรื่อง "ฮีโร่"
-            </h2>
-
-            <p>
-                สำหรับ Phon
-                การเป็นฮีโร่ไม่ได้หมายถึงการเป็นผู้ที่แข็งแกร่งที่สุด
-            </p>
-
-            <p>
-                ฮีโร่คือคนที่ยังคงพยายามช่วยเหลือผู้อื่น
-                แม้ว่าจะรู้ว่าตัวเองอาจแพ้
-            </p>
-
-            <p>
-                นี่เป็นเหตุผลที่ Phon ยังคงต่อสู้ในช่วงสุดท้าย
-                แม้ร่างกายของเขาจะไม่สามารถรับพลังได้อีกแล้ว
-            </p>
-
-
-
-            <!-- LIMITATIONS -->
-
-            <h2>
-                ข้อจำกัด
-            </h2>
-
-            <div class="power-box">
-
-                <h3>
-                    ร่างกายมนุษย์มีอิทธิพลสูง
-                </h3>
-
-                <p>
-                    แม้จะมีสายเลือด Wulthrodaite
-                    แต่พันธุกรรมมนุษย์ทำให้ Phon
-                    ไม่สามารถเข้าถึงศักยภาพทั้งหมดของสายเลือด Wulthrodaite
-                </p>
-
-            </div>
-
-
-            <div class="power-box">
-
-                <h3>
-                    พลังระดับสูงมีต้นทุน
-                </h3>
-
-                <p>
-                    การดึงพลังถึงระดับสูงสุด
-                    ไม่สามารถทำได้โดยไม่มีผลกระทบ
-                    เหตุการณ์สุดท้ายของเรื่องเป็นตัวอย่างชัดเจนว่า
-                    พลังที่สูงเกินขีดจำกัดสามารถทำลายร่างกายของ Phon ได้
-                </p>
-
-            </div>
-
-
-            <div class="power-box">
-
-                <h3>
-                    ไม่ใช่พลังไร้ขีดจำกัด
-                </h3>
-
-                <p>
-                    Phon ไม่ควรถูกตีความว่าเป็นตัวละครที่มีพลังไม่จำกัด
-                    หรือสามารถชนะทุกตัวละครได้โดยอัตโนมัติ
-                </p>
-
-            </div>
-
-
-
-            <!-- STATUS -->
-
-            <h2>
-                สถานะปัจจุบัน
-            </h2>
-
-            <p>
-                <strong>
-                    เสียชีวิต
-                </strong>
-            </p>
-
-            <p>
-                Phon เสียชีวิตหลังจากใช้พลังสุดท้าย
-                เพื่อฟื้นฟูสิ่งที่ถูกทำลาย
-                และช่วยให้ผู้คนกลับมาใช้ชีวิตต่อได้
-            </p>
-
-
-
-            <!-- SUMMARY -->
-
-            <h2>
-                สรุปตัวละคร
-            </h2>
-
-            <p>
-                Phon H. Wulthrodaite
-                เป็นตัวละครที่มีพลังระดับ Multiverse
-                แต่หัวใจของตัวละครไม่ได้อยู่ที่การเป็น
-                "ผู้ที่แข็งแกร่งที่สุด"
-            </p>
-
-            <p>
-                เขาเป็นฮีโร่ที่เชื่อว่าทุกคนควรได้รับโอกาส
-                และเลือกช่วยเหลือผู้อื่นแม้กระทั่งในช่วงสุดท้ายของชีวิต
-            </p>
-
-            <p>
-                การเสียสละของเขาทำให้คนอื่นมีโอกาสใช้ชีวิตต่อ
-                และทำให้คำว่า "ฮีโร่"
-                มีความหมายมากกว่าพลังหรือความแข็งแกร่ง
-            </p>
-
-
-        </main>
-
-
-
-        <!-- =========================
-             INFOBOX
-        ========================= -->
-
-        <aside class="infobox">
-
-            <div class="infobox-title">
-                Phon H. Wulthrodaite
-            </div>
-
-
-            <div class="info-row">
-
-                <strong>
-                    ชื่อจริง
-                </strong>
-
-                <span>
-                    Phon Hyper Wulthrodaite
-                </span>
-
-            </div>
-
-
-            <div class="info-row">
-
-                <strong>
-                    ชื่อไทย
-                </strong>
-
-                <span>
-                    พล
-                </span>
-
-            </div>
-
-
-            <div class="info-row">
-
-                <strong>
-                    เพศ
-                </strong>
-
-                <span>
-                    ชาย
-                </span>
-
-            </div>
-
-
-            <div class="info-row">
-
-                <strong>
-                    อายุ
-                </strong>
-
-                <span>
-                    77 ปี
-                </span>
-
-            </div>
-
-
-            <div class="info-row">
-
-                <strong>
-                    ส่วนสูง
-                </strong>
-
-                <span>
-                    200 cm
-                </span>
-
-            </div>
-
-
-            <div class="info-row">
-
-                <strong>
-                    เผ่าพันธุ์
-                </strong>
-
-                <span>
-                    Half-Human /
-                    Half-Wulthrodaite
-                </span>
-
-            </div>
-
-
-            <div class="info-row">
-
-                <strong>
-                    ตำแหน่ง
-                </strong>
-
-                <span>
-                    Emperor Superhero
-                </span>
-
-            </div>
-
-
-            <div class="info-row">
-
-                <strong>
-                    สังกัด
-                </strong>
-
-                <span>
-                    Hero Federation
-                </span>
-
-            </div>
-
-
-            <div class="info-row">
-
-                <strong>
-                    ระดับพลัง
-                </strong>
-
-                <span>
-                    Multiverse ระดับต้น ๆ
-                </span>
-
-            </div>
-
-
-            <div class="info-row">
-
-                <strong>
-                    ระดับสูงสุด
-                </strong>
-
-                <span>
-                    เหนือ Multiverse เล็กน้อย
-                </span>
-
-            </div>
-
-
-            <div class="info-row">
-
-                <strong>
-                    สถานะ
-                </strong>
-
-                <span>
-                    เสียชีวิต
-                </span>
-
-            </div>
-
-
-        </aside>
-
-
-    </div>
-
-
-
-    <!-- =========================
-         FOOTER
-    ========================= -->
-
-    <footer>
-
-        Reartval Wiki
-
-        <br>
-
-        Phon H. Wulthrodaite
-
-    </footer>
-
+<div class="subtitle">
+Phon Hyper Wulthrodaite — Emperor Superhero
+</div>
 
 </div>
 
 
-</body>
+<div class="character-layout">
 
+
+<aside class="sidebar">
+
+
+<div class="image-box">
+
+<img src="Phon.jpg" alt="Phon H. Wulthrodaite">
+
+<div class="image-caption">
+Phon H. Wulthrodaite
+</div>
+
+</div>
+
+
+<div class="infobox">
+
+<div class="infobox-title">
+ข้อมูลตัวละคร
+</div>
+
+<table>
+
+<tr>
+<td>ชื่อจริง</td>
+<td>Phon Hyper Wulthrodaite</td>
+</tr>
+
+<tr>
+<td>ชื่อที่ใช้</td>
+<td>Phon / พล</td>
+</tr>
+
+<tr>
+<td>เพศ</td>
+<td>ชาย</td>
+</tr>
+
+<tr>
+<td>อายุ</td>
+<td>77 ปี</td>
+</tr>
+
+<tr>
+<td>ส่วนสูง</td>
+<td>200 cm</td>
+</tr>
+
+<tr>
+<td>สายพันธุ์</td>
+<td>ครึ่งมนุษย์ / ครึ่ง Wulthrodaite</td>
+</tr>
+
+<tr>
+<td>สถานะ</td>
+<td>เสียชีวิต</td>
+</tr>
+
+<tr>
+<td>ตำแหน่ง</td>
+<td>Emperor Superhero</td>
+</tr>
+
+<tr>
+<td>องค์กร</td>
+<td>Hero Federation</td>
+</tr>
+
+</table>
+
+</div>
+
+</aside>
+
+
+<div class="content">
+
+
+<nav class="wiki-nav">
+
+<div class="wiki-nav-title">
+สารบัญ
+</div>
+
+<a href="#names"><span>1.</span> ชื่อและชื่อเรียก</a>
+<a href="#identity"><span>2.</span> ข้อมูลทั่วไป</a>
+<a href="#personality"><span>5.</span> บุคลิก</a>
+<a href="#likes"><span>6.</span> สิ่งที่ชอบและไม่ชอบ</a>
+<a href="#dreams"><span>7.</span> ความฝัน</a>
+<a href="#history"><span>9.</span> ประวัติ</a>
+<a href="#powers"><span>10.</span> ความสามารถและพลังปัจจุบัน</a>
+<a href="#technology"><span>11.</span> เทคโนโลยี</a>
+<a href="#weapons"><span>12.</span> อุปกรณ์ต่อสู้</a>
+<a href="#weaknesses"><span>14.</span> จุดอ่อน</a>
+<a href="#relationships"><span>15.</span> ความสัมพันธ์</a>
+<a href="#timeline"><span>17.</span> Timeline</a>
+<a href="#appearances"><span>18.</span> เรื่องที่ปรากฏ</a>
+<a href="#additional"><span>19.</span> ข้อมูลเพิ่มเติม</a>
+
+</nav>
+
+
+<div class="notice">
+
+<strong>หมายเหตุ:</strong>
+ระดับพลังของ Phon ในหน้านี้ถูกจัดให้อยู่ในระดับ
+Multiverse ช่วงต้นถึง Multiversal+ ตามข้อมูลปัจจุบัน
+โดยพลังระดับสูงสุดของเขาเกิดขึ้นในสถานการณ์เฉพาะ
+และมีผลกระทบต่อร่างกายอย่างรุนแรง
+
+</div>
+
+
+<section class="section" id="names">
+
+<h2>1. ชื่อและชื่อเรียก</h2>
+
+<h3>ชื่อจริง</h3>
+
+<p>
+<b>Phon Hyper Wulthrodaite</b>
+คือชื่อจริงของ Phon
+</p>
+
+<h3>ชื่อที่ใช้เรียก</h3>
+
+<ul>
+<li><b>Phon</b> — ชื่อที่ใช้ทั่วไป</li>
+<li><b>พล</b> — ชื่อภาษาไทยที่ใช้เรียกตัวละคร</li>
+<li><b>Emperor Superhero</b> — ตำแหน่งที่สะท้อนสถานะของเขา</li>
+</ul>
+
+</section>
+
+
+<section class="section" id="identity">
+
+<h2>2. ข้อมูลทั่วไป</h2>
+
+<p>
+Phon H. Wulthrodaite เป็นจักรพรรดิซูเปอร์ฮีโร่
+และเป็นหนึ่งในบุคคลสำคัญที่สุดของ Hero Federation
+</p>
+
+<p>
+เขามีสายเลือดครึ่งมนุษย์และครึ่ง Wulthrodaite
+โดยสายเลือดมนุษย์มีอิทธิพลต่อร่างกายของเขามากกว่าสายเลือด Wulthrodaite
+ทำให้ศักยภาพบางอย่างของสายเลือดราชวงศ์ไม่ได้แสดงออกอย่างเต็มที่
+</p>
+
+<h3>สารที่ได้รับการฉีด</h3>
+
+<ul>
+<li>Impact Rival</li>
+<li>Survice Divine</li>
+<li>Scourge V1</li>
+<li>Scourge V2</li>
+<li>Scourge V Extra</li>
+<li>เลือดจากสิ่งมีชีวิตต่างดาวหลายชนิด</li>
+</ul>
+
+</section>
+
+
+<section class="section" id="personality">
+
+<h2>5. บุคลิก</h2>
+
+<p>
+Phon เป็นฮีโร่ที่ให้ความสำคัญกับชีวิตของผู้อื่นอย่างมาก
+และมอง Hero Federation เป็นเสมือนบ้านของตัวเอง
+</p>
+
+<h3>ต่อ Hero Federation</h3>
+
+<p>
+หาก Hero Federation ตกอยู่ในอันตราย Phon จะไม่สามารถอยู่นิ่งเฉยได้
+เขาจะปกป้องสมาชิกของสหพันธ์อย่างเต็มความสามารถ
+</p>
+
+<h3>ต่อคนทั่วไป</h3>
+
+<p>
+Phon ไม่ได้มองว่าความช่วยเหลือควรจำกัดอยู่เฉพาะฮีโร่
+แต่ต้องการปกป้องทุกคนอย่างเท่าเทียมกัน
+</p>
+
+<h3>ต่อผู้กระทำผิด</h3>
+
+<p>
+Phon ไม่เชื่อว่าคนที่เคยทำผิดจะต้องเป็นคนเลวตลอดไป
+เขาพยายามหาวิธีให้คนเหล่านั้นกลับมาเป็นคนดี
+โดยเฉพาะผู้ที่มีอดีตหรือความเจ็บปวดเป็นต้นเหตุของการกระทำ
+</p>
+
+</section>
+
+
+<section class="section" id="likes">
+
+<h2>6. สิ่งที่ชอบและไม่ชอบ</h2>
+
+<h3>สิ่งที่ให้ความสำคัญ</h3>
+
+<ul>
+<li>Hero Federation</li>
+<li>การช่วยเหลือผู้คน</li>
+<li>การปกป้องชีวิต</li>
+<li>การให้โอกาสคนที่ต้องการเปลี่ยนแปลง</li>
+<li>การทำงานร่วมกันของเหล่าฮีโร่</li>
+<li>ความสงบของผู้คนและจักรวาล</li>
+</ul>
+
+<h3>สิ่งที่ไม่เห็นด้วย</h3>
+
+<ul>
+<li>แนวคิดที่ว่าคนทำผิดไม่มีวันเปลี่ยนแปลง</li>
+<li>การตัดสินคนจากอดีตเพียงอย่างเดียว</li>
+<li>การยอมแพ้ต่อปัญหาทั้งที่ยังสามารถช่วยใครบางคนได้</li>
+</ul>
+
+</section>
+
+
+<section class="section" id="dreams">
+
+<h2>7. ความฝัน</h2>
+
+<p>
+ความปรารถนาที่สำคัญที่สุดของ Phon คือการสร้างโลกที่ผู้คนสามารถอยู่ร่วมกันได้
+และไม่มีใครต้องถูกทิ้งไว้เพียงลำพัง
+</p>
+
+<p>
+เขาเชื่อว่าหน้าที่ของฮีโร่ไม่ได้มีเพียงการเอาชนะศัตรู
+แต่คือการช่วยให้ผู้คนสามารถมีชีวิตต่อไปได้
+</p>
+
+</section>
+
+
+<section class="section" id="history">
+
+<h2>9. ประวัติ</h2>
+
+<h3>จุดเริ่มต้น</h3>
+
+<p>
+Phon เป็นลูกครึ่งมนุษย์และ Wulthrodaite
+และผ่านชีวิตที่ยากลำบากมาก่อนจะก้าวขึ้นมาเป็นฮีโร่ระดับสูง
+</p>
+
+<h3>Proar Company</h3>
+
+<p>
+Phon เคยดำรงตำแหน่งประธานของ Proar Company
+ก่อนจะเข้ามามีบทบาทสำคัญในโลกของฮีโร่
+</p>
+
+<h3>การก่อตั้ง Hero Federation</h3>
+
+<p>
+Phon ร่วมมือกับ Suprememan ในการก่อตั้ง Hero Federation
+องค์กรนี้กลายเป็นหนึ่งในสิ่งที่สำคัญที่สุดในชีวิตของเขา
+</p>
+
+<h3>การเพิ่มพลัง</h3>
+
+<p>
+หลังจากนั้น Phon ได้รับสารและพลังจากหลายแหล่ง
+รวมถึงพลังจากสิ่งมีชีวิตต่างดาว
+ทำให้เขากลายเป็นหนึ่งในฮีโร่ระดับสูงของจักรวาล
+</p>
+
+</section>
+
+
+<section class="section" id="powers">
+
+<h2>10. ความสามารถและพลังปัจจุบัน</h2>
+
+<div class="scale">
+
+<div class="scale-box">
+<div class="scale-title">ระดับพื้นฐาน</div>
+<div class="scale-value">Multiverse ระดับต้น</div>
+</div>
+
+<div class="scale-box">
+<div class="scale-title">ระดับเพิ่มพลัง</div>
+<div class="scale-value">Multiversal+</div>
+</div>
+
+<div class="scale-box">
+<div class="scale-title">ระดับสูงสุด</div>
+<div class="scale-value">เหนือ Multiverse เล็กน้อย</div>
+</div>
+
+</div>
+
+
+<div class="power-grid">
+
+<div class="power-box">
+<h3>พละกำลัง</h3>
+<p>
+มีพละกำลังในระดับที่สามารถต่อสู้กับสิ่งมีชีวิตระดับสูงของจักรวาล
+และสามารถสร้างความเสียหายต่อโครงสร้างระดับ Multiverse ได้เมื่อใช้พลังสูง
+</p>
+</div>
+
+<div class="power-box">
+<h3>ความเร็ว</h3>
+<p>
+มีความเร็วในระดับมหาศาล และในฉากต่อสู้สำคัญสามารถเคลื่อนที่ด้วย
+“ความเร็วอนันต์” ตามการบรรยายในนิยาย
+</p>
+</div>
+
+<div class="power-box">
+<h3>การบิน</h3>
+<p>
+สามารถบินด้วยความเร็วระดับจักรวาลและใช้ความเร็วสูงมากในการต่อสู้
+</p>
+</div>
+
+<div class="power-box">
+<h3>Heat Vision</h3>
+<p>
+สามารถปล่อยพลังงานจากดวงตาในระดับที่สร้างความเสียหายรุนแรง
+และสามารถปรับลักษณะของพลังงานตามสถานการณ์
+</p>
+</div>
+
+<div class="power-box">
+<h3>พลังงาน Exotent</h3>
+<p>
+สามารถใช้พลังงาน Exotent ในการโจมตีระดับสูง
+และเพิ่มขอบเขตการทำลายเมื่อเข้าสู่การต่อสู้ระดับสูง
+</p>
+</div>
+
+<div class="power-box">
+<h3>การควบคุมแรงโน้มถ่วง</h3>
+<p>
+สามารถบิดเบือนและควบคุมแรงโน้มถ่วงในระดับสูง
+รวมถึงต้านทานแรงจากวัตถุที่มีมวลมหาศาล
+</p>
+</div>
+
+<div class="power-box">
+<h3>การควบคุมเวลา</h3>
+<p>
+มีความสามารถที่เกี่ยวข้องกับเวลาในระดับสูง
+แต่ไม่ได้ถือว่าเป็นพลังที่สามารถใช้ได้โดยไร้ข้อจำกัด
+</p>
+</div>
+
+<div class="power-box">
+<h3>ประสาทสัมผัส</h3>
+<p>
+มีประสาทสัมผัสที่ละเอียดมาก สามารถตรวจจับและติดตามสิ่งต่าง ๆ
+ในระยะไกลได้
+</p>
+</div>
+
+<div class="power-box">
+<h3>การอ่านความคิด</h3>
+<p>
+สามารถรับรู้ความคิดของผู้อื่นได้อย่างรวดเร็ว
+และใช้ข้อมูลดังกล่าวเพื่อคาดการณ์การเคลื่อนไหว
+</p>
+</div>
+
+<div class="power-box">
+<h3>การมองเห็น</h3>
+<p>
+มีความสามารถในการมองทะลุวัตถุและตรวจจับสิ่งที่อยู่ในระยะไกล
+</p>
+</div>
+
+<div class="power-box">
+<h3>การควบคุมสายฟ้า</h3>
+<p>
+สามารถสร้างและควบคุมพลังงานลักษณะสายฟ้า
+รวมถึงนำพลังงานไปใช้ร่วมกับความสามารถอื่น
+</p>
+</div>
+
+<div class="power-box">
+<h3>การดูดซับแรง</h3>
+<p>
+สามารถรับพลังงานหรือแรงกระแทกจากการโจมตี
+และนำพลังงานบางส่วนกลับมาใช้เพิ่มความรุนแรงของการโจมตี
+</p>
+</div>
+
+<div class="power-box">
+<h3>การฟื้นฟู</h3>
+<p>
+มีความสามารถในการฟื้นฟูร่างกายระดับสูง
+ทำให้การทำลายร่างกายโดยทั่วไปไม่เพียงพอที่จะหยุดเขาได้ง่าย
+</p>
+</div>
+
+<div class="power-box">
+<h3>ความต้านทาน</h3>
+<p>
+มีความต้านทานต่อการรบกวนทางจิต ความทรงจำ
+ประสาทสัมผัส และผลกระทบจากสิ่งมีชีวิตหรือพลังระดับสูง
+</p>
+</div>
+
+<div class="power-box">
+<h3>การสร้างรอยแยก</h3>
+<p>
+สามารถสร้างความเสียหายต่อโครงสร้างของจักรวาลและเปิดรอยแยกขนาดใหญ่
+เมื่อใช้พลังในระดับสูง
+</p>
+</div>
+
+<div class="power-box">
+<h3>การเพิ่มพลังจากสถานการณ์</h3>
+<p>
+เมื่อเข้าสู่สถานการณ์ที่รุนแรงที่สุด พลังของ Phon สามารถเพิ่มขึ้นอย่างมาก
+แต่การใช้พลังระดับดังกล่าวมีผลกระทบต่อร่างกาย
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section" id="technology">
+
+<h2>11. เทคโนโลยี</h2>
+
+<h3>ร่างกายไซบอร์ก</h3>
+
+<p>
+ร่างกายของ Phon ได้รับการดัดแปลงเป็นไซบอร์กอย่างเต็มรูปแบบ
+ทำให้เทคโนโลยีเป็นส่วนหนึ่งของโครงสร้างร่างกาย
+</p>
+
+<h3>Frytdemthart</h3>
+
+<p>
+กระดูกของ Phon ถูกแทนที่ด้วยแร่โลหะสมมติชื่อ
+<b>Frytdemthart</b>
+ซึ่งเป็นวัสดุที่มีความแข็งแกร่งสูงมากในจักรวาล Reartval
+</p>
+
+<h3>Celestial Divine</h3>
+
+<p>
+เลือดของ Phon ผสมกับแร่ Celestial Divine
+ซึ่งช่วยกระตุ้นพลังและเพิ่มประสิทธิภาพของร่างกาย
+โดยเฉพาะในสถานการณ์ที่ต้องใช้พลังสูง
+</p>
+
+<h3>เทคโนโลยีภายในร่างกาย</h3>
+
+<p>
+ชิ้นส่วนเทคโนโลยีและเกราะภายในร่างกายสามารถเปลี่ยนรูปแบบได้
+และทำหน้าที่เป็นทั้งระบบป้องกันและระบบสนับสนุนความสามารถ
+</p>
+
+</section>
+
+
+<section class="section" id="weapons">
+
+<h2>12. อุปกรณ์ต่อสู้</h2>
+
+<p>
+Phon มีระบบอุปกรณ์ต่อสู้ที่เป็นส่วนหนึ่งของร่างกายไซบอร์ก
+โดยอุปกรณ์เหล่านี้ทำหน้าที่เป็นส่วนเสริมของความสามารถหลัก
+</p>
+
+<h3>Devish Claw</h3>
+
+<p>
+อุปกรณ์ต่อสู้ที่ซ่อนอยู่ภายในร่างกาย
+และสามารถนำมาใช้ในสถานการณ์ต่อสู้
+</p>
+
+<h3>Scourge Blaster</h3>
+
+<p>
+ระบบอาวุธพลังงานที่ติดตั้งอยู่ภายในร่างกายของ Phon
+และเป็นหนึ่งในระบบพลังงานระดับสูงของเขา
+</p>
+
+<h3>Slashmetion</h3>
+
+<p>
+ระบบไซบอร์กที่ติดตั้งอยู่บริเวณนิ้วมือ
+และช่วยเพิ่มความสามารถในการโจมตีระยะประชิด
+</p>
+
+<h3>Widewormlest</h3>
+
+<p>
+ระบบเทคโนโลยีลักษณะหนวดกลที่สามารถขยายออกจากร่างกาย
+และใช้เป็นระบบควบคุมหรือจับเป้าหมาย
+</p>
+
+</section>
+
+
+<section class="section" id="weaknesses">
+
+<h2>14. จุดอ่อน</h2>
+
+<h3>ข้อจำกัดทางสายเลือด</h3>
+
+<p>
+แม้ Phon จะมีสายเลือด Wulthrodaite
+แต่สายเลือดมนุษย์มีอิทธิพลมากกว่า
+ทำให้เขาไม่สามารถแสดงศักยภาพของสายเลือด Wulthrodaite ได้ทั้งหมด
+</p>
+
+<h3>อายุขัย</h3>
+
+<p>
+Phon ไม่ได้มีอายุยืนยาวในระดับเดียวกับ Wulthrodaite บริสุทธิ์
+แม้ในมาตรฐานของ Wulthrodaite อายุ 77 ปีของเขาจะมีความแตกต่างอย่างมาก
+เมื่อเทียบกับมนุษย์
+</p>
+
+<h3>การใช้พลังระดับสูงสุด</h3>
+
+<p>
+ข้อจำกัดที่สำคัญที่สุดของ Phon คือพลังระดับสูงสุดไม่สามารถใช้ได้โดยไม่มีต้นทุน
+</p>
+
+<p>
+ในเหตุการณ์สุดท้าย เขาต้องรวบรวมพลังจาก
+<b>Grejenius Cores 5 ชิ้น</b>
+และ <b>Difisneat Stones 2 ชิ้น</b>
+ก่อนปล่อยพลังในระดับที่เปลี่ยนกฎของจักรวาล
+</p>
+
+<p>
+พลังดังกล่าวรุนแรงเกินกว่าร่างกายของเขาจะรับไหว
+และส่งผลต่อระบบประสาทของเขาอย่างรุนแรง
+จนท้ายที่สุดนำไปสู่การเสียชีวิต
+</p>
+
+</section>
+
+
+<section class="section" id="relationships">
+
+<h2>15. ความสัมพันธ์</h2>
+
+<h3>Hero Federation</h3>
+
+<p>
+Hero Federation คือบ้านและสิ่งที่สำคัญที่สุดสำหรับ Phon
+เขามองสมาชิกของสหพันธ์เป็นผู้คนที่ต้องได้รับการปกป้อง
+</p>
+
+<h3>Suprememan</h3>
+
+<p>
+Suprememan เป็นผู้ร่วมก่อตั้ง Hero Federation กับ Phon
+และเป็นหนึ่งในบุคคลสำคัญต่อประวัติศาสตร์ของสหพันธ์
+</p>
+
+<h3>The E Watcher</h3>
+
+<p>
+E Watcher เป็นหนึ่งในบุคคลที่มีความสัมพันธ์ใกล้ชิดกับ Phon
+โดยเฉพาะในเหตุการณ์สุดท้ายของชีวิต Phon
+</p>
+
+<h3>Master</h3>
+
+<p>
+Master เป็นหนึ่งในฮีโร่ที่อยู่ร่วมกับ Phon ในเหตุการณ์สำคัญ
+และเป็นหนึ่งในผู้ที่อยู่กับ Phon ในช่วงสุดท้าย
+</p>
+
+</section>
+
+
+<section class="section" id="timeline">
+
+<h2>17. Timeline</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+<div class="timeline-year">อดีต</div>
+<p>
+Phon เติบโตขึ้นในฐานะลูกครึ่งมนุษย์และ Wulthrodaite
+และผ่านชีวิตที่ยากลำบากก่อนเข้าสู่เส้นทางฮีโร่
+</p>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-year">ช่วงการทำงานกับ Proar</div>
+<p>
+Phon ดำรงตำแหน่งประธานของ Proar Company
+</p>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-year">การก่อตั้ง Hero Federation</div>
+<p>
+Phon ร่วมมือกับ Suprememan ก่อตั้ง Hero Federation
+</p>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-year">ช่วงเพิ่มพลัง</div>
+<p>
+Phon ได้รับสารพิเศษและเลือดจากสิ่งมีชีวิตต่างดาวจำนวนมาก
+ทำให้พลังของเขาเพิ่มขึ้นจนอยู่ในระดับสูงของจักรวาล
+</p>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-year">มหากาพย์เหตุการณ์สองพี่น้อง</div>
+<p>
+Phon เข้าร่วมการต่อสู้ครั้งใหญ่กับ Father Prime
+และแสดงพลังในระดับ Multiverse
+</p>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-year">เหตุการณ์สุดท้าย</div>
+<p>
+Phon ใช้พลังระดับสูงสุดเพื่อฟื้นฟูสิ่งที่ถูกทำลายไปทั่วทุกความเป็นจริง
+หลังจากนั้นร่างกายของเขาไม่สามารถทำงานต่อได้
+</p>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-year">หลังการต่อสู้</div>
+<p>
+Phon เสียชีวิตอย่างสงบ และ Hero Federation ได้จัดพิธีศพให้เขา
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section" id="appearances">
+
+<h2>18. เรื่องที่ปรากฏ</h2>
+
+<p>
+ส่วนนี้สำหรับรวบรวมรายชื่อเรื่อง ตอน และเหตุการณ์ต่าง ๆ
+ที่ Phon H. Wulthrodaite ปรากฏตัว
+</p>
+
+<div class="notice">
+
+<strong>สำหรับเพิ่มข้อมูล:</strong>
+สามารถเขียนชื่อเรื่อง ชื่อตอน เหตุการณ์สำคัญ
+และบทบาทของ Phon ในแต่ละเรื่องได้ที่ส่วนนี้
+
+</div>
+
+<!-- เขียนข้อมูลเรื่องที่ปรากฏเพิ่มเติมตรงนี้ -->
+
+</section>
+
+
+<section class="section" id="additional">
+
+<h2>19. ข้อมูลเพิ่มเติม</h2>
+
+<h3>The X Shapeshifter</h3>
+
+<p>
+Phon เคยมีความเกี่ยวข้องกับตัวตน
+<b>The X Shapeshifter</b>
+ในเนื้อเรื่อง
+</p>
+
+<p>
+ตัวตนดังกล่าวควรถูกแยกออกจากระดับพลังปัจจุบันของ Phon
+เว้นแต่เนื้อเรื่องจะยืนยันโดยตรงว่าความสามารถของทั้งสองตัวตน
+เป็นชุดเดียวกัน
+</p>
+
+<h3>เหตุการณ์สุดท้าย</h3>
+
+<p>
+ในสงครามครั้งสุดท้าย Phon ต่อสู้จนพลังใกล้หมด
+ก่อนรวบรวมพลังจาก Grejenius Cores และ Difisneat Stones
+เพื่อสร้างการโจมตีระดับสูงสุด
+</p>
+
+<p>
+หลังจากนั้นเขาใช้พลังที่เหลือเพื่อฟื้นฟูความเสียหาย
+ที่เกิดขึ้นกับความเป็นจริงทั้งหมด
+</p>
+
+<p>
+เมื่อทุกคนกลับมามีชีวิตและโลกต่าง ๆ ได้รับการฟื้นฟู
+Phon ไม่สามารถเคลื่อนไหวหรือพูดได้อีก
+และเสียชีวิตในเวลาต่อมา
+</p>
+
+<h3>คำพูดสุดท้ายและความหมาย</h3>
+
+<p>
+แก่นสำคัญของฉากสุดท้ายคือแนวคิดว่า
+Phon ไม่ได้ต่อสู้เพียงเพื่อเอาชนะ
+แต่ต่อสู้เพื่อให้คนอื่นสามารถมีชีวิตอยู่ต่อได้
+</p>
+
+<h3>มรดกของ Phon</h3>
+
+<p>
+หลังการเสียชีวิตของ Phon
+E Watcher ได้กล่าวถึงความเชื่อของเขาว่า
+ทุกคนควรได้รับโอกาสในการเปลี่ยนแปลง
+และฮีโร่ไม่ได้ถูกนิยามด้วยความแข็งแกร่งเพียงอย่างเดียว
+</p>
+
+<p>
+สิ่งที่ Phon ทิ้งไว้ให้ Hero Federation
+จึงไม่ใช่เพียงพลังหรือชื่อเสียง
+แต่คือแนวคิดเรื่องการช่วยเหลือ การให้อภัย
+และการไม่หยุดพยายามเพื่อผู้อื่น
+</p>
+
+<h3>ระดับพลังโดยสรุป</h3>
+
+<div class="tags">
+
+<span class="tag">Multiverse ระดับต้น</span>
+<span class="tag">Multiversal+</span>
+<span class="tag">Slightly Above Multiverse</span>
+<span class="tag">Emperor Superhero</span>
+<span class="tag">Hero Federation</span>
+<span class="tag">The X Shapeshifter</span>
+<span class="tag">Wulthrodaite</span>
+
+</div>
+
+</section>
+
+
+</div>
+
+</div>
+
+
+<footer>
+Reartval Wiki — Phon H. Wulthrodaite
+</footer>
+
+</main>
+
+</body>
 </html>
