@@ -1,1835 +1,1114 @@
-```html
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Master Johnson Relvent - Reartval Wiki</title>
+<title>Master Johnson Relvent | Reartval Wiki</title>
 
-    <style>
+<style>
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            color: #202122;
-            line-height: 1.7;
-        }
+*{
+    box-sizing:border-box;
+}
 
-        .header {
-            background: #ffffff;
-            border-bottom: 1px solid #a2a9b1;
-            padding: 20px 40px;
-        }
+html{
+    scroll-behavior:smooth;
+}
 
-        .site-title {
-            font-size: 28px;
-            font-weight: bold;
-        }
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f6f8;
+    color:#202124;
+    line-height:1.75;
+}
 
-        .site-subtitle {
-            color: #54595d;
-            font-size: 14px;
-        }
+a{
+    color:#2563eb;
+    text-decoration:none;
+}
 
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            background: white;
-            padding: 30px 45px 60px;
-            min-height: 100vh;
-        }
+a:hover{
+    text-decoration:underline;
+}
 
-        .back {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: #0645ad;
-            text-decoration: none;
-        }
+/* TOPBAR */
 
-        .back:hover {
-            text-decoration: underline;
-        }
+.topbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#111827;
+    color:white;
+    padding:14px 24px;
+    box-shadow:0 2px 10px rgba(0,0,0,.18);
+}
 
-        h1 {
-            font-family: Georgia, serif;
-            font-size: 36px;
-            border-bottom: 1px solid #a2a9b1;
-            padding-bottom: 8px;
-            margin-bottom: 5px;
-        }
+.topbar-inner{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
 
-        h2 {
-            font-family: Georgia, serif;
-            font-size: 25px;
-            border-bottom: 1px solid #eaecf0;
-            padding-bottom: 5px;
-            margin-top: 35px;
-        }
+.logo{
+    font-size:22px;
+    font-weight:800;
+    letter-spacing:.5px;
+}
 
-        h3 {
-            font-size: 19px;
-            margin-top: 25px;
-        }
+.logo span{
+    color:#60a5fa;
+}
 
-        p {
-            margin: 10px 0;
-        }
+.topbar a{
+    color:white;
+}
 
-        ul {
-            padding-left: 25px;
-        }
+/* PAGE */
 
-        .subtitle {
-            color: #54595d;
-            margin-bottom: 25px;
-        }
+.page{
+    max-width:1200px;
+    margin:30px auto;
+    padding:0 20px;
+}
 
-        /* รูปตัวละคร */
+.back{
+    display:inline-block;
+    margin-bottom:20px;
+    padding:9px 15px;
+    background:white;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    color:#374151;
+    font-weight:600;
+}
 
-        .character-image {
-            float: right;
-            width: 310px;
-            margin: 0 0 25px 30px;
-            border: 1px solid #a2a9b1;
-            background: #f8f9fa;
-            text-align: center;
-        }
+.back:hover{
+    background:#f3f4f6;
+    text-decoration:none;
+}
 
-        .character-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+/* HEADER */
 
-        .image-caption {
-            padding: 8px;
-            font-size: 13px;
-            color: #54595d;
-        }
+.character-header{
+    background:white;
+    border:1px solid #d9dee5;
+    border-radius:14px;
+    padding:28px;
+    margin-bottom:22px;
+    box-shadow:0 3px 12px rgba(0,0,0,.05);
+}
 
-        /* INFOBOX */
+.character-header h1{
+    margin:0;
+    font-size:38px;
+    line-height:1.2;
+}
 
-        .infobox {
-            float: right;
-            width: 310px;
-            margin: 0 0 25px 30px;
-            border: 1px solid #a2a9b1;
-            background: #f8f9fa;
-            font-size: 14px;
-        }
+.subtitle{
+    margin-top:7px;
+    color:#6b7280;
+    font-size:18px;
+}
 
-        .infobox-title {
-            background: #eaecf0;
-            text-align: center;
-            font-size: 20px;
-            font-weight: bold;
-            padding: 10px;
-        }
+.character-layout{
+    display:grid;
+    grid-template-columns:280px minmax(0,1fr);
+    gap:24px;
+    align-items:start;
+}
 
-        .info-row {
-            border-top: 1px solid #c8ccd1;
-            padding: 9px 12px;
-        }
+/* SIDEBAR */
 
-        .label {
-            font-weight: bold;
-        }
+.sidebar{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
 
-        /* TOC */
+.image-box{
+    background:white;
+    border:1px solid #d9dee5;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 3px 12px rgba(0,0,0,.05);
+}
 
-        .toc {
-            display: inline-block;
-            border: 1px solid #a2a9b1;
-            background: #f8f9fa;
-            padding: 15px 25px;
-            margin: 10px 0 25px;
-        }
+.image-box img{
+    width:100%;
+    display:block;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    background:#e5e7eb;
+}
 
-        .toc-title {
-            font-weight: bold;
-            font-size: 18px;
-            margin-bottom: 8px;
-        }
+.image-caption{
+    padding:10px 14px;
+    text-align:center;
+    color:#6b7280;
+    font-size:13px;
+}
 
-        .toc a {
-            display: block;
-            color: #0645ad;
-            text-decoration: none;
-            margin: 3px 0;
-        }
+/* INFO BOX */
 
-        .toc a:hover {
-            text-decoration: underline;
-        }
+.infobox{
+    background:white;
+    border:1px solid #d9dee5;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 3px 12px rgba(0,0,0,.05);
+}
 
-        /* กล่องพลัง */
+.infobox-title{
+    padding:13px 15px;
+    background:#1f2937;
+    color:white;
+    text-align:center;
+    font-weight:800;
+}
 
-        .power-box {
-            border-left: 4px solid #36c;
-            background: #f8f9fa;
-            padding: 12px 18px;
-            margin: 15px 0;
-        }
+.infobox table{
+    width:100%;
+    border-collapse:collapse;
+}
 
-        /* กล่องเทคโนโลยี */
+.infobox td{
+    padding:9px 12px;
+    border-bottom:1px solid #e5e7eb;
+    vertical-align:top;
+    font-size:14px;
+}
 
-        .tech-box {
-            border: 1px solid #a2a9b1;
-            background: #f8f9fa;
-            padding: 15px 20px;
-            margin: 15px 0;
-        }
+.infobox td:first-child{
+    width:38%;
+    font-weight:700;
+    color:#4b5563;
+}
 
-        .tech-box h3 {
-            margin-top: 5px;
-        }
+/* CONTENT */
 
-        /* กล่องเตือน */
+.content{
+    min-width:0;
+}
 
-        .warning-box {
-            border-left: 4px solid #72777d;
-            background: #f8f9fa;
-            padding: 12px 18px;
-            margin: 15px 0;
-        }
+.section{
+    background:white;
+    border:1px solid #d9dee5;
+    border-radius:14px;
+    padding:25px;
+    margin-bottom:22px;
+    box-shadow:0 3px 12px rgba(0,0,0,.04);
+    scroll-margin-top:90px;
+}
 
-        /* Timeline */
+.section h2{
+    margin:0 0 15px;
+    padding-bottom:9px;
+    border-bottom:2px solid #e5e7eb;
+    font-size:26px;
+}
 
-        .timeline {
-            border-left: 3px solid #a2a9b1;
-            padding-left: 20px;
-        }
+.section h3{
+    margin-top:22px;
+    margin-bottom:7px;
+    font-size:19px;
+}
 
-        .timeline-item {
-            margin-bottom: 20px;
-        }
+.section p{
+    margin:9px 0;
+}
 
-        .timeline-year {
-            font-weight: bold;
-            font-size: 18px;
-        }
+.section ul{
+    margin-top:8px;
+}
 
-        .clear {
-            clear: both;
-        }
+.section li{
+    margin:5px 0;
+}
 
-        @media (max-width: 800px) {
+/* NAVIGATION */
 
-            .container {
-                padding: 20px;
-            }
+.wiki-nav{
+    background:white;
+    border:1px solid #d9dee5;
+    border-radius:14px;
+    padding:17px;
+    margin-bottom:22px;
+    box-shadow:0 3px 12px rgba(0,0,0,.04);
+}
 
-            .infobox,
-            .character-image {
-                float: none;
-                width: auto;
-                margin: 0 0 25px 0;
-            }
+.wiki-nav-title{
+    font-size:18px;
+    font-weight:800;
+    margin-bottom:12px;
+}
 
-            h1 {
-                font-size: 30px;
-            }
+.wiki-nav a{
+    display:block;
+    padding:7px 9px;
+    border-radius:6px;
+    color:#374151;
+    font-size:14px;
+}
 
-        }
+.wiki-nav a:hover{
+    background:#f3f4f6;
+    color:#2563eb;
+    text-decoration:none;
+}
 
-    </style>
+.wiki-nav a span{
+    color:#6b7280;
+    margin-right:5px;
+}
 
+/* NOTICE */
+
+.notice{
+    background:#eff6ff;
+    border-left:5px solid #3b82f6;
+    padding:15px 18px;
+    border-radius:8px;
+    margin-bottom:22px;
+}
+
+.notice strong{
+    color:#1d4ed8;
+}
+
+/* POWER BOX */
+
+.power-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:15px;
+}
+
+.power-box{
+    border:1px solid #d9dee5;
+    border-radius:10px;
+    padding:17px;
+    background:#fafafa;
+}
+
+.power-box h3{
+    margin:0 0 7px;
+    font-size:17px;
+}
+
+.power-box p{
+    font-size:14px;
+}
+
+/* TIMELINE */
+
+.timeline{
+    border-left:3px solid #d1d5db;
+    margin-left:8px;
+    padding-left:20px;
+}
+
+.timeline-item{
+    position:relative;
+    margin-bottom:22px;
+}
+
+.timeline-item::before{
+    content:"";
+    position:absolute;
+    left:-28px;
+    top:9px;
+    width:11px;
+    height:11px;
+    background:#2563eb;
+    border-radius:50%;
+}
+
+.timeline-year{
+    font-weight:800;
+    color:#2563eb;
+}
+
+/* TAGS */
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.tag{
+    padding:5px 10px;
+    border-radius:20px;
+    background:#eef2ff;
+    color:#3730a3;
+    font-size:13px;
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:35px;
+    padding:25px;
+    text-align:center;
+    color:#6b7280;
+    font-size:14px;
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    .character-layout{
+        grid-template-columns:1fr;
+    }
+
+    .sidebar{
+        max-width:420px;
+        margin:auto;
+        width:100%;
+    }
+
+    .power-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .page{
+        padding:0 12px;
+        margin-top:20px;
+    }
+
+    .character-header{
+        padding:20px;
+    }
+
+    .character-header h1{
+        font-size:29px;
+    }
+
+    .section{
+        padding:19px;
+    }
+
+    .section h2{
+        font-size:22px;
+    }
+
+    .topbar{
+        padding:12px 15px;
+    }
+
+}
+
+</style>
 </head>
-
 
 <body>
 
+<header class="topbar">
+    <div class="topbar-inner">
+        <div class="logo">
+            Reartval <span>Wiki</span>
+        </div>
 
-<div class="header">
-
-    <div class="site-title">
-        Reartval Wiki
+        <a href="/Reartval-Wiki/index.html">
+            หน้าหลัก
+        </a>
     </div>
+</header>
 
-    <div class="site-subtitle">
-        สารานุกรมจักรวาล Reartval
-    </div>
-
-</div>
-
-
-<div class="container">
-
+<main class="page">
 
 <a class="back" href="/Reartval-Wiki/index.html">
     ← กลับหน้าหลัก
 </a>
 
-
-<h1>
-    Master Johnson Relvent
-</h1>
-
-<div class="subtitle">
-    Master / John — ภายหลังเป็นที่รู้จักในชื่อ <b>Dealviver</b>
+<div class="character-header">
+    <h1>Master Johnson Relvent</h1>
+    <div class="subtitle">
+        Master / John — ตัวละครสำคัญแห่งจักรวาล Reartval
+    </div>
 </div>
 
+<div class="character-layout">
 
-<!-- รูปตัวละคร -->
+<aside class="sidebar">
 
-<div class="character-image">
-
-    <img src="master.jpg" alt="Master Johnson Relvent">
-
-    <div class="image-caption">
-        Master Johnson Relvent
+    <div class="image-box">
+        <img src="master.jpg" alt="Master Johnson Relvent">
+        <div class="image-caption">
+            Master Johnson Relvent
+        </div>
     </div>
 
-</div>
+    <div class="infobox">
 
+        <div class="infobox-title">
+            ข้อมูลตัวละคร
+        </div>
 
-<!-- INFOBOX -->
+        <table>
 
-<div class="infobox">
+            <tr>
+                <td>ชื่อ</td>
+                <td>Master Johnson Relvent</td>
+            </tr>
 
-    <div class="infobox-title">
-        Master Johnson Relvent
+            <tr>
+                <td>ชื่อที่ใช้</td>
+                <td>Master, John, Master Relvent</td>
+            </tr>
+
+            <tr>
+                <td>เพศ</td>
+                <td>ชาย</td>
+            </tr>
+
+            <tr>
+                <td>สายพันธุ์</td>
+                <td>ครึ่งมนุษย์ / ครึ่ง Fountaine</td>
+            </tr>
+
+            <tr>
+                <td>สัญชาติ</td>
+                <td>อเมริกัน</td>
+            </tr>
+
+            <tr>
+                <td>วันเกิด</td>
+                <td>8 กันยายน 1963</td>
+            </tr>
+
+            <tr>
+                <td>สถานที่เกิด</td>
+                <td>Chicago, Illinois</td>
+            </tr>
+
+            <tr>
+                <td>สถานะ</td>
+                <td>มีชีวิตอยู่</td>
+            </tr>
+
+        </table>
+
     </div>
 
-    <div class="info-row">
-        <span class="label">ชื่อจริง:</span><br>
-        Master Johnson Relvent
-    </div>
-
-    <div class="info-row">
-        <span class="label">ชื่ออื่น:</span><br>
-        Master Johnson Clarkson<br>
-        Master Relvent<br>
-        Sir Master Johnson Relvent
-    </div>
-
-    <div class="info-row">
-        <span class="label">ชื่อเรียก:</span><br>
-        Master, John
-    </div>
-
-    <div class="info-row">
-        <span class="label">ชื่อในภายหลัง:</span><br>
-        Dealviver
-    </div>
-
-    <div class="info-row">
-        <span class="label">เกิด:</span><br>
-        8 กันยายน 1963
-    </div>
-
-    <div class="info-row">
-        <span class="label">สถานที่เกิด:</span><br>
-        Chicago, Illinois
-    </div>
-
-    <div class="info-row">
-        <span class="label">เพศ:</span><br>
-        ชาย
-    </div>
-
-    <div class="info-row">
-        <span class="label">เผ่าพันธุ์:</span><br>
-        ลูกครึ่งมนุษย์ / Fountaine
-    </div>
-
-    <div class="info-row">
-        <span class="label">สัญชาติ:</span><br>
-        อเมริกัน
-    </div>
-
-    <div class="info-row">
-        <span class="label">อายุปัจจุบัน:</span><br>
-        47 ปี
-    </div>
-
-    <div class="info-row">
-        <span class="label">สถานะ:</span><br>
-        มีชีวิต
-    </div>
-
-    <div class="info-row">
-        <span class="label">อาชีพ:</span><br>
-        นักเขียน / ช่าง / นักวิทยาศาสตร์
-    </div>
-
-    <div class="info-row">
-        <span class="label">สังกัด:</span><br>
-        Superhero Federation
-    </div>
-
-</div>
+</aside>
 
 
-<!-- สารบัญ -->
+<div class="content">
 
-<div class="toc">
+<nav class="wiki-nav">
 
-    <div class="toc-title">
+    <div class="wiki-nav-title">
         สารบัญ
     </div>
 
-    <a href="#names">1. ชื่อและชื่อเรียก</a>
-    <a href="#identity">2. ข้อมูลทั่วไป</a>
-    <a href="#genetics">3. พันธุกรรมและลักษณะ Fountaine</a>
-    <a href="#health">4. ปัญหาทางร่างกาย</a>
-    <a href="#personality">5. บุคลิก</a>
-    <a href="#likes">6. สิ่งที่ชอบและไม่ชอบ</a>
-    <a href="#dreams">7. ความฝัน</a>
-    <a href="#mental">8. สภาพจิตใจ</a>
-    <a href="#history">9. ประวัติ</a>
-    <a href="#powers">10. ความสามารถและพลังปัจจุบัน</a>
-    <a href="#technology">11. เทคโนโลยี</a>
-    <a href="#weapons">12. อาวุธ</a>
-    <a href="#eye">13. ดวงตาซ้าย</a>
-    <a href="#weaknesses">14. จุดอ่อน</a>
-    <a href="#relationships">15. ความสัมพันธ์</a>
-    <a href="#touch">16. การสัมผัสและความไว้วางใจ</a>
-    <a href="#timeline">17. Timeline</a>
-    <a href="#appearances">18. เรื่องที่ปรากฏ</a>
-    <a href="#additional">19. ข้อมูลเพิ่มเติม</a>
+    <a href="#names"><span>1.</span> ชื่อและชื่อเรียก</a>
+    <a href="#identity"><span>2.</span> ข้อมูลทั่วไป</a>
+    <a href="#personality"><span>5.</span> บุคลิก</a>
+    <a href="#likes"><span>6.</span> สิ่งที่ชอบและไม่ชอบ</a>
+    <a href="#dreams"><span>7.</span> ความฝัน</a>
+    <a href="#history"><span>9.</span> ประวัติ</a>
+    <a href="#powers"><span>10.</span> ความสามารถและพลังปัจจุบัน</a>
+    <a href="#technology"><span>11.</span> เทคโนโลยี</a>
+    <a href="#weapons"><span>12.</span> อุปกรณ์ต่อสู้</a>
+    <a href="#weaknesses"><span>14.</span> จุดอ่อน</a>
+    <a href="#relationships"><span>15.</span> ความสัมพันธ์</a>
+    <a href="#timeline"><span>17.</span> Timeline</a>
+    <a href="#appearances"><span>18.</span> เรื่องที่ปรากฏ</a>
+    <a href="#additional"><span>19.</span> ข้อมูลเพิ่มเติม</a>
+
+</nav>
+
+
+<div class="notice">
+
+<strong>หมายเหตุ:</strong>
+ข้อมูลในหน้านี้แบ่งระหว่างข้อมูลพื้นฐานของตัวละคร,
+ข้อมูลจาก Canon และข้อมูลที่เกี่ยวข้องกับพัฒนาการของ Master
+ในแต่ละช่วงของเรื่อง หากข้อมูลในนิยายฉบับปัจจุบันมีการเปลี่ยนแปลง
+ควรยึดข้อมูลฉบับล่าสุดเป็นหลัก
 
 </div>
 
 
-<!-- ชื่อ -->
+<section class="section" id="names">
 
-<h2 id="names">
-    1. ชื่อและชื่อเรียก
-</h2>
+<h2>1. ชื่อและชื่อเรียก</h2>
+
+<h3>ชื่อหลัก</h3>
+
+<p>
+<b>Master Johnson Relvent</b>
+คือชื่อหลักที่ใช้ระบุตัวละครในปัจจุบัน
+</p>
+
+<h3>ชื่อที่ใช้เรียก</h3>
 
 <ul>
-
-    <li>
-        <b>Master Johnson Relvent</b> — ชื่อหลัก
-    </li>
-
-    <li>
-        <b>Master Johnson Clarkson</b> — ชื่อที่เกี่ยวข้องกับตระกูล Clarkson
-    </li>
-
-    <li>
-        <b>Master Relvent</b> — รูปแบบชื่อย่อ
-    </li>
-
-    <li>
-        <b>Sir Master Johnson Relvent</b> — รูปแบบชื่อเต็ม
-    </li>
-
-    <li>
-        <b>Master</b> — ชื่อที่ใช้กับตัวตนดั้งเดิมและคนสนิท
-    </li>
-
-    <li>
-        <b>John</b> — ชื่อที่คนทั่วไปหรือคนรู้จักมักใช้เรียก
-    </li>
-
-    <li>
-        <b>Dealviver</b> — ชื่อที่ใช้ในช่วงหลังของชีวิต
-    </li>
-
+<li><b>Master</b> — ชื่อที่มีความเป็นส่วนตัวและใช้โดยคนใกล้ชิด</li>
+<li><b>John</b> — ชื่อที่คนทั่วไปหรือคนรู้จักมักใช้เรียก</li>
+<li><b>Master Relvent</b> — การเรียกด้วยชื่อและตระกูล</li>
+<li><b>Master Johnson Clarkson</b> — ชื่อที่เกี่ยวข้องกับช่วงชีวิตและครอบครัว Clarkson</li>
 </ul>
 
+</section>
 
-<!-- ข้อมูลทั่วไป -->
 
-<h2 id="identity">
-    2. ข้อมูลทั่วไป
-</h2>
+<section class="section" id="identity">
 
-<p>
-    Master Johnson Relvent เป็นชายลูกครึ่งมนุษย์และ Fountaine
-    จากตระกูล Relvent
-    และเป็นหนึ่งในบุคคลสำคัญของเหตุการณ์ในจักรวาล Reartval
-</p>
+<h2>2. ข้อมูลทั่วไป</h2>
 
 <p>
-    ชีวิตของเขาเปลี่ยนแปลงอย่างมากจากเหตุการณ์ในวัยเด็ก
-    ก่อนที่จะเข้าสู่เส้นทางด้านวิทยาศาสตร์ เทคโนโลยี
-    และโลกของเหล่าฮีโร่
+Master เป็นตัวละครที่มีสายเลือดผสมระหว่างมนุษย์กับ Fountaine
+ทำให้ร่างกายของเขามีคุณสมบัติที่แตกต่างจากมนุษย์ทั่วไป
+ขณะเดียวกันก็มีข้อจำกัดทางชีวภาพหลายอย่างที่เกิดจากพันธุกรรมของทั้งสองสายเลือด
 </p>
 
-
-<!-- พันธุกรรม -->
-
-<h2 id="genetics">
-    3. พันธุกรรมและลักษณะ Fountaine
-</h2>
+<h3>ลักษณะทางชีวภาพที่สำคัญ</h3>
 
 <ul>
-
-    <li>
-        เป็นลูกครึ่งมนุษย์และ Fountaine
-    </li>
-
-    <li>
-        ได้รับพละกำลังส่วนหนึ่งจากสายเลือด Fountaine
-    </li>
-
-    <li>
-        มีระบบประสาทบางส่วนไวผิดปกติ
-    </li>
-
-    <li>
-        บริเวณมุมกรามมีความไวต่อความรู้สึกสูง
-    </li>
-
-    <li>
-        มีลักษณะบางส่วนของโครงสร้าง Fountaine
-        แต่ไม่สมบูรณ์
-    </li>
-
-    <li>
-        มีลักษณะทางพันธุกรรมบางอย่างที่แตกต่างจากมนุษย์ทั่วไป
-    </li>
-
-    <li>
-        น้ำและของเหลวเป็นข้อจำกัดสำคัญของร่างกาย
-    </li>
-
+<li>เป็นลูกครึ่งมนุษย์และ Fountaine</li>
+<li>มีความแข็งแรงทางกายภาพสูงเมื่อเทียบกับรูปร่าง</li>
+<li>มีอุณหภูมิร่างกายต่ำกว่ามนุษย์ทั่วไป</li>
+<li>มีความไวต่อความเย็น</li>
+<li>มีความไวต่อแสงอย่างรุนแรง</li>
+<li>มีภาวะเผือกและปัญหาด้านการมองเห็น</li>
+<li>การรับรู้สีมีข้อจำกัดอย่างมาก</li>
+<li>มีข้อจำกัดเกี่ยวกับการสัมผัสน้ำจากพันธุกรรม Fountaine</li>
+<li>มีความไวบริเวณมุมกรามมากเป็นพิเศษ</li>
 </ul>
 
+<h3>ร่างกายเทียม</h3>
 
-<!-- สุขภาพ -->
+<p>
+Master เคยได้รับการเปลี่ยนแปลงร่างกายครั้งสำคัญ
+รวมถึงการใช้หัวใจเทียมในช่วงหนึ่งของชีวิต
+การเปลี่ยนแปลงดังกล่าวกลายเป็นส่วนหนึ่งของประวัติและสภาพร่างกายของเขา
+</p>
 
-<h2 id="health">
-    4. ปัญหาทางร่างกาย
-</h2>
+</section>
+
+
+<section class="section" id="personality">
+
+<h2>5. บุคลิก</h2>
+
+<p>
+Master เป็นคนเงียบ สุภาพ และมักพยายามช่วยเหลือผู้อื่น
+แม้ภายในจะมีความรู้สึกกดดันและความไม่มั่นคงต่อตัวเองอยู่มาก
+</p>
+
+<h3>ต่อคนทั่วไป</h3>
 
 <ul>
-
-    <li>
-        ภาวะเผือกและความไวต่อแสง
-    </li>
-
-    <li>
-        ปัญหาการมองเห็น
-    </li>
-
-    <li>
-        การมองเห็นสีมีข้อจำกัดอย่างมาก
-    </li>
-
-    <li>
-        ระบบประสาทไวผิดปกติ
-    </li>
-
-    <li>
-        ไวต่อเสียงดังบางประเภท
-    </li>
-
-    <li>
-        มีข้อจำกัดเกี่ยวกับระบบหายใจ
-    </li>
-
-    <li>
-        หัวใจเดิมถูกแทนที่ด้วยหัวใจเทียม
-    </li>
-
+<li>สุภาพและใจดี</li>
+<li>ค่อนข้างเงียบและเก็บความรู้สึก</li>
+<li>มักพยายามช่วยคนอื่นก่อนคิดถึงตัวเอง</li>
+<li>ไม่ต้องการสร้างปัญหาให้คนรอบตัว</li>
+<li>มักพยายามควบคุมอารมณ์ของตัวเอง</li>
 </ul>
 
-
-<!-- บุคลิก -->
-
-<h2 id="personality">
-    5. บุคลิก
-</h2>
+<h3>ต่อคนที่ไว้ใจ</h3>
 
 <p>
-    Master เป็นคนเงียบ สุภาพ และมักให้ความสำคัญกับผู้อื่น
-    มากกว่าตัวเอง
+เมื่ออยู่กับคนที่เขาไว้ใจ Master สามารถแสดงด้านที่อ่อนโยนและเป็นธรรมชาติมากขึ้น
+เขาสามารถพูดมากขึ้น แสดงความรู้สึกมากขึ้น และต้องการความอบอุ่นจากคนใกล้ตัว
 </p>
+
+<h3>ความสัมพันธ์กับตัวเอง</h3>
+
+<p>
+Master มีแนวโน้มที่จะเข้าใจ ให้อภัย และเห็นคุณค่าของผู้อื่น
+แต่กลับทำสิ่งเหล่านั้นกับตัวเองได้ยากมาก
+เขามักมองตัวเองต่ำกว่าคนอื่นและรู้สึกว่าตัวเองไม่สมควรได้รับสิ่งดี ๆ
+</p>
+
+</section>
+
+
+<section class="section" id="likes">
+
+<h2>6. สิ่งที่ชอบและไม่ชอบ</h2>
+
+<h3>สิ่งที่ชอบ</h3>
 
 <ul>
-
-    <li>ใจดี</li>
-    <li>ชอบช่วยเหลือผู้อื่น</li>
-    <li>เก็บความรู้สึก</li>
-    <li>ไม่ไว้ใจคนง่าย</li>
-    <li>ไม่ชอบแสดงความอ่อนแอ</li>
-    <li>รักคนใกล้ตัวอย่างมาก</li>
-    <li>เมื่อไว้ใจใครแล้วจะเปิดเผยตัวตนมากขึ้น</li>
-    <li>มีปัญหาในการจัดการอารมณ์เมื่อถูกกดดันอย่างหนัก</li>
-
+<li>การเขียนการ์ตูน</li>
+<li>การวาดรูป</li>
+<li>วิทยาศาสตร์</li>
+<li>ดาราศาสตร์</li>
+<li>เครื่องจักรและเทคโนโลยี</li>
+<li>ป่าและธรรมชาติ</li>
+<li>สถานที่สงบและเงียบ</li>
+<li>คนที่เขาไว้ใจและรัก</li>
 </ul>
 
-
-<!-- สิ่งที่ชอบ -->
-
-<h2 id="likes">
-    6. สิ่งที่ชอบและไม่ชอบ
-</h2>
-
-<h3>
-    สิ่งที่ชอบ
-</h3>
+<h3>สิ่งที่ไม่ชอบ</h3>
 
 <ul>
-
-    <li>การเขียนการ์ตูน</li>
-    <li>การวาดรูป</li>
-    <li>เครื่องจักร</li>
-    <li>เทคโนโลยี</li>
-    <li>วิทยาศาสตร์</li>
-    <li>ดาราศาสตร์</li>
-    <li>ป่าและธรรมชาติ</li>
-    <li>สถานที่เงียบสงบ</li>
-
+<li>เสียงดัง</li>
+<li>น้ำ</li>
+<li>การถูกตะโกนใส่</li>
+<li>การถูกบังคับควบคุม</li>
+<li>การถูกปฏิเสธจากคนสำคัญ</li>
+<li>การทำร้ายคนที่เขารัก</li>
+<li>การทำให้ผู้อื่นต้องเจ็บปวดเพราะตัวเอง</li>
 </ul>
 
-<h3>
-    สิ่งที่ไม่ชอบ
-</h3>
-
-<ul>
-
-    <li>เสียงดัง</li>
-    <li>แสงจ้า</li>
-    <li>น้ำ</li>
-    <li>การถูกสัมผัสโดยไม่คาดคิด</li>
-
-</ul>
+</section>
 
 
-<!-- ความฝัน -->
+<section class="section" id="dreams">
 
-<h2 id="dreams">
-    7. ความฝัน
-</h2>
-
-<ul>
-
-    <li>เป็นนักเขียนที่มีชื่อเสียง</li>
-    <li>เป็นที่รักของผู้คน</li>
-    <li>เป็นวิศวกร</li>
-
-</ul>
-
-
-<!-- สภาพจิตใจ -->
-
-<h2 id="mental">
-    8. สภาพจิตใจ
-</h2>
+<h2>7. ความฝัน</h2>
 
 <p>
-    ประสบการณ์ในวัยเด็กและเหตุการณ์ในชีวิตภายหลัง
-    ส่งผลอย่างมากต่อตัวตนและสภาพจิตใจของ Master
-</p>
-
-<ul>
-
-    <li>ภาวะซึมเศร้าเรื้อรัง</li>
-    <li>Complex PTSD</li>
-    <li>ความวิตกกังวล</li>
-    <li>การไม่ยอมรับคุณค่าของตัวเอง</li>
-    <li>ความรู้สึกผิดจากอดีต</li>
-    <li>ความกลัวการถูกทอดทิ้ง</li>
-    <li>ความยากลำบากในการแสดงความรู้สึก</li>
-    <li>ความกดดันจากการพยายามเข้มแข็งตลอดเวลา</li>
-
-</ul>
-
-
-<!-- ประวัติ -->
-
-<h2 id="history">
-    9. ประวัติ
-</h2>
-
-<h3>
-    วัยเด็ก
-</h3>
-
-<p>
-    Master เกิดในตระกูล Relvent
-    ซึ่งเป็นตระกูลที่มีสถานะสูง
-    เขาเติบโตมาพร้อมกับ Amber และ Evan
-</p>
-
-<h3>
-    อายุ 4 ปี
-</h3>
-
-<p>
-    ครอบครัวเกิดความขัดแย้งครั้งใหญ่
-    และ Master ต้องแยกจากมารดา
-    เหตุการณ์นี้เป็นหนึ่งในจุดเปลี่ยนสำคัญที่สุดของชีวิตเขา
-</p>
-
-<h3>
-    อายุ 5–7 ปี
-</h3>
-
-<p>
-    Master เริ่มสูญเสียความทรงจำเกี่ยวกับมารดา
-    และพยายามปรับตัวเข้ากับชีวิตใหม่
-</p>
-
-<h3>
-    อายุ 8 ปี
-</h3>
-
-<p>
-    เขาเป็นเด็กที่ชอบช่วยเหลือผู้อื่น
-    และมีความผูกพันกับ Evan อย่างมาก
-</p>
-
-<h3>
-    อายุ 13 ปี
-</h3>
-
-<p>
-    หลังจากออกตามหา Amber เป็นเวลาหลายเดือน
-    Master กลับมาพบกับเหตุการณ์ร้ายแรงในครอบครัว
-    ซึ่งส่งผลต่อสภาพจิตใจของเขาอย่างมาก
-</p>
-
-<h3>
-    อายุ 14 ปี
-</h3>
-
-<p>
-    Jeremy Del Clarkson รับ Master ไปเลี้ยง
-    ความสัมพันธ์เริ่มต้นจากความรู้สึกว่าเขาได้รับการยอมรับ
-    แต่ต่อมากลายเป็นความสัมพันธ์ที่มีการควบคุมและการทดลองอย่างรุนแรง
-</p>
-
-<h3>
-    อายุ 17 ปี
-</h3>
-
-<p>
-    Master ได้รับหัวใจเทียมหลังจากหัวใจเดิมไม่สามารถทำงานได้ตามปกติ
-</p>
-
-<h3>
-    อายุ 18 ปี
-</h3>
-
-<p>
-    Jeremy จากไป และ Master เริ่มแยกตัวออกจากผู้คนมากขึ้น
-</p>
-
-<h3>
-    อายุ 20 ปี
-</h3>
-
-<p>
-    Master ใช้ชีวิตอย่างโดดเดี่ยว
-    และพยายามติดต่อ Jeremy อีกครั้งแต่ไม่สำเร็จ
-</p>
-
-<h3>
-    อายุ 24 ปี
-</h3>
-
-<p>
-    เป็นช่วงที่ Master พยายามสร้างชีวิตใหม่
-    และสนใจด้านวิทยาศาสตร์ เทคโนโลยี และการเขียน
-</p>
-
-<h3>
-    อายุ 37 ปี
-</h3>
-
-<p>
-    Master เข้าสู่ Superhero Federation
-    และเริ่มมีตัวตนในฐานะ Dealviver
-</p>
-
-<h3>
-    อายุ 47 ปี
-</h3>
-
-<p>
-    Dealviver เข้าสู่ช่วงเวลาปัจจุบันของเรื่อง
-    โดยใช้เทคโนโลยีและอาวุธที่สร้างขึ้นด้วยตัวเอง
-    เป็นส่วนสำคัญของความสามารถในการต่อสู้
-</p>
-
-
-<!-- พลังปัจจุบัน -->
-
-<h2 id="powers">
-    10. ความสามารถและพลังปัจจุบัน
-</h2>
-
-<p>
-    Dealviver เป็นบุคคลที่มีความสามารถเหนือมนุษย์จากทั้งพันธุกรรมของสายเลือด
-    Fountaine การดัดแปลงร่างกาย และเทคโนโลยีที่พัฒนาขึ้นด้วยตนเอง
-    ความสามารถของเขาไม่ได้ขึ้นอยู่กับพลังเพียงชนิดเดียว
-    แต่เป็นการผสมผสานระหว่างพลังทางกายภาพ ระบบประสาท
-    การควบคุมพลังงาน ความสามารถของดวงตา และเทคโนโลยี
+ความฝันของ Master ไม่ได้มีเพียงเรื่องการเป็นผู้แข็งแกร่ง
+แต่เกี่ยวข้องกับการสร้างสิ่งใหม่และทำให้โลกสามารถมีวันที่ดีขึ้นได้
 </p>
 
 <p>
-    ในช่วงเวลาปัจจุบัน Dealviver มีความสามารถหลากหลาย
-    แต่พลังของเขามีขีดจำกัดอย่างชัดเจน
-    โดยเฉพาะการใช้พลังงานต่อเนื่อง ความเครียดของร่างกาย
-    และข้อจำกัดจากร่างกายลูกครึ่งมนุษย์และ Fountaine
+หนึ่งในสิ่งที่สะท้อนความคิดของเขาคือแนวคิด
+<b>“He who made new day.”</b>
+ซึ่งเชื่อมโยงกับความต้องการของเขาที่อยากสร้างสิ่งที่มีความหมาย
+และมอบความหวังให้กับผู้อื่น
 </p>
 
+</section>
 
-<!-- ========================= -->
-<!-- 10.1 พละกำลัง -->
-<!-- ========================= -->
+
+<section class="section" id="history">
+
+<h2>9. ประวัติ</h2>
+
+<h3>วัยเด็ก</h3>
+
+<p>
+Master เกิดใน Chicago และเติบโตในตระกูล Relvent
+ช่วงวัยเด็กของเขาได้รับผลกระทบจากปัญหาภายในครอบครัว
+ซึ่งกลายเป็นหนึ่งในรากฐานสำคัญของบุคลิกในเวลาต่อมา
+</p>
+
+<h3>การสูญเสียครอบครัว</h3>
+
+<p>
+เมื่อเข้าสู่วัยรุ่น Master ต้องเผชิญกับเหตุการณ์ครั้งใหญ่ที่เกี่ยวข้องกับครอบครัว
+รวมถึงการออกตามหา Amber Relvent เป็นเวลานาน
+เหตุการณ์เหล่านี้เปลี่ยนมุมมองที่เขามีต่อครอบครัวและตัวเองอย่างมาก
+</p>
+
+<h3>Jeremy Del Clarkson</h3>
+
+<p>
+เมื่ออายุประมาณ 14 ปี Master ได้รับการรับเลี้ยงโดย Jeremy Del Clarkson
+ในช่วงแรกเขารู้สึกว่าตัวเองได้รับการยอมรับและมีครอบครัวอีกครั้ง
+แต่ความสัมพันธ์ดังกล่าวพัฒนาไปในทิศทางที่ทำให้ Master
+รู้สึกว่าตัวเองต้องเป็นไปตามสิ่งที่อีกฝ่ายต้องการ
+</p>
+
+<h3>หัวใจเทียม</h3>
+
+<p>
+ในช่วงวัยรุ่น Master ได้รับหัวใจเทียม
+ซึ่งกลายเป็นหนึ่งในเหตุการณ์สำคัญที่สุดที่เปลี่ยนแปลงร่างกายของเขา
+</p>
+
+<h3>ช่วงอายุ 18 ปี</h3>
+
+<p>
+หลังจากความสัมพันธ์กับ Jeremy สิ้นสุดลง Master เข้าสู่ช่วงชีวิตที่โดดเดี่ยวมากขึ้น
+เขาค่อย ๆ ปิดตัวเองและไม่สามารถแสดงความรู้สึกได้เหมือนเดิม
+</p>
+
+<h3>ช่วงวัยผู้ใหญ่</h3>
+
+<p>
+เมื่อเวลาผ่านไป Master เริ่มกลับมาสนใจวิทยาศาสตร์ เทคโนโลยี
+และการสร้างสิ่งใหม่อีกครั้ง
+แม้บาดแผลทางจิตใจจากอดีตยังคงส่งผลต่อเขา
+</p>
+
+</section>
+
+
+<section class="section" id="powers">
+
+<h2>10. ความสามารถและพลังปัจจุบัน</h2>
+
+<p>
+ความสามารถของ Master เกิดจากการผสมกันระหว่างพันธุกรรม Fountaine,
+ความสามารถทางกายภาพ และการเปลี่ยนแปลงทางเทคโนโลยีของร่างกาย
+</p>
+
+<div class="power-grid">
 
 <div class="power-box">
-
-<h3>10.1 พละกำลังเหนือมนุษย์</h3>
-
+<h3>พละกำลัง</h3>
 <p>
-    Dealviver มีพละกำลังทางกายภาพสูงกว่ามนุษย์ทั่วไปอย่างมาก
-    ความแข็งแรงส่วนหนึ่งมาจากพันธุกรรม Fountaine
-    และอีกส่วนมาจากการเปลี่ยนแปลงของร่างกายและเทคโนโลยี
+มีพละกำลังทางกายภาพสูงผิดปกติเมื่อเทียบกับร่างกายของมนุษย์ทั่วไป
+และสามารถใช้แรงได้มากกว่าที่รูปร่างภายนอกทำให้คาดคิด
 </p>
-
-<h4>ความสามารถ</h4>
-
-<ul>
-    <li>สามารถยกวัตถุที่มนุษย์ทั่วไปไม่สามารถยกได้</li>
-    <li>สามารถทำลายวัสดุที่มีความแข็งแรงสูงด้วยแรงทางกายภาพ</li>
-    <li>สามารถกระโดดได้สูงและไกลกว่ามนุษย์ทั่วไป</li>
-    <li>สามารถต่อสู้กับสิ่งมีชีวิตหรือบุคคลที่มีพลังเหนือมนุษย์ได้</li>
-    <li>สามารถใช้แรงกายร่วมกับเทคโนโลยีเพื่อเพิ่มประสิทธิภาพในการต่อสู้</li>
-</ul>
-
-<h4>ข้อจำกัด</h4>
-
-<ul>
-    <li>ไม่สามารถใช้พลังสูงสุดได้อย่างต่อเนื่อง</li>
-    <li>การใช้แรงมากเกินไปทำให้กล้ามเนื้อและระบบประสาทเกิดความเครียด</li>
-    <li>ความแข็งแรงไม่ได้หมายความว่าร่างกายจะไม่มีจุดอ่อน</li>
-    <li>อวัยวะหรือระบบภายในบางส่วนยังได้รับผลกระทบจากแรงกระแทกอย่างรุนแรงได้</li>
-</ul>
-
 </div>
-
-
-<!-- ========================= -->
-<!-- 10.2 ความเร็ว -->
-<!-- ========================= -->
 
 <div class="power-box">
-
-<h3>10.2 ความเร็วเหนือมนุษย์</h3>
-
+<h3>ความทนทาน</h3>
 <p>
-    Dealviver สามารถเคลื่อนที่และตอบสนองได้เร็วกว่ามนุษย์ทั่วไป
-    โดยเฉพาะในระยะสั้นและสถานการณ์การต่อสู้
+ร่างกายลูกครึ่ง Fountaine ทำให้เขามีความทนทานสูง
+และสามารถรับแรงกระแทกได้มากกว่ามนุษย์ทั่วไป
 </p>
-
-<h4>ลักษณะของความเร็ว</h4>
-
-<ul>
-    <li>ตอบสนองต่อการโจมตีได้รวดเร็ว</li>
-    <li>เปลี่ยนทิศทางการเคลื่อนไหวได้อย่างรวดเร็ว</li>
-    <li>เคลื่อนที่ระยะสั้นได้ในเวลาสั้นมาก</li>
-    <li>สามารถใช้ความเร็วร่วมกับพละกำลังเพื่อเพิ่มแรงโจมตี</li>
-</ul>
-
-<h4>ข้อจำกัด</h4>
-
-<ul>
-    <li>ความเร็วสูงสุดไม่สามารถรักษาไว้ได้นาน</li>
-    <li>การเร่งความเร็วอย่างรวดเร็วสร้างภาระต่อร่างกาย</li>
-    <li>พื้นที่แคบหรือมีสิ่งกีดขวางจำนวนมากลดประสิทธิภาพของความเร็ว</li>
-    <li>ความเร็วในการเคลื่อนที่สูงไม่ได้หมายความว่าการรับรู้จะเพิ่มขึ้นแบบไร้ขีดจำกัด</li>
-</ul>
-
 </div>
-
-
-<!-- ========================= -->
-<!-- 10.3 ความทนทาน -->
-<!-- ========================= -->
 
 <div class="power-box">
-
-<h3>10.3 ความทนทานเหนือมนุษย์</h3>
-
+<h3>ความสามารถของ Fountaine</h3>
 <p>
-    ร่างกายของ Dealviver สามารถรับแรงกระแทกและสภาพแวดล้อมที่รุนแรง
-    ได้มากกว่ามนุษย์ทั่วไป
+เลือด Fountaine ทำให้ Master มีคุณสมบัติทางกายภาพและชีวภาพเฉพาะตัว
+ซึ่งแตกต่างจากมนุษย์ปกติ
 </p>
-
-<h4>สามารถทนต่อ</h4>
-
-<ul>
-    <li>แรงกระแทกจากการต่อสู้</li>
-    <li>แรงตกกระแทกในระดับที่มนุษย์ทั่วไปไม่สามารถรับได้</li>
-    <li>อุณหภูมิที่สูงหรือต่ำกว่าปกติในช่วงเวลาหนึ่ง</li>
-    <li>แรงกดดันทางกายภาพบางประเภท</li>
-</ul>
-
-<h4>ข้อจำกัด</h4>
-
-<ul>
-    <li>ไม่ใช่ความคงกระพันอย่างสมบูรณ์</li>
-    <li>การโจมตีที่มีพลังงานสูงสามารถสร้างความเสียหายได้</li>
-    <li>การได้รับความเสียหายต่อเนื่องจะทำให้ความสามารถในการต่อสู้ลดลง</li>
-    <li>อวัยวะภายในและระบบประสาทยังเป็นข้อจำกัดสำคัญ</li>
-</ul>
-
 </div>
-
-
-<!-- ========================= -->
-<!-- 10.4 การบิน -->
-<!-- ========================= -->
 
 <div class="power-box">
-
-<h3>10.4 การบิน</h3>
-
+<h3>การปรับตัว</h3>
 <p>
-    Dealviver สามารถบินและควบคุมทิศทางของร่างกายกลางอากาศได้
-    โดยการบินสามารถใช้ร่วมกับระบบพลังงานและเทคโนโลยีของเขา
+พันธุกรรมผสมทำให้ร่างกายสามารถปรับตัวต่อสภาพแวดล้อมบางประเภทได้ดี
+แต่ก็สร้างข้อจำกัดเฉพาะตัวเช่นกัน
 </p>
-
-<h4>ความสามารถ</h4>
-
-<ul>
-    <li>บินขึ้นจากพื้นได้โดยไม่ต้องใช้พื้นที่สำหรับการออกตัวมาก</li>
-    <li>หยุดหรือชะลอความเร็วกลางอากาศได้</li>
-    <li>เปลี่ยนทิศทางอย่างรวดเร็ว</li>
-    <li>บินในระดับความสูงต่าง ๆ ได้</li>
-    <li>สามารถต่อสู้กลางอากาศได้</li>
-</ul>
-
-<h4>ข้อจำกัด</h4>
-
-<ul>
-    <li>ความเร็วและระยะเวลาการบินขึ้นอยู่กับพลังงานที่ใช้</li>
-    <li>การบินด้วยความเร็วสูงเป็นเวลานานเพิ่มภาระต่อร่างกาย</li>
-    <li>สภาพอากาศรุนแรงสามารถลดประสิทธิภาพการควบคุม</li>
-</ul>
-
 </div>
-
-
-<!-- ========================= -->
-<!-- 10.5 ประสาทสัมผัส -->
-<!-- ========================= -->
 
 <div class="power-box">
-
-<h3>10.5 ประสาทสัมผัสเหนือมนุษย์</h3>
-
+<h3>ความสามารถด้านวิทยาศาสตร์</h3>
 <p>
-    ระบบประสาทและประสาทสัมผัสของ Dealviver สามารถรับข้อมูลจากสภาพแวดล้อม
-    ได้ละเอียดกว่ามนุษย์ทั่วไป
+Master มีความสามารถด้านวิทยาศาสตร์ เครื่องจักร กลไก
+และเทคโนโลยี โดยเฉพาะสิ่งที่เกี่ยวข้องกับการสร้างและดัดแปลงอุปกรณ์
 </p>
-
-<h4>ความสามารถ</h4>
-
-<ul>
-    <li>ตรวจจับการเคลื่อนไหวของสิ่งมีชีวิต</li>
-    <li>รับรู้เสียงในช่วงที่มนุษย์ทั่วไปตรวจจับได้ยาก</li>
-    <li>ตรวจจับการเปลี่ยนแปลงของอุณหภูมิ</li>
-    <li>รับรู้ความผิดปกติของสภาพแวดล้อม</li>
-    <li>ใช้ข้อมูลจากหลายประสาทสัมผัสร่วมกันเพื่อประเมินสถานการณ์</li>
-</ul>
-
-<h4>ข้อจำกัด</h4>
-
-<ul>
-    <li>เสียงที่รุนแรงหรือข้อมูลจำนวนมากพร้อมกันสามารถทำให้เกิดภาวะรับข้อมูลมากเกินไป</li>
-    <li>สภาพแวดล้อมที่มีสัญญาณรบกวนจำนวนมากลดความแม่นยำ</li>
-    <li>ประสาทสัมผัสไม่ได้ทำให้สามารถรับรู้ทุกสิ่งได้โดยอัตโนมัติ</li>
-</ul>
-
 </div>
-
-
-<!-- ========================= -->
-<!-- 10.6 มองทะลุ -->
-<!-- ========================= -->
 
 <div class="power-box">
-
-<h3>10.6 การมองทะลุสิ่งกีดขวาง</h3>
-
+<h3>ความสามารถในการสร้าง</h3>
 <p>
-    Dealviver สามารถตรวจสอบวัตถุหรือโครงสร้างบางประเภทที่อยู่หลังสิ่งกีดขวาง
-    ทำให้สามารถมองเห็นโครงสร้างภายในหรือเป้าหมายที่ไม่สามารถมองเห็นได้ด้วยสายตาปกติ
+เขาสามารถนำความรู้ทางวิทยาศาสตร์และเทคโนโลยีมาใช้สร้างสิ่งใหม่
+รวมถึงนำความคิดจากจินตนาการมาพัฒนาเป็นผลงานจริง
 </p>
-
-<h4>ระยะและความสามารถ</h4>
-
-<ul>
-    <li>สามารถตรวจสอบสิ่งกีดขวางในระยะไกลได้</li>
-    <li>สามารถประเมินโครงสร้างของวัตถุหลังผนัง</li>
-    <li>สามารถตรวจจับสิ่งมีชีวิตที่อยู่หลังสิ่งกีดขวางบางชนิด</li>
-    <li>สามารถใช้เพื่อค้นหาบุคคลหรือวัตถุที่ซ่อนอยู่</li>
-</ul>
-
-<h4>ข้อจำกัด</h4>
-
-<ul>
-    <li>ไม่สามารถมองทะลุวัตถุทุกชนิดได้</li>
-    <li>วัสดุที่มีความหนาแน่นสูงสามารถลดหรือป้องกันการตรวจจับ</li>
-    <li>กำแพงหลายชั้นทำให้ภาพมีความแม่นยำน้อยลง</li>
-    <li>การใช้ต่อเนื่องเป็นเวลานานทำให้ดวงตาและระบบประสาทเกิดความเครียด</li>
-</ul>
+</div>
 
 </div>
 
+</section>
 
-<!-- ========================= -->
-<!-- 10.7 HEAT VISION -->
-<!-- ========================= -->
 
-<div class="power-box">
+<section class="section" id="technology">
 
-<h3>10.7 Heat Vision</h3>
+<h2>11. เทคโนโลยี</h2>
+
+<h3>หัวใจเทียม</h3>
 
 <p>
-    Heat Vision เป็นหนึ่งในความสามารถหลักและเป็นพลังประจำตัวของ Dealviver
-    โดยเขาสามารถปล่อยลำแสงความร้อนออกจากดวงตา
-    เพื่อโจมตี ตัด หลอม หรือให้ความร้อนแก่วัตถุที่อยู่ตรงหน้า
+หัวใจเทียมเป็นส่วนสำคัญของร่างกาย Master
+และเป็นผลจากการเปลี่ยนแปลงทางเทคโนโลยีที่เขาได้รับในช่วงวัยรุ่น
 </p>
 
-<h4>ลักษณะของพลัง</h4>
-
-<ul>
-    <li>ปล่อยพลังงานความร้อนออกจากดวงตาโดยตรง</li>
-    <li>สามารถปรับระดับความร้อนได้</li>
-    <li>สามารถใช้เป็นลำแสงต่อเนื่องหรือการปล่อยพลังงานเป็นช่วง ๆ</li>
-    <li>สามารถปรับความเข้มข้นของลำแสงให้เหมาะกับเป้าหมาย</li>
-    <li>สามารถใช้สำหรับการต่อสู้และงานที่ต้องการความแม่นยำ</li>
-</ul>
-
-<h4>ระดับอุณหภูมิ</h4>
-
-<ul>
-    <li>
-        <b>ระดับต่ำ:</b>
-        ประมาณ 100–500°C
-        ใช้สำหรับให้ความร้อนหรือทำให้พื้นผิวร้อนขึ้น
-    </li>
-
-    <li>
-        <b>ระดับกลาง:</b>
-        ประมาณ 500–2,000°C
-        สามารถทำให้วัสดุหลายชนิดอ่อนตัวหรือเสียรูปได้
-    </li>
-
-    <li>
-        <b>ระดับสูง:</b>
-        ประมาณ 2,000–5,000°C
-        สามารถหลอมวัสดุที่ทนความร้อนสูงบางประเภทได้
-    </li>
-
-    <li>
-        <b>ระดับสูงสุด:</b>
-        ประมาณ 5,000–10,000°C
-        เป็นระดับที่ Dealviver ไม่สามารถรักษาไว้ได้นาน
-        และใช้เฉพาะในสถานการณ์ที่จำเป็น
-    </li>
-</ul>
-
-<h4>ระยะ</h4>
-
-<ul>
-    <li><b>ระยะใกล้:</b> มีความแม่นยำสูงที่สุด</li>
-    <li><b>ระยะกลาง:</b> สามารถรักษาความรุนแรงของลำแสงได้ดี</li>
-    <li><b>ระยะไกล:</b> พลังงานเริ่มกระจายและความแม่นยำลดลง</li>
-    <li>
-        ระยะใช้งานที่มีประสิทธิภาพสูงสุดอยู่ที่ประมาณ 1–2 กิโลเมตร
-    </li>
-    <li>
-        สามารถยิงได้ไกลกว่านั้น แต่ประสิทธิภาพและความแม่นยำจะลดลงตามระยะทาง
-    </li>
-</ul>
-
-<h4>ความแม่นยำ</h4>
-
-<ul>
-    <li>สามารถโฟกัสลำแสงไปยังพื้นที่ขนาดเล็กได้</li>
-    <li>สามารถลดพื้นที่ผลกระทบเพื่อหลีกเลี่ยงความเสียหายโดยไม่จำเป็น</li>
-    <li>สามารถใช้พลังงานระดับต่ำสำหรับงานที่ต้องการความละเอียด</li>
-    <li>สามารถเปลี่ยนความกว้างของลำแสงตามสถานการณ์</li>
-</ul>
-
-<h4>รูปแบบการใช้งาน</h4>
-
-<ul>
-    <li><b>Focused Beam:</b> ลำแสงแคบและเข้มข้นสำหรับเจาะหรือตัด</li>
-    <li><b>Wide Beam:</b> ลำแสงกว้างสำหรับโจมตีพื้นที่</li>
-    <li><b>Pulse:</b> ปล่อยพลังงานเป็นช่วงสั้น ๆ เพื่อลดการใช้พลังงาน</li>
-    <li><b>Continuous:</b> ยิงต่อเนื่องเพื่อรักษาความร้อนบนเป้าหมาย</li>
-</ul>
-
-<h4>ข้อจำกัดสำคัญ</h4>
-
-<ul>
-    <li>ยิ่งใช้อุณหภูมิสูง ยิ่งใช้พลังงานมาก</li>
-    <li>ไม่สามารถใช้ระดับสูงสุดได้ต่อเนื่อง</li>
-    <li>การใช้พลังมากเกินไปทำให้ระบบประสาทและดวงตาเกิดความเครียด</li>
-    <li>ต้องใช้สมาธิในการควบคุมทิศทางและความเข้มของลำแสง</li>
-    <li>สิ่งกีดขวางบางชนิดสามารถดูดซับ สะท้อน หรือกระจายพลังงานได้</li>
-    <li>การใช้ Heat Vision ติดต่อกันเป็นเวลานานทำให้ประสิทธิภาพลดลง</li>
-</ul>
-
-<h4>จุดเด่น</h4>
+<h3>เทคโนโลยีของ Master</h3>
 
 <p>
-    จุดเด่นของ Heat Vision ไม่ได้อยู่ที่การสร้างความร้อนสูงสุดเพียงอย่างเดียว
-    แต่คือความสามารถในการควบคุมพลังงานอย่างละเอียด
-    ทำให้ Dealviver สามารถใช้พลังเดียวกันได้ทั้งในการต่อสู้
-    การทำลายวัตถุ และการใช้งานที่ต้องการความแม่นยำ
+Master มีความรู้ด้านเครื่องจักรและเทคโนโลยีในระดับสูง
+โดยสามารถศึกษา วิเคราะห์ ซ่อมแซม และพัฒนาเทคโนโลยีต่าง ๆ
+ได้ตามสถานการณ์
 </p>
 
-</div>
-
-
-<!-- ========================= -->
-<!-- 10.8 ICE MANIPULATION -->
-<!-- ========================= -->
-
-<div class="power-box">
-
-<h3>10.8 การควบคุมน้ำแข็ง</h3>
+<h3>เทคโนโลยีภายในร่างกาย</h3>
 
 <p>
-    Dealviver สามารถสร้าง ควบคุม และเปลี่ยนรูปแบบของน้ำแข็ง
-    โดยใช้พลังงานของร่างกายร่วมกับความสามารถด้านอุณหภูมิ
+ร่างกายของ Master มีส่วนประกอบที่ได้รับการดัดแปลงด้วยเทคโนโลยี
+ทำให้ร่างกายไม่ได้เป็นเพียงสิ่งมีชีวิตตามธรรมชาติทั้งหมด
 </p>
 
-<h4>ความสามารถ</h4>
-
-<ul>
-    <li>สร้างน้ำแข็งขึ้นมาในพื้นที่ที่เหมาะสม</li>
-    <li>สร้างกำแพงน้ำแข็ง</li>
-    <li>สร้างพื้นผิวน้ำแข็ง</li>
-    <li>สร้างโครงสร้างสำหรับป้องกันตัว</li>
-    <li>สร้างอาวุธหรือเครื่องมือจากน้ำแข็ง</li>
-    <li>ควบคุมรูปร่างและทิศทางของน้ำแข็ง</li>
-    <li>ลดอุณหภูมิของพื้นที่โดยรอบ</li>
-</ul>
-
-<h4>การใช้งานในการต่อสู้</h4>
-
-<ul>
-    <li>สร้างสิ่งกีดขวาง</li>
-    <li>จำกัดการเคลื่อนไหวของคู่ต่อสู้</li>
-    <li>สร้างเกราะชั่วคราว</li>
-    <li>สร้างพื้นที่ควบคุมสนามรบ</li>
-    <li>ใช้ร่วมกับความสามารถด้านความเย็นเพื่อเพิ่มประสิทธิภาพ</li>
-</ul>
-
-<h4>ข้อจำกัด</h4>
-
-<ul>
-    <li>ต้องใช้พลังงานในการสร้างและควบคุมน้ำแข็ง</li>
-    <li>ปริมาณน้ำแข็งที่สร้างได้มีขีดจำกัด</li>
-    <li>การสร้างโครงสร้างขนาดใหญ่ใช้พลังงานมาก</li>
-    <li>อุณหภูมิของสภาพแวดล้อมส่งผลต่อประสิทธิภาพ</li>
-    <li>น้ำแข็งที่สร้างขึ้นไม่ได้แข็งแกร่งจนทำลายไม่ได้</li>
-</ul>
-
-</div>
+</section>
 
 
-<!-- ========================= -->
-<!-- 10.9 ความสามารถด้านความเย็น -->
-<!-- ========================= -->
+<section class="section" id="weapons">
 
-<div class="power-box">
-
-<h3>10.9 การควบคุมความเย็นและอุณหภูมิ</h3>
+<h2>12. อุปกรณ์ต่อสู้</h2>
 
 <p>
-    นอกจากการสร้างน้ำแข็ง Dealviver ยังสามารถลดอุณหภูมิ
-    และควบคุมพลังงานความเย็นในพื้นที่ที่กำหนดได้
+Master มีความเกี่ยวข้องกับเทคโนโลยีและอุปกรณ์ที่สามารถใช้ในการต่อสู้
+อย่างไรก็ตาม รายละเอียดของอุปกรณ์แต่ละชนิดควรอ้างอิงจากเหตุการณ์ที่ปรากฏในนิยาย
+และข้อมูล Canon ล่าสุด
 </p>
 
-<h4>ความสามารถ</h4>
+<h3>อุปกรณ์เทคโนโลยี</h3>
 
 <ul>
-    <li>ลดอุณหภูมิของวัตถุ</li>
-    <li>ลดอุณหภูมิของพื้นที่โดยรอบ</li>
-    <li>สร้างกระแสอากาศเย็น</li>
-    <li>ทำให้พื้นผิวเกิดน้ำแข็ง</li>
-    <li>ลดความร้อนของวัตถุที่มีอุณหภูมิสูง</li>
-    <li>สร้างสภาพแวดล้อมที่เหมาะกับการใช้พลังน้ำแข็ง</li>
+<li>อุปกรณ์เสริมร่างกาย</li>
+<li>เทคโนโลยีป้องกัน</li>
+<li>เครื่องมือทางวิทยาศาสตร์</li>
+<li>อุปกรณ์ที่สร้างหรือดัดแปลงขึ้นเอง</li>
 </ul>
 
-<h4>ระดับการลดอุณหภูมิ</h4>
-
-<ul>
-    <li>สามารถลดอุณหภูมิในพื้นที่ขนาดเล็กได้อย่างรวดเร็ว</li>
-    <li>สามารถทำให้อุณหภูมิลดลงต่ำกว่าจุดเยือกแข็งได้</li>
-    <li>สามารถสร้างอุณหภูมิระดับต่ำมากได้ในบริเวณจำกัด</li>
-    <li>การสร้างความเย็นในพื้นที่ขนาดใหญ่ต้องใช้พลังงานมากขึ้นอย่างมาก</li>
-</ul>
-
-<h4>ข้อจำกัด</h4>
-
-<ul>
-    <li>ไม่สามารถทำให้อุณหภูมิของพื้นที่ขนาดใหญ่ลดลงอย่างรวดเร็วโดยไม่เสียพลังงานจำนวนมาก</li>
-    <li>ยิ่งพื้นที่กว้างยิ่งควบคุมอุณหภูมิได้ยาก</li>
-    <li>ความเย็นที่รุนแรงเป็นเวลานานทำให้ร่างกายของ Dealviver รับภาระสูง</li>
-</ul>
-
-</div>
+</section>
 
 
-<!-- ========================= -->
-<!-- 10.10 TELEKINESIS -->
-<!-- ========================= -->
+<section class="section" id="weaknesses">
 
-<div class="power-box">
-
-<h3>10.10 Telekinesis</h3>
+<h2>14. จุดอ่อน</h2>
 
 <p>
-    Dealviver สามารถใช้พลังจิตเพื่อออกแรงต่อวัตถุ
-    โดยไม่จำเป็นต้องสัมผัสวัตถุนั้นโดยตรง
-</p>
-
-<h4>ความสามารถ</h4>
-
-<ul>
-    <li>ผลักวัตถุ</li>
-    <li>ดึงวัตถุเข้าหาตัว</li>
-    <li>ยกวัตถุขึ้นจากพื้น</li>
-    <li>หยุดหรือเปลี่ยนทิศทางของวัตถุที่กำลังเคลื่อนที่</li>
-    <li>ควบคุมวัตถุหลายชิ้นในเวลาเดียวกัน</li>
-    <li>ใช้แรงจิตเพื่อช่วยในการเคลื่อนไหว</li>
-</ul>
-
-<h4>ระยะ</h4>
-
-<ul>
-    <li>มีความแม่นยำสูงที่สุดในระยะใกล้</li>
-    <li>สามารถควบคุมวัตถุในระยะไกลได้ แต่ต้องใช้สมาธิมากขึ้น</li>
-    <li>ยิ่งวัตถุหนักและอยู่ไกล ยิ่งใช้พลังงานมาก</li>
-</ul>
-
-<h4>ข้อจำกัด</h4>
-
-<ul>
-    <li>ไม่สามารถควบคุมวัตถุทุกชนิดได้โดยไม่มีขีดจำกัด</li>
-    <li>วัตถุที่มีมวลมากต้องใช้พลังงานมาก</li>
-    <li>การควบคุมหลายสิ่งพร้อมกันลดความแม่นยำ</li>
-    <li>หากเสียสมาธิ การควบคุมอาจหยุดลง</li>
-</ul>
-
-</div>
-
-
-<!-- ========================= -->
-<!-- 10.11 REGENERATION -->
-<!-- ========================= -->
-
-<div class="power-box">
-
-<h3>10.11 การฟื้นฟูร่างกาย</h3>
-
-<p>
-    ร่างกายของ Dealviver สามารถฟื้นตัวจากความเสียหายได้เร็วกว่ามนุษย์ทั่วไป
-    ความสามารถนี้ช่วยให้เขากลับมาทำงานได้เร็วขึ้นหลังได้รับบาดเจ็บ
-</p>
-
-<h4>ความสามารถ</h4>
-
-<ul>
-    <li>ฟื้นตัวจากบาดแผลได้เร็วขึ้น</li>
-    <li>ลดระยะเวลาในการพักฟื้น</li>
-    <li>สามารถซ่อมแซมความเสียหายของเนื้อเยื่อบางประเภท</li>
-    <li>ช่วยให้ร่างกายกลับมาทำงานได้หลังจากได้รับความเสียหาย</li>
-</ul>
-
-<h4>ข้อจำกัด</h4>
-
-<ul>
-    <li>ไม่ใช่การฟื้นฟูที่ไม่มีขีดจำกัด</li>
-    <li>ความเสียหายรุนแรงต้องใช้เวลาฟื้นตัว</li>
-    <li>การฟื้นฟูใช้พลังงานและทรัพยากรของร่างกาย</li>
-    <li>การได้รับความเสียหายหลายครั้งติดต่อกันทำให้การฟื้นฟูช้าลง</li>
-    <li>ระบบที่เสียหายอย่างรุนแรงอาจต้องพึ่งพาเทคโนโลยีช่วยเหลือ</li>
-</ul>
-
-</div>
-
-
-<!-- ========================= -->
-<!-- 10.12 ENERGY CONTROL -->
-<!-- ========================= -->
-
-<div class="power-box">
-
-<h3>10.12 การควบคุมและใช้พลังงาน</h3>
-
-<p>
-    Dealviver สามารถรวบรวม ควบคุม และส่งผ่านพลังงาน
-    ไปยังความสามารถหรือระบบเทคโนโลยีของตนเอง
-</p>
-
-<h4>การใช้งาน</h4>
-
-<ul>
-    <li>จ่ายพลังงานให้ระบบต่าง ๆ</li>
-    <li>เพิ่มประสิทธิภาพของอาวุธ</li>
-    <li>สนับสนุน Heat Vision</li>
-    <li>สนับสนุนการบิน</li>
-    <li>สนับสนุนระบบป้องกัน</li>
-    <li>ส่งพลังงานออกไปในรูปแบบการโจมตี</li>
-</ul>
-
-<h4>ข้อจำกัด</h4>
-
-<ul>
-    <li>พลังงานที่มีอยู่ไม่ใช่ทรัพยากรไร้ขีดจำกัด</li>
-    <li>การใช้หลายระบบพร้อมกันทำให้พลังงานลดลงเร็ว</li>
-    <li>การใช้พลังงานระดับสูงเป็นเวลานานทำให้ร่างกายเกิดความเครียด</li>
-    <li>เมื่อพลังงานต่ำ ความสามารถหลายอย่างจะมีประสิทธิภาพลดลง</li>
-</ul>
-
-</div>
-
-
-<!-- ========================= -->
-<!-- 10.13 COMBAT -->
-<!-- ========================= -->
-
-<div class="power-box">
-
-<h3>10.13 ทักษะการต่อสู้</h3>
-
-<p>
-    นอกจากพลังเหนือมนุษย์ Dealviver ยังสามารถนำความรู้ด้านวิทยาศาสตร์
-    วิศวกรรม และเทคโนโลยีมาประยุกต์ใช้ในการต่อสู้
+แม้ Master จะมีความสามารถทางกายภาพสูง
+แต่ร่างกายลูกครึ่งมนุษย์และ Fountaine ทำให้เขามีข้อจำกัดเฉพาะตัว
 </p>
 
 <ul>
-    <li>วิเคราะห์จุดแข็งและจุดอ่อนของคู่ต่อสู้</li>
-    <li>ใช้สภาพแวดล้อมให้เกิดประโยชน์</li>
-    <li>ผสมผสานพลังหลายชนิดเข้าด้วยกัน</li>
-    <li>ใช้อุปกรณ์และอาวุธที่สร้างขึ้นเอง</li>
-    <li>ปรับกลยุทธ์ตามสถานการณ์</li>
+<li>ไวต่อแสงอย่างมาก</li>
+<li>มีปัญหาด้านการมองเห็น</li>
+<li>การรับรู้สีมีข้อจำกัด</li>
+<li>ไม่ทนต่อความเย็น</li>
+<li>มีข้อจำกัดเกี่ยวกับน้ำจากพันธุกรรม Fountaine</li>
+<li>มีจุดไวต่อความรู้สึกบริเวณมุมกราม</li>
+<li>สภาพร่างกายได้รับผลกระทบจากการผสมพันธุกรรม</li>
+<li>หัวใจเทียมและการดัดแปลงร่างกายเป็นส่วนสำคัญต่อการดำรงชีวิตของเขา</li>
 </ul>
 
-</div>
-
-
-<!-- ========================= -->
-<!-- 10.14 POWER COMBINATION -->
-<!-- ========================= -->
-
-<h3>10.14 การผสมผสานความสามารถ</h3>
-
-<p>
-    จุดเด่นของ Dealviver คือการนำความสามารถหลายประเภทมาใช้ร่วมกัน
-    แทนที่จะพึ่งพาพลังชนิดใดชนิดหนึ่งเพียงอย่างเดียว
-</p>
+<h3>จุดอ่อนทางจิตใจ</h3>
 
 <ul>
-
-    <li>
-        <b>Heat Vision + การมองทะลุสิ่งกีดขวาง</b><br>
-        สามารถตรวจจับเป้าหมายหลังสิ่งกีดขวาง
-        แล้วเลือกตำแหน่งโจมตีได้อย่างแม่นยำ
-    </li>
-
-    <li>
-        <b>Ice Manipulation + ความเย็น</b><br>
-        ใช้ลดอุณหภูมิและสร้างโครงสร้างน้ำแข็งเพื่อควบคุมพื้นที่
-    </li>
-
-    <li>
-        <b>Telekinesis + Heat Vision</b><br>
-        ใช้การควบคุมวัตถุเพื่อเปลี่ยนตำแหน่งหรือสร้างจังหวะ
-        ก่อนใช้ Heat Vision
-    </li>
-
-    <li>
-        <b>Superhuman Speed + Strength</b><br>
-        เพิ่มประสิทธิภาพของการโจมตีระยะประชิด
-    </li>
-
-    <li>
-        <b>Superhuman Senses + Technology</b><br>
-        ใช้ข้อมูลจากประสาทสัมผัสร่วมกับระบบวิเคราะห์
-        เพื่อเพิ่มความแม่นยำในการตัดสินใจ
-    </li>
-
-    <li>
-        <b>Energy Control + Technology</b><br>
-        ใช้พลังงานเพื่อสนับสนุนระบบอาวุธ เกราะ และอุปกรณ์ต่าง ๆ
-    </li>
-
+<li>ไม่มั่นใจในคุณค่าของตัวเอง</li>
+<li>มีแนวโน้มเก็บความรู้สึก</li>
+<li>ไวต่อการถูกปฏิเสธ</li>
+<li>ไวต่อการถูกตะโกนหรือกดดัน</li>
+<li>มักให้อภัยผู้อื่นได้ง่ายกว่าการให้อภัยตัวเอง</li>
 </ul>
 
+</section>
 
-<!-- ========================= -->
-<!-- 10.15 LIMITATIONS -->
-<!-- ========================= -->
 
-<h3>10.15 ข้อจำกัดโดยรวมของ Dealviver</h3>
+<section class="section" id="relationships">
 
-<p>
-    แม้ Dealviver จะมีความสามารถจำนวนมาก
-    แต่พลังของเขาไม่ได้ไร้ขีดจำกัด
-    การใช้ความสามารถหลายอย่างพร้อมกันเป็นเวลานาน
-    สามารถทำให้ร่างกายและระบบเทคโนโลยีเกิดภาวะรับภาระสูง
-</p>
+<h2>15. ความสัมพันธ์</h2>
 
-<ul>
-
-    <li>
-        <b>การใช้พลังงาน:</b>
-        ความสามารถระดับสูงต้องใช้พลังงานจำนวนมาก
-    </li>
-
-    <li>
-        <b>ภาระต่อระบบประสาท:</b>
-        การใช้ประสาทสัมผัส พลังจิต และความสามารถของดวงตา
-        พร้อมกันเป็นเวลานานทำให้เกิดความเครียด
-    </li>
-
-    <li>
-        <b>การฟื้นตัว:</b>
-        หลังการต่อสู้ที่ใช้พลังงานสูง Dealviver จำเป็นต้องมีเวลาฟื้นตัว
-    </li>
-
-    <li>
-        <b>การควบคุม:</b>
-        พลังที่รุนแรงต้องการสมาธิและการควบคุมที่แม่นยำ
-    </li>
-
-    <li>
-        <b>ร่างกายลูกครึ่ง:</b>
-        แม้สายเลือด Fountaine จะเพิ่มความสามารถ
-        แต่ร่างกายของเขายังมีข้อจำกัดจากพันธุกรรมมนุษย์
-    </li>
-
-    <li>
-        <b>ความเสียหายสะสม:</b>
-        การได้รับความเสียหายหลายครั้งติดต่อกัน
-        สามารถลดประสิทธิภาพของความสามารถได้
-    </li>
-
-    <li>
-        <b>เทคโนโลยี:</b>
-        ระบบสนับสนุนบางอย่างสามารถเสียหายหรือทำงานผิดปกติได้
-        ทำให้ Dealviver ต้องพึ่งพาความสามารถพื้นฐานของตัวเอง
-    </li>
-
-<ul>
-
-</div>
-
-<!-- อาวุธ -->
-
-<h2 id="weapons">
-    12. อาวุธ
-</h2>
+<h3>Vein Thompson</h3>
 
 <p>
-    Dealviver สร้างอาวุธขึ้นด้วยตัวเอง
-    และนำเทคโนโลยีเหล่านั้นมาใช้ร่วมกับความสามารถของร่างกาย
+Vein เป็นเพื่อนสนิทและหนึ่งในคนที่รู้จัก Master มาตั้งแต่วัยเด็ก
+ทั้งสองรู้จักกันตั้งแต่อายุประมาณ 6 ปี
+และมีสายสัมพันธ์ที่ลึกซึ้งมาก
 </p>
 
-
-<div class="tech-box">
-
-    <h3>
-        อาวุธพลังงาน
-    </h3>
-
-    <p>
-        อาวุธที่ใช้พลังงานจากระบบเทคโนโลยีของ Dealviver
-        สำหรับการโจมตีในระยะต่าง ๆ
-    </p>
-
-</div>
-
-
-<div class="tech-box">
-
-    <h3>
-        อาวุธติดตั้งบนร่างกาย
-    </h3>
-
-    <p>
-        ระบบอาวุธที่สามารถใช้งานร่วมกับร่างกาย
-        และเปลี่ยนรูปแบบตามสถานการณ์
-    </p>
-
-</div>
-
-
-<div class="tech-box">
-
-    <h3>
-        อาวุธสนับสนุน
-    </h3>
-
-    <p>
-        อุปกรณ์ที่ใช้สำหรับตรวจจับ ป้องกัน
-        ควบคุมพื้นที่ หรือสนับสนุนการต่อสู้
-    </p>
-
-</div>
-
-
-<div class="warning-box">
-
-    <b>หมายเหตุ:</b>
-
-    รายการอาวุธเฉพาะของ Dealviver
-    ควรเพิ่มตามอาวุธที่ปรากฏใน Timeline ปัจจุบันของนิยาย
-    เพื่อป้องกันข้อมูลจาก Canon รุ่นเก่าปะปนกับ Canon ปัจจุบัน
-
-</div>
-
-
-<!-- ดวงตาซ้าย -->
-
-<h2 id="eye">
-    13. ดวงตาซ้าย
-</h2>
+<h3>Jennifer Starfaller</h3>
 
 <p>
-    ดวงตาซ้ายของ Dealviver เป็นระบบเทคโนโลยีที่ถูกสร้างขึ้น
-    และทำหน้าที่เป็นส่วนหนึ่งของระบบตรวจจับและการต่อสู้
+Jennifer เป็นบุคคลสำคัญในชีวิตของ Master
+และเป็นหนึ่งในคนที่สามารถเข้าถึงด้านที่อ่อนโยนและเปราะบางของเขาได้
 </p>
 
-<ul>
-
-    <li>ระบบตรวจจับข้อมูล</li>
-    <li>การตรวจจับความร้อน</li>
-    <li>ระบบพลังงาน</li>
-    <li>การวิเคราะห์เป้าหมาย</li>
-
-</ul>
-
-
-<!-- จุดอ่อน -->
-
-<h2 id="weaknesses">
-    14. จุดอ่อน
-</h2>
-
-<ul>
-
-    <li>บาดแผลทางจิตใจจากอดีต</li>
-
-    <li>ความเครียดสะสม</li>
-
-    <li>ความไวต่อเสียงบางประเภท</li>
-
-    <li>ความไวต่อแสง</li>
-
-    <li>ข้อจำกัดเกี่ยวกับน้ำและของเหลว</li>
-
-    <li>ปัญหาการมองเห็นเดิม</li>
-
-    <li>ความเปราะบางทางอารมณ์</li>
-
-    <li>ความทรงจำเกี่ยวกับอดีต</li>
-
-    <li>ความต้องการความรักและการยอมรับ</li>
-
-</ul>
-
-
-<!-- ความสัมพันธ์ -->
-
-<h2 id="relationships">
-    15. ความสัมพันธ์
-</h2>
-
-
-<h3>
-    Liam Relvent
-</h3>
+<h3>Ava Octilavber Relvent</h3>
 
 <p>
-    บิดาผู้ให้กำเนิดของ Master เป็น Fountaine
-    และเสียชีวิตแล้ว
+Ava เป็นแม่ของ Master และเป็นส่วนสำคัญของปมครอบครัวในอดีตของเขา
 </p>
 
-
-<h3>
-    Ava Octilavber Relvent
-</h3>
+<h3>Liam Relvent</h3>
 
 <p>
-    มารดาของ Master
-    เป็นบุคคลสำคัญในช่วงวัยเด็กของเขา
+Liam เป็นพ่อของ Master และเป็นสมาชิกสายเลือด Fountaine
+ปัจจุบันเสียชีวิตแล้ว
 </p>
 
-
-<h3>
-    Amber Relvent
-</h3>
+<h3>Jeremy Del Clarkson</h3>
 
 <p>
-    พี่น้องร่วมสายเลือดของ Master
-    ปัจจุบันยังมีชีวิตอยู่และต่อมากลายเป็น Captain Reartval
+Jeremy เป็นพ่อบุญธรรมของ Master
+ความสัมพันธ์ของทั้งสองมีอิทธิพลอย่างมากต่อพัฒนาการทางจิตใจของ Master
 </p>
 
-
-<h3>
-    Evan Relvent
-</h3>
+<h3>Amber Relvent</h3>
 
 <p>
-    น้องชายของ Master ซึ่งเสียชีวิตแล้ว
-    Master มีความผูกพันกับเขาอย่างมาก
+Amber เป็นสมาชิกตระกูล Relvent ที่ Master เคยออกตามหา
+ปัจจุบันเธอยังมีชีวิตอยู่และกลายเป็น Captain Reartval
 </p>
 
-
-<h3>
-    Jeremy Del Clarkson
-</h3>
+<h3>Evan Relvent</h3>
 
 <p>
-    บิดาบุญธรรมของ Master
-    ความสัมพันธ์ในช่วงแรกเต็มไปด้วยความรู้สึกว่าตนเองได้รับการยอมรับ
-    แต่ภายหลังกลายเป็นความสัมพันธ์ที่มีการควบคุมและการทดลอง
+Evan เป็นสมาชิกครอบครัวที่มีความสำคัญต่อชีวิตวัยเด็กของ Master
+ปัจจุบันเสียชีวิตแล้ว
 </p>
 
-
-<h3>
-    Vein Thompson
-</h3>
+<h3>Ryan Relvent</h3>
 
 <p>
-    เพื่อนสนิทที่สุดของ Master
-    และเป็นหนึ่งในคนที่รู้จักเขามาตั้งแต่อายุ 6 ปี
+Ryan เป็นลูกชายของ Master
+แต่สถานะปัจจุบันของ Ryan ยังไม่มีข้อมูลที่แน่ชัดในข้อมูลตัวละคร
 </p>
 
-
-<h3>
-    Jennifer Starfaller
-</h3>
-
-<p>
-    บุคคลสำคัญที่ Master รักและมีความผูกพันอย่างลึกซึ้ง
-</p>
+</section>
 
 
-<h3>
-    Ryan Relvent
-</h3>
+<section class="section" id="timeline">
 
-<p>
-    ลูกชายของ Master
-    Master ทราบว่าเขามีลูก
-    แต่ไม่แน่ใจเกี่ยวกับสถานะปัจจุบันของ Ryan
-</p>
-
-
-<!-- การสัมผัส -->
-
-<h2 id="touch">
-    16. การสัมผัสและความไว้วางใจ
-</h2>
-
-<p>
-    Master ไม่ชอบการถูกสัมผัสโดยไม่คาดคิด
-    เนื่องจากประสบการณ์ในอดีตทำให้เขาระมัดระวังในการไว้ใจผู้อื่น
-</p>
-
-<p>
-    Vein เป็นข้อยกเว้นสำคัญ
-    Master สามารถยอมรับการกอดหรือการสัมผัสจาก Vein ได้
-</p>
-
-
-<!-- Timeline -->
-
-<h2 id="timeline">
-    17. Timeline
-</h2>
+<h2>17. Timeline</h2>
 
 <div class="timeline">
 
-    <div class="timeline-item">
-        <div class="timeline-year">
-            1963
-        </div>
-        เกิดที่ Chicago, Illinois
-    </div>
+<div class="timeline-item">
+<div class="timeline-year">อายุ 4 ปี</div>
+<p>
+เกิดเหตุการณ์สำคัญภายในครอบครัวซึ่งนำไปสู่การแยกทางของพ่อแม่
+และเป็นจุดเริ่มต้นของบาดแผลในวัยเด็ก
+</p>
+</div>
 
+<div class="timeline-item">
+<div class="timeline-year">อายุ 5–7 ปี</div>
+<p>
+Master เริ่มห่างจากความทรงจำเกี่ยวกับแม่และใช้ชีวิตในช่วงวัยเด็กต่อไป
+</p>
+</div>
 
-    <div class="timeline-item">
-        <div class="timeline-year">
-            อายุ 4 ปี
-        </div>
-        ครอบครัวแตกแยกและแยกจากมารดา
-    </div>
+<div class="timeline-item">
+<div class="timeline-year">อายุ 6 ปี</div>
+<p>
+Master เริ่มรู้จัก Vein Thompson และทั้งสองกลายเป็นเพื่อนสนิทกัน
+</p>
+</div>
 
+<div class="timeline-item">
+<div class="timeline-year">อายุ 8 ปี</div>
+<p>
+Master เริ่มแสดงความสามารถในการช่วยเหลือและปกป้องผู้อื่น
+รวมถึงการปกป้อง Evan
+</p>
+</div>
 
-    <div class="timeline-item">
-        <div class="timeline-year">
-            อายุ 5–7 ปี
-        </div>
-        เริ่มสูญเสียความทรงจำเกี่ยวกับมารดา
-    </div>
+<div class="timeline-item">
+<div class="timeline-year">อายุ 13 ปี</div>
+<p>
+Master ออกตามหา Amber เป็นเวลาหลายเดือน
+และพบกับเหตุการณ์ครั้งใหญ่ที่เปลี่ยนชีวิตของเขา
+</p>
+</div>
 
+<div class="timeline-item">
+<div class="timeline-year">อายุ 14 ปี</div>
+<p>
+Jeremy Del Clarkson รับ Master เป็นบุตรบุญธรรม
+</p>
+</div>
 
-    <div class="timeline-item">
-        <div class="timeline-year">
-            อายุ 8 ปี
-        </div>
-        เริ่มเป็นเด็กที่ช่วยเหลือและปกป้องผู้อื่น
-    </div>
+<div class="timeline-item">
+<div class="timeline-year">อายุ 17 ปี</div>
+<p>
+Master ได้รับหัวใจเทียมและเกิดการเปลี่ยนแปลงสำคัญต่อร่างกาย
+</p>
+</div>
 
+<div class="timeline-item">
+<div class="timeline-year">อายุ 18 ปี</div>
+<p>
+ความสัมพันธ์ระหว่าง Master กับ Jeremy สิ้นสุดลง
+และ Master เข้าสู่ช่วงชีวิตที่โดดเดี่ยวมากขึ้น
+</p>
+</div>
 
-    <div class="timeline-item">
-        <div class="timeline-year">
-            อายุ 13 ปี
-        </div>
-        ออกตามหา Amber และเผชิญเหตุการณ์สำคัญในครอบครัว
-    </div>
+<div class="timeline-item">
+<div class="timeline-year">อายุ 20 ปี</div>
+<p>
+Master ใช้ชีวิตอย่างโดดเดี่ยวและเริ่มสูญเสียความสามารถในการแสดงออกทางอารมณ์
+</p>
+</div>
 
-
-    <div class="timeline-item">
-        <div class="timeline-year">
-            อายุ 14 ปี
-        </div>
-        Jeremy รับไปเลี้ยง
-    </div>
-
-
-    <div class="timeline-item">
-        <div class="timeline-year">
-            อายุ 17 ปี
-        </div>
-        ได้รับหัวใจเทียม
-    </div>
-
-
-    <div class="timeline-item">
-        <div class="timeline-year">
-            อายุ 18 ปี
-        </div>
-               Jeremy จากไป
-    </div>
-
-
-    <div class="timeline-item">
-        <div class="timeline-year">
-            อายุ 20 ปี
-        </div>
-        ใช้ชีวิตอย่างโดดเดี่ยว
-    </div>
-
-
-    <div class="timeline-item">
-        <div class="timeline-year">
-            อายุ 24 ปี
-        </div>
-        มุ่งเข้าสู่ด้านวิทยาศาสตร์ เทคโนโลยี และการเขียน
-    </div>
-
-
-    <div class="timeline-item">
-        <div class="timeline-year">
-            อายุ 37 ปี
-        </div>
-        เข้าสู่เส้นทางของ Superhero Federation และเริ่มใช้ชื่อ Dealviver
-    </div>
-
-
-    <div class="timeline-item">
-        <div class="timeline-year">
-            อายุ 47 ปี
-        </div>
-        เข้าสู่ช่วงเวลาปัจจุบันของเรื่อง
-    </div>
+<div class="timeline-item">
+<div class="timeline-year">ช่วงเวลาต่อมา</div>
+<p>
+Master เริ่มกลับมาสนใจวิทยาศาสตร์ เทคโนโลยี
+และการสร้างสิ่งใหม่ พร้อมกับค่อย ๆ กลับมามีความหวังอีกครั้ง
+</p>
+</div>
 
 </div>
 
-
-<!-- เรื่องที่ปรากฏ -->
-
-<h2 id="appearances">
-    18. เรื่องที่ปรากฏ
-</h2>
-
-<ul>
-
-    <li>
-        Reartval: Horizon Phl | Phase 1
-    </li>
-
-<li>
-        Reartval: Horizon Phl | Phase 2
-    </li>
-
-<li>
-        Reartval: Multiverse Rising | Into The Reartval Verse
-    </li>
-
-<li>
-        Multiverse Encore
-    </li>
-
-<li>
-        แม้จะอยู่อีกกี่สักมัลติเวิร์ส ฉันก็จะตามหาตัวเอง
-    </li>
-
-<li>
-        Multiverse Rising*
-    </li>
-
-    <li>
-        Reartval: Brave New Story
-    </li>
-
-</ul>
+</section>
 
 
-<!-- ข้อมูลเพิ่มเติม -->
+<section class="section" id="appearances">
 
-<h2 id="additional">
-    19. ข้อมูลเพิ่มเติม
-</h2>
+<h2>18. เรื่องที่ปรากฏ</h2>
 
-<ul>
+<p>
+ส่วนนี้สำหรับรวบรวมรายชื่อเรื่อง ตอน หรือเหตุการณ์ต่าง ๆ
+ที่ Master Johnson Relvent ปรากฏตัว
+</p>
 
-    <li>
-        Master เป็นชื่อที่เชื่อมโยงกับตัวตนดั้งเดิมของเขามากที่สุด
-    </li>
+<div class="notice">
+<strong>สำหรับเพิ่มข้อมูล:</strong>
+สามารถเขียนรายชื่อเรื่อง ตอนที่ปรากฏ
+บทบาทของ Master และเหตุการณ์สำคัญในแต่ละเรื่องได้ที่ส่วนนี้
+</div>
 
-    <li>
-        John เป็นชื่อที่คนทั่วไปมักใช้เรียก
-    </li>
+<!-- เขียนข้อมูลเรื่องที่ปรากฏเพิ่มเติมตรงนี้ -->
 
-    <li>
-        Dealviver เป็นตัวตนที่เกิดขึ้นในช่วงหลังของชีวิต
-    </li>
-
-    <li>
-        เทคโนโลยีเป็นส่วนสำคัญของตัวตน Dealviver ใน Timeline ปัจจุบัน
-    </li>
-
-    <li>
-        ความสัมพันธ์กับ Vein เป็นหนึ่งในสิ่งที่เชื่อมโยง Master
-        กับตัวตนดั้งเดิมของเขา
-    </li>
-
-</ul>
+</section>
 
 
-<div class="clear"></div>
+<section class="section" id="additional">
 
+<h2>19. ข้อมูลเพิ่มเติม</h2>
+
+<h3>แนวคิดของตัวละคร</h3>
+
+<p>
+Master เป็นตัวละครที่มีความขัดแย้งระหว่าง
+“การเห็นคุณค่าของผู้อื่น” กับ “การไม่เห็นคุณค่าของตัวเอง”
+อย่างชัดเจน
+</p>
+
+<p>
+เขาสามารถเข้าใจความเจ็บปวดของคนอื่น
+แสดงความเมตตา ช่วยเหลือ และให้อภัยผู้อื่น
+แต่กลับมีปัญหาอย่างมากในการมอบสิ่งเดียวกันให้กับตัวเอง
+</p>
+
+<h3>พัฒนาการ</h3>
+
+<p>
+พัฒนาการของ Master ไม่ได้หมายถึงการกลายเป็นคนที่ไม่เจ็บปวดอีกต่อไป
+แต่เป็นการค่อย ๆ เรียนรู้ว่าตัวเขาเองก็สมควรได้รับความเข้าใจ
+การให้อภัย และความอบอุ่นเช่นเดียวกับคนอื่น
+</p>
+
+<h3>คำสำคัญ</h3>
+
+<div class="tags">
+
+<span class="tag">Master</span>
+<span class="tag">Relvent</span>
+<span class="tag">Fountaine</span>
+<span class="tag">Dealviver</span>
+<span class="tag">Science</span>
+<span class="tag">Technology</span>
+<span class="tag">Reartval</span>
 
 </div>
 
+</section>
+
+</div>
+
+</div>
+
+<footer>
+    Reartval Wiki — Master Johnson Relvent
+</footer>
+
+</main>
 
 </body>
-
 </html>
-```
