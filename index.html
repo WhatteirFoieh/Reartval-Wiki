@@ -1,75 +1,1384 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
+
 <head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>Reartval Wiki</title>
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background: #f4f4f4;
+
+        * {
+            box-sizing: border-box;
         }
 
-        header {
-            background: #222;
-            color: white;
-            padding: 25px;
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f8f9fa;
+            color: #202122;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           TOP BAR
+        ========================= */
+
+        .topbar {
+            background: #ffffff;
+            border-bottom: 1px solid #a2a9b1;
+            padding: 12px 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: Georgia, serif;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #54595d;
+            font-size: 13px;
+            font-family: Arial, sans-serif;
+            margin-left: 8px;
+        }
+
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        .search-area {
+            display: flex;
+            gap: 8px;
+        }
+
+        .search-input {
+            width: 300px;
+            padding: 10px 14px;
+
+            border: 1px solid #a2a9b1;
+            border-radius: 3px;
+
+            font-size: 15px;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #36c;
+        }
+
+
+        /* =========================
+           LAYOUT
+        ========================= */
+
+        .layout {
+            display: flex;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
+        .sidebar {
+            width: 240px;
+            padding: 30px 20px;
+            background: #ffffff;
+
+            border-right: 1px solid #eaecf0;
+
+            min-height: calc(100vh - 60px);
+        }
+
+        .sidebar-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            display: block;
+
+            color: #0645ad;
+            text-decoration: none;
+
+            padding: 7px 8px;
+            border-radius: 3px;
+        }
+
+        .sidebar a:hover {
+            background: #eaecf0;
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .main {
+            flex: 1;
+
+            background: white;
+
+            padding: 35px 50px 70px;
+
+            min-height: calc(100vh - 60px);
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 25px;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-family: Georgia, serif;
+            font-size: 38px;
+            margin: 0 0 5px;
+        }
+
+        .hero p {
+            color: #54595d;
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           QUICK LINKS
+        ========================= */
+
+        .quick-links {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(180px, 1fr));
+
+            gap: 12px;
+
+            margin: 25px 0 35px;
+        }
+
+        .quick-link {
+            border: 1px solid #c8ccd1;
+
+            background: #f8f9fa;
+
+            padding: 16px;
+
+            text-decoration: none;
+            color: #202122;
+
+            border-radius: 4px;
+
+            transition: 0.15s;
+        }
+
+        .quick-link:hover {
+            border-color: #36c;
+            background: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .quick-link-title {
+            color: #0645ad;
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        .quick-link-description {
+            font-size: 13px;
+            color: #54595d;
+            margin-top: 5px;
+        }
+
+
+        /* =========================
+           HEADINGS
+        ========================= */
+
+        h2 {
+            font-family: Georgia, serif;
+
+            font-size: 26px;
+
+            border-bottom: 1px solid #eaecf0;
+
+            padding-bottom: 6px;
+
+            margin-top: 40px;
+        }
+
+
+        /* =========================
+           CATEGORY
+        ========================= */
+
+        .category-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(190px, 1fr));
+
+            gap: 12px;
+        }
+
+        .category {
+            border: 1px solid #c8ccd1;
+
+            padding: 15px;
+
+            background: #ffffff;
+
+            border-radius: 4px;
+
+            cursor: pointer;
+
+            transition: 0.15s;
+        }
+
+        .category:hover {
+            border-color: #36c;
+            background: #f8f9fa;
+        }
+
+        .category-name {
+            color: #0645ad;
+            font-weight: bold;
+        }
+
+        .category-count {
+            color: #72777d;
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           CHARACTER CARDS
+        ========================= */
+
+        .character-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fill, minmax(230px, 1fr));
+
+            gap: 18px;
+        }
+
+        .character-card {
+            border: 1px solid #c8ccd1;
+
+            background: #ffffff;
+
+            padding: 20px;
+
+            border-radius: 4px;
+
+            transition: 0.15s;
+        }
+
+        .character-card:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+
+            transform: translateY(-2px);
+        }
+
+        .character-card a {
+            color: #0645ad;
+
+            font-size: 19px;
+
+            font-weight: bold;
+
+            text-decoration: none;
+        }
+
+        .character-card a:hover {
+            text-decoration: underline;
+        }
+
+        .character-info {
+            color: #54595d;
+
+            font-size: 14px;
+
+            margin-top: 8px;
+        }
+
+        .tag {
+            display: inline-block;
+
+            background: #eaecf0;
+
+            padding: 3px 8px;
+
+            font-size: 12px;
+
+            margin: 4px 3px 0 0;
+
+            border-radius: 3px;
+        }
+
+
+        /* =========================
+           FEATURED
+        ========================= */
+
+        .featured {
+            border: 1px solid #a2a9b1;
+
+            background: #f8f9fa;
+
+            padding: 20px;
+
+            margin-top: 15px;
+        }
+
+        .featured-title {
+            font-family: Georgia, serif;
+
+            font-size: 22px;
+
+            margin-bottom: 8px;
+        }
+
+        .featured a {
+            color: #0645ad;
+
+            font-weight: bold;
+
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           RECENT
+        ========================= */
+
+        .recent-list {
+            border: 1px solid #c8ccd1;
+        }
+
+        .recent-item {
+            padding: 13px 16px;
+
+            border-bottom: 1px solid #eaecf0;
+        }
+
+        .recent-item:last-child {
+            border-bottom: none;
+        }
+
+        .recent-item a {
+            color: #0645ad;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        .recent-date {
+            color: #72777d;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           STATS
+        ========================= */
+
+        .stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(150px, 1fr));
+
+            gap: 12px;
+
+            margin-top: 15px;
+        }
+
+        .stat {
+            border: 1px solid #c8ccd1;
+
+            background: #f8f9fa;
+
+            padding: 18px;
+
             text-align: center;
         }
 
-        .container {
-            width: 80%;
-            margin: 30px auto;
-            background: white;
-            padding: 30px;
+        .stat-number {
+            font-size: 28px;
+
+            font-weight: bold;
         }
 
-        h1 {
-            margin: 0;
+        .stat-label {
+            color: #54595d;
+
+            font-size: 13px;
         }
 
-        h2 {
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 8px;
+
+        /* =========================
+           SEARCH RESULTS
+        ========================= */
+
+        #searchResults {
+            display: none;
+
+            margin-top: 25px;
+
+            border: 1px solid #c8ccd1;
+
+            background: #f8f9fa;
+
+            padding: 20px;
         }
 
-        .character {
-            padding: 15px;
-            margin: 10px 0;
-            background: #eee;
+        .search-result {
+            padding: 12px 0;
+
+            border-bottom: 1px solid #eaecf0;
         }
+
+        .search-result:last-child {
+            border-bottom: none;
+        }
+
+        .search-result a {
+            color: #0645ad;
+
+            font-weight: bold;
+
+            font-size: 18px;
+
+            text-decoration: none;
+        }
+
+        .no-result {
+            color: #72777d;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            margin-top: 60px;
+
+            padding-top: 20px;
+
+            border-top: 1px solid #a2a9b1;
+
+            color: #54595d;
+
+            font-size: 13px;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 850px) {
+
+            .topbar {
+                flex-direction: column;
+
+                align-items: stretch;
+
+                gap: 12px;
+            }
+
+            .search-input {
+                width: 100%;
+            }
+
+            .layout {
+                display: block;
+            }
+
+            .sidebar {
+                width: auto;
+
+                min-height: auto;
+
+                border-right: none;
+
+                border-bottom: 1px solid #eaecf0;
+            }
+
+            .main {
+                padding: 25px 20px 50px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
-    <header>
-        <h1>Reartval wikipedia</h1>
-        <p>สารานุกรมจักรวาล Reartval</p>
-    </header>
 
-    <div class="container">
+<!-- =========================
+     TOP BAR
+========================= -->
 
-        <h2>Characters</h2>
+<header class="topbar">
 
-        <div class="character">
-    <a href="master.html">Master Johnson Relvent</a>
+    <div class="logo">
+
+        Reartval Wiki
+
+        <span>
+            สารานุกรมจักรวาล Reartval
+        </span>
+
+    </div>
+
+
+    <div class="search-area">
+
+        <input
+            id="searchInput"
+            class="search-input"
+            type="text"
+            placeholder="ค้นหาใน Reartval Wiki..."
+            oninput="searchWiki()"
+        >
+
+    </div>
+
+</header>
+
+
+
+<div class="layout">
+
+
+<!-- =========================
+     SIDEBAR
+========================= -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-title">
+        นำทาง
+    </div>
+
+    <a href="index.html">
+        หน้าหลัก
+    </a>
+
+    <a href="#characters">
+        ตัวละคร
+    </a>
+
+    <a href="#categories">
+        หมวดหมู่
+    </a>
+
+    <a href="#featured">
+        บทความแนะนำ
+    </a>
+
+    <a href="#recent">
+        บทความล่าสุด
+    </a>
+
+
+    <br>
+
+
+    <div class="sidebar-title">
+        หมวดหมู่หลัก
+    </div>
+
+    <a href="#characters">
+        👤 ตัวละคร
+    </a>
+
+    <a href="#categories">
+        ⚔️ ฮีโร่
+    </a>
+
+    <a href="#categories">
+        🏢 องค์กร
+    </a>
+
+    <a href="#categories">
+        🌌 จักรวาล
+    </a>
+
+    <a href="#categories">
+        ⚡ พลัง
+    </a>
+
+    <a href="#categories">
+        🔬 เทคโนโลยี
+    </a>
+
+</aside>
+
+
+
+<!-- =========================
+     MAIN CONTENT
+========================= -->
+
+<main class="main">
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <h1>
+        Reartval Wiki
+    </h1>
+
+    <p>
+        สารานุกรมสำหรับจักรวาล Reartval
+    </p>
+
+    <p>
+        รวมข้อมูลตัวละคร เหตุการณ์ องค์กร
+        พลัง เทคโนโลยี สถานที่ และเรื่องราวต่าง ๆ
+        ภายในจักรวาล Reartval
+    </p>
+
+</section>
+
+
+
+<!-- =========================
+     QUICK LINKS
+========================= -->
+
+<div class="quick-links">
+
+
+    <a class="quick-link"
+       href="#characters">
+
+        <div class="quick-link-title">
+            ตัวละคร
+        </div>
+
+        <div class="quick-link-description">
+            รายชื่อตัวละครทั้งหมดใน Reartval
+        </div>
+
+    </a>
+
+
+    <a class="quick-link"
+       href="#categories">
+
+        <div class="quick-link-title">
+            หมวดหมู่
+        </div>
+
+        <div class="quick-link-description">
+            เรียกดูข้อมูลตามประเภท
+        </div>
+
+    </a>
+
+
+    <a class="quick-link"
+       href="#featured">
+
+        <div class="quick-link-title">
+            บทความแนะนำ
+        </div>
+
+        <div class="quick-link-description">
+            บทความสำคัญของจักรวาล
+        </div>
+
+    </a>
+
+
+    <a class="quick-link"
+       href="#recent">
+
+        <div class="quick-link-title">
+            บทความล่าสุด
+        </div>
+
+        <div class="quick-link-description">
+            ข้อมูลที่เพิ่งเพิ่มเข้าสู่ Wiki
+        </div>
+
+    </a>
+
+
 </div>
 
-        <div class="character">
-            Vein Thompson
+
+
+<!-- =========================
+     SEARCH RESULTS
+========================= -->
+
+<div id="searchResults">
+
+    <h2 style="margin-top:0;">
+        ผลการค้นหา
+    </h2>
+
+    <div id="resultsList"></div>
+
+</div>
+
+
+
+<!-- =========================
+     FEATURED
+========================= -->
+
+<section id="featured">
+
+    <h2>
+        ⭐ บทความแนะนำ
+    </h2>
+
+
+    <div class="featured">
+
+        <div class="featured-title">
+            Master Johnson Relvent
         </div>
 
-        <div class="character">
-            Jennifer Starfaller
+        <p>
+            บุคคลสำคัญของจักรวาล Reartval
+            และผู้ที่ต่อมามีตัวตนในฐานะ Dealviver
+        </p>
+
+        <p>
+            <a href="master.html">
+                อ่านบทความ Master Johnson Relvent →
+            </a>
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CHARACTERS
+========================= -->
+
+<section id="characters">
+
+    <h2>
+        👤 ตัวละคร
+    </h2>
+
+
+    <div class="character-grid">
+
+
+        <!-- MASTER -->
+
+        <div
+            class="character-card"
+            data-search="master johnson relvent john dealviver ตัวละคร ฮีโร่">
+
+            <a href="master.html">
+                Master Johnson Relvent
+            </a>
+
+            <div class="character-info">
+
+                Master / John
+
+                <br>
+
+                ภายหลังเป็นที่รู้จักในชื่อ
+                <b>Dealviver</b>
+
+                <br><br>
+
+                <span class="tag">
+                    ตัวละคร
+                </span>
+
+                <span class="tag">
+                    ฮีโร่
+                </span>
+
+                <span class="tag">
+                    Fountaine
+                </span>
+
+            </div>
+
         </div>
 
-                <div class="character">
-            Jeremy Clarkson
+
+        <!-- VEIN -->
+
+        <div
+            class="character-card"
+            data-search="vein thompson nevereye ตัวละคร ฮีโร่">
+
+            <a href="#">
+                Vein Thompson
+            </a>
+
+            <div class="character-info">
+
+                Nevereye
+
+                <br>
+
+                เพื่อนสนิทของ Master
+
+                <br><br>
+
+                <span class="tag">
+                    ตัวละคร
+                </span>
+
+                <span class="tag">
+                    ฮีโร่
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- AMBER -->
+
+        <div
+            class="character-card"
+            data-search="amber relvent captain reartval ตัวละคร ฮีโร่">
+
+            <a href="#">
+                Amber Relvent
+            </a>
+
+            <div class="character-info">
+
+                ภายหลังเป็นที่รู้จักในชื่อ
+                Captain Reartval
+
+                <br><br>
+
+                <span class="tag">
+                    ตัวละคร
+                </span>
+
+                <span class="tag">
+                    ครอบครัว
+                </span>
+
+            </div>
+
         </div>
 
 
     </div>
 
+</section>
+
+
+
+<!-- =========================
+     CATEGORIES
+========================= -->
+
+<section id="categories">
+
+    <h2>
+        📚 หมวดหมู่
+    </h2>
+
+
+    <div class="category-grid">
+
+
+        <div class="category">
+
+            <div class="category-name">
+                👤 ตัวละคร
+            </div>
+
+            <div class="category-count">
+                รวมตัวละครในจักรวาล
+            </div>
+
+        </div>
+
+
+        <div class="category">
+
+            <div class="category-name">
+                🦸 ฮีโร่
+            </div>
+
+            <div class="category-count">
+                บุคคลที่ทำหน้าที่ปกป้องผู้อื่น
+            </div>
+
+        </div>
+
+
+        <div class="category">
+
+            <div class="category-name">
+                🦹 วายร้าย
+            </div>
+
+            <div class="category-count">
+                ตัวละครฝ่ายตรงข้าม
+            </div>
+
+        </div>
+
+
+        <div class="category">
+
+            <div class="category-name">
+                👨‍👩‍👧 ครอบครัว
+            </div>
+
+            <div class="category-count">
+                ตระกูลและความสัมพันธ์
+            </div>
+
+        </div>
+
+
+        <div class="category">
+
+            <div class="category-name">
+                🏢 องค์กร
+            </div>
+
+            <div class="category-count">
+                กลุ่มและองค์กรต่าง ๆ
+            </div>
+
+        </div>
+
+
+        <div class="category">
+
+            <div class="category-name">
+                ⚡ พลังและความสามารถ
+            </div>
+
+            <div class="category-count">
+                พลังพิเศษและความสามารถ
+            </div>
+
+        </div>
+
+
+        <div class="category">
+
+            <div class="category-name">
+                🔬 เทคโนโลยี
+            </div>
+
+            <div class="category-count">
+                เครื่องจักรและเทคโนโลยี
+            </div>
+
+        </div>
+
+
+        <div class="category">
+
+            <div class="category-name">
+                🌍 สถานที่
+            </div>
+
+            <div class="category-count">
+                เมือง ดาวเคราะห์ และสถานที่สำคัญ
+            </div>
+
+        </div>
+
+
+        <div class="category">
+
+            <div class="category-name">
+                🌌 จักรวาล
+            </div>
+
+            <div class="category-count">
+                ข้อมูลเกี่ยวกับ Multiverse
+            </div>
+
+        </div>
+
+
+        <div class="category">
+
+            <div class="category-name">
+                📜 เหตุการณ์
+            </div>
+
+            <div class="category-count">
+                เหตุการณ์สำคัญในเรื่อง
+            </div>
+
+        </div>
+
+
+        <div class="category">
+
+            <div class="category-name">
+                🧬 เผ่าพันธุ์
+            </div>
+
+            <div class="category-count">
+                สิ่งมีชีวิตและเผ่าพันธุ์ต่าง ๆ
+            </div>
+
+        </div>
+
+
+        <div class="category">
+
+            <div class="category-name">
+                📖 เรื่องราว
+            </div>
+
+            <div class="category-count">
+                ซีรีส์และเนื้อเรื่องของ Reartval
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     RECENT
+========================= -->
+
+<section id="recent">
+
+    <h2>
+        📰 บทความล่าสุด
+    </h2>
+
+
+    <div class="recent-list">
+
+
+        <div class="recent-item">
+
+            <a href="master.html">
+                Master Johnson Relvent
+            </a>
+
+            <br>
+
+            <span class="recent-date">
+                อัปเดตล่าสุด
+            </span>
+
+        </div>
+
+
+        <div class="recent-item">
+
+            <a href="#">
+                Vein Thompson
+            </a>
+
+            <br>
+
+            <span class="recent-date">
+                ยังไม่มีบทความฉบับสมบูรณ์
+            </span>
+
+        </div>
+
+
+        <div class="recent-item">
+
+            <a href="#">
+                Amber Relvent
+            </a>
+
+            <br>
+
+            <span class="recent-date">
+                ยังไม่มีบทความฉบับสมบูรณ์
+            </span>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     STATS
+========================= -->
+
+<section>
+
+    <h2>
+        📊 Reartval Wiki ในปัจจุบัน
+    </h2>
+
+
+    <div class="stats">
+
+
+        <div class="stat">
+
+            <div class="stat-number">
+                3
+            </div>
+
+            <div class="stat-label">
+                ตัวละครที่ลงรายการ
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-number">
+                12
+            </div>
+
+            <div class="stat-label">
+                หมวดหมู่
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-number">
+                1
+            </div>
+
+            <div class="stat-label">
+                บทความสมบูรณ์
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-number">
+                Reartval
+            </div>
+
+            <div class="stat-label">
+                จักรวาล
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        Reartval Wiki
+    </p>
+
+    <p>
+        สารานุกรมสำหรับจักรวาล Reartval
+    </p>
+
+    <p>
+        เว็บไซต์นี้จัดทำขึ้นเพื่อรวบรวมข้อมูลของจักรวาลและตัวละคร
+    </p>
+
+</footer>
+
+
+</main>
+
+</div>
+
+
+
+<!-- =========================
+     SEARCH SCRIPT
+========================= -->
+
+<script>
+
+function searchWiki() {
+
+    const input =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    const results =
+        document
+        .getElementById("searchResults");
+
+
+    const resultsList =
+        document
+        .getElementById("resultsList");
+
+
+    const cards =
+        document.querySelectorAll(".character-card");
+
+
+    resultsList.innerHTML = "";
+
+
+    if (input === "") {
+
+        results.style.display = "none";
+
+        cards.forEach(function(card) {
+
+            card.style.display = "block";
+
+        });
+
+        return;
+
+    }
+
+
+    results.style.display = "block";
+
+
+    let found = 0;
+
+
+    cards.forEach(function(card) {
+
+        const text =
+            card
+            .getAttribute("data-search")
+            .toLowerCase();
+
+
+        if (text.includes(input)) {
+
+            card.style.display = "block";
+
+            found++;
+
+
+            const link =
+                card.querySelector("a");
+
+
+            const result =
+                document.createElement("div");
+
+
+            result.className =
+                "search-result";
+
+
+            result.innerHTML =
+                "<a href='" +
+                link.getAttribute("href") +
+                "'>" +
+                link.textContent +
+                "</a>";
+
+
+            resultsList.appendChild(result);
+
+        }
+
+        else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+
+    if (found === 0) {
+
+        resultsList.innerHTML =
+            "<div class='no-result'>" +
+            "ไม่พบข้อมูลที่ค้นหา" +
+            "</div>";
+
+    }
+
+}
+
+</script>
+
+
 </body>
+
 </html>
