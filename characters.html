@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ตัวละคร | Reartval Wiki</title>
+
+<style>
+:root {
+    color-scheme: dark;
+
+    --bg: #0d1117;
+    --card: #161b22;
+    --card-hover: #1c2128;
+    --border: #30363d;
+    --text: #e6edf3;
+    --secondary: #8b949e;
+    --accent: #58a6ff;
+    --accent-hover: #79c0ff;
+    --topbar: #010409;
+    --tag: #21262d;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: var(--topbar);
+    border-bottom: 1px solid var(--border);
+
+    padding: 14px 24px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: var(--secondary);
+    font-size: 13px;
+    font-weight: normal;
+    margin-left: 8px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 35px 20px 70px;
+}
+
+.back {
+    display: inline-block;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+
+    padding: 9px 15px;
+    border-radius: 8px;
+
+    margin-bottom: 25px;
+
+    color: var(--accent);
+}
+
+.back:hover {
+    background: var(--card-hover);
+}
+
+.page-title {
+    margin-bottom: 10px;
+}
+
+.page-title h1 {
+    margin: 0;
+    font-size: 38px;
+}
+
+.page-title p {
+    color: var(--secondary);
+    margin-top: 5px;
+}
+
+.character-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+
+    margin-top: 30px;
+}
+
+.character {
+    background: var(--card);
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    transition: 0.2s;
+}
+
+.character:hover {
+    background: var(--card-hover);
+    transform: translateY(-2px);
+}
+
+.character-link {
+    display: block;
+    padding: 22px;
+}
+
+.character-name {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.character-subtitle {
+    color: var(--secondary);
+    margin-top: 4px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+
+    margin-top: 14px;
+}
+
+.tag {
+    background: var(--tag);
+    border: 1px solid var(--border);
+
+    color: var(--secondary);
+
+    padding: 4px 9px;
+    border-radius: 20px;
+
+    font-size: 12px;
+}
+
+@media (max-width: 900px) {
+
+    .character-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .topbar {
+        padding: 12px 15px;
+    }
+
+    .logo span {
+        display: none;
+    }
+
+    .container {
+        padding: 25px 14px 50px;
+    }
+
+    .page-title h1 {
+        font-size: 30px;
+    }
+
+    .character-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+
+    <div class="logo">
+        Reartval Wiki
+        <span>Official Universe Database</span>
+    </div>
+
+    <a href="/Reartval-Wiki/index.html">
+        หน้าหลัก
+    </a>
+
+</div>
+
+<div class="container">
+
+<a class="back" href="/Reartval-Wiki/index.html">
+    ← กลับหน้าหลัก
+</a>
+
+<div class="page-title">
+
+    <h1>ตัวละคร</h1>
+
+    <p>
+        รายชื่อตัวละครในจักรวาล Reartval
+    </p>
+
+</div>
+
+<div class="character-grid">
+
+    <!-- Master -->
+
+    <div class="character">
+
+        <a href="master.html" class="character-link">
+
+            <div class="character-name">
+                Master Johnson Relvent
+            </div>
+
+            <div class="character-subtitle">
+                Master
+            </div>
+
+            <div class="tags">
+
+                <span class="tag">ตัวละคร</span>
+                <span class="tag">ฮีโร่</span>
+
+            </div>
+
+        </a>
+
+    </div>
+
+
+    <!-- Vein -->
+
+    <div class="character">
+
+        <a href="vein.html" class="character-link">
+
+            <div class="character-name">
+                Vein Thompson
+            </div>
+
+            <div class="character-subtitle">
+                Nevereye
+            </div>
+
+            <div class="tags">
+
+                <span class="tag">ตัวละคร</span>
+                <span class="tag">ฮีโร่</span>
+
+            </div>
+
+        </a>
+
+    </div>
+
+
+    <!-- Amber -->
+
+    <div class="character">
+
+        <a href="Amber.html" class="character-link">
+
+            <div class="character-name">
+                Amber Relvent
+            </div>
+
+            <div class="character-subtitle">
+                Captain Reartval
+            </div>
+
+            <div class="tags">
+
+                <span class="tag">ตัวละคร</span>
+                <span class="tag">ฮีโร่</span>
+
+            </div>
+
+        </a>
+
+    </div>
+
+
+    <!-- Phon -->
+
+    <div class="character">
+
+        <a href="phon.html" class="character-link">
+
+            <div class="character-name">
+                Phon H. Wulthrodaite
+            </div>
+
+            <div class="character-subtitle">
+                Man of all Days
+            </div>
+
+            <div class="tags">
+
+                <span class="tag">ตัวละคร</span>
+                <span class="tag">ซูเปอร์ฮีโร่</span>
+
+            </div>
+
+        </a>
+
+    </div>
+
+
+    <!-- E Watcher -->
+
+    <div class="character">
+
+        <a href="e-watcher.html" class="character-link">
+
+            <div class="character-name">
+                The E Watcher
+            </div>
+
+            <div class="character-subtitle">
+                King Superhero
+            </div>
+
+            <div class="tags">
+
+                <span class="tag">ตัวละคร</span>
+                <span class="tag">ฮีโร่</span>
+                <span class="tag">The Seake</span>
+
+            </div>
+
+        </a>
+
+    </div>
+
+
+    <!-- Whatteir Foieh -->
+
+    <div class="character">
+
+        <a href="foieh.html" class="character-link">
+
+            <div class="character-name">
+                Whatteir Foieh
+            </div>
+
+            <div class="character-subtitle">
+                พระเจ้า
+            </div>
+
+            <div class="tags">
+
+                <span class="tag">ตัวละคร</span>
+                <span class="tag">พระเจ้า</span>
+                <span class="tag">DAM</span>
+
+            </div>
+
+        </a>
+
+    </div>
+
+</div>
+
+</div>
+
+</body>
+</html>
