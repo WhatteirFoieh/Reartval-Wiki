@@ -8,8 +8,6 @@
 
     <style>
         :root {
-            color-scheme: dark;
-
             --bg: #0d1117;
             --card: #161b22;
             --card-hover: #1c2128;
@@ -24,6 +22,8 @@
 
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         html {
@@ -31,11 +31,10 @@
         }
 
         body {
-            margin: 0;
             background: var(--bg);
             color: var(--text);
-            font-family: Arial, "Noto Sans Thai", sans-serif;
-            line-height: 1.7;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.75;
         }
 
         a {
@@ -45,123 +44,111 @@
 
         a:hover {
             color: var(--accent-hover);
+            text-decoration: underline;
         }
 
         .topbar {
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            height: 60px;
             background: var(--topbar);
             border-bottom: 1px solid var(--border);
-            padding: 14px 24px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
         }
 
         .logo {
-            color: var(--text);
-            font-size: 22px;
+            font-size: 21px;
             font-weight: bold;
-        }
-
-        .logo span {
-            display: block;
-            color: var(--secondary);
-            font-size: 12px;
-            font-weight: normal;
+            color: var(--text);
         }
 
         .home-link {
-            color: var(--accent);
+            color: var(--secondary);
             font-size: 14px;
         }
 
-        .container {
-            width: min(1150px, 92%);
-            margin: 0 auto;
-            padding: 35px 0 60px;
+        .home-link:hover {
+            color: var(--accent);
+            text-decoration: none;
         }
 
-        .back {
-            display: inline-block;
+        .page {
+            max-width: 1450px;
+            margin: auto;
+            padding: 30px;
+        }
+
+        .page-header {
             margin-bottom: 25px;
-            padding: 8px 14px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            background: var(--card);
-            color: var(--text);
         }
 
-        .back:hover {
-            background: var(--card-hover);
-            border-color: var(--accent);
-        }
-
-        .character-header {
-            margin-bottom: 30px;
-        }
-
-        .character-header h1 {
-            margin: 0;
+        .page-header h1 {
             font-size: 38px;
+            line-height: 1.2;
+            margin-bottom: 8px;
         }
 
-        .subtitle {
+        .page-header p {
             color: var(--secondary);
-            font-size: 17px;
-            margin-top: 4px;
+            font-size: 15px;
         }
 
         .layout {
             display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 30px;
+            grid-template-columns: 280px minmax(0, 1fr);
+            gap: 28px;
             align-items: start;
         }
 
         .sidebar {
             position: sticky;
-            top: 90px;
-        }
-
-        .image-box {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 12px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .image-box img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 8px;
+            top: 85px;
         }
 
         .infobox {
-            width: 100%;
-            border-collapse: collapse;
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
+        }
+
+        .character-image {
+            width: 100%;
+            display: block;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            background: #080b0f;
+        }
+
+        .infobox-title {
+            padding: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .infobox table {
+            width: 100%;
+            border-collapse: collapse;
         }
 
         .infobox th,
         .infobox td {
-            border-bottom: 1px solid var(--border);
             padding: 10px 12px;
-            text-align: left;
+            border-bottom: 1px solid var(--border);
             vertical-align: top;
+            text-align: left;
+            font-size: 13px;
         }
 
         .infobox th {
             width: 40%;
             color: var(--secondary);
-            font-weight: normal;
+            font-weight: 600;
         }
 
         .infobox tr:last-child th,
@@ -169,98 +156,97 @@
             border-bottom: none;
         }
 
+        .tag {
+            display: inline-block;
+            background: var(--tag);
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            padding: 2px 7px;
+            font-size: 12px;
+        }
+
         .content {
             min-width: 0;
+        }
+
+        section {
+            margin-bottom: 48px;
+            scroll-margin-top: 85px;
+        }
+
+        h2 {
+            font-size: 27px;
+            margin-bottom: 18px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h3 {
+            font-size: 20px;
+            margin: 28px 0 12px;
+        }
+
+        h4 {
+            font-size: 16px;
+            margin: 18px 0 8px;
+            color: var(--accent);
+        }
+
+        p {
+            margin-bottom: 14px;
+        }
+
+        ul {
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
         }
 
         .toc {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 18px 22px;
-            margin-bottom: 25px;
+            border-radius: 9px;
+            padding: 18px 20px;
+            margin-bottom: 35px;
         }
 
         .toc-title {
             font-weight: bold;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .toc ol {
-            margin: 0;
             padding-left: 22px;
         }
 
         .toc li {
-            margin: 4px 0;
+            margin-bottom: 4px;
         }
 
-        .notice {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--accent);
-            border-radius: 8px;
-            padding: 16px 18px;
-            margin-bottom: 30px;
-            color: var(--secondary);
-        }
-
-        section {
-            margin-bottom: 42px;
-            scroll-margin-top: 90px;
-        }
-
-        h2 {
-            font-size: 26px;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 8px;
-            margin-bottom: 18px;
-        }
-
-        h3 {
-            font-size: 20px;
-            margin-top: 24px;
-            margin-bottom: 8px;
-        }
-
-        ul,
-        ol {
-            padding-left: 25px;
-        }
-
-        li {
-            margin: 7px 0;
-        }
-
-        .power-grid {
+        .info-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px;
         }
 
-        .power-box {
+        .info-card {
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: 9px;
-            padding: 15px;
+            padding: 17px;
         }
 
-        .power-box strong {
+        .info-card strong {
             display: block;
-            margin-bottom: 5px;
-            color: var(--text);
-        }
-
-        .power-box span {
-            color: var(--secondary);
-            font-size: 14px;
+            margin-bottom: 6px;
         }
 
         .timeline {
-            position: relative;
-            margin-left: 10px;
-            padding-left: 25px;
             border-left: 2px solid var(--border);
+            margin-left: 8px;
+            padding-left: 22px;
         }
 
         .timeline-item {
@@ -273,56 +259,159 @@
             position: absolute;
             width: 10px;
             height: 10px;
-            background: var(--accent);
             border-radius: 50%;
-            left: -31px;
-            top: 8px;
+            background: var(--accent);
+            left: -28px;
+            top: 9px;
         }
 
         .timeline-year {
             color: var(--accent);
             font-weight: bold;
-            margin-bottom: 3px;
+            margin-bottom: 4px;
         }
 
-        .relationship {
+        .power-scale-box {
             background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 9px;
-            padding: 14px 16px;
+            border: 1px solid var(--accent);
+            border-radius: 10px;
+            padding: 23px;
+            margin-bottom: 28px;
+        }
+
+        .power-scale-box h3 {
+            margin-top: 0;
+            color: var(--accent);
+        }
+
+        .power-scale-value {
+            font-size: 24px;
+            font-weight: bold;
             margin-bottom: 12px;
         }
 
-        .relationship strong {
-            color: var(--text);
+        .power-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px;
         }
 
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 25px;
-        }
-
-        .tag {
-            background: var(--tag);
+        .power-card {
+            background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 4px 10px;
+            border-radius: 9px;
+            padding: 18px;
+            transition: background 0.15s ease;
+        }
+
+        .power-card:hover {
+            background: var(--card-hover);
+        }
+
+        .power-card h3 {
+            font-size: 17px;
+            margin: 0 0 8px;
+            color: var(--accent);
+        }
+
+        .power-card p {
+            margin: 0 0 10px;
+            font-size: 14px;
+        }
+
+        .power-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin: 20px 0 25px;
+        }
+
+        .stat-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px 17px;
+        }
+
+        .stat-card strong {
+            display: block;
             color: var(--secondary);
             font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .stat-card span {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .stat-explanation {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            padding: 20px 25px;
+        }
+
+        .stat-explanation li {
+            margin-bottom: 15px;
+        }
+
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px;
+        }
+
+        .equipment-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            padding: 18px;
+        }
+
+        .equipment-card h3 {
+            margin: 0 0 8px;
+            color: var(--accent);
+            font-size: 18px;
+        }
+
+        .equipment-card p {
+            font-size: 14px;
+        }
+
+        .equipment-card ul {
+            margin-top: 8px;
+        }
+
+        .weakness-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            padding: 20px;
+        }
+
+        .note-box {
+            background: var(--card);
+            border-left: 3px solid var(--accent);
+            border-radius: 7px;
+            padding: 16px 18px;
+            margin: 18px 0;
         }
 
         footer {
             border-top: 1px solid var(--border);
-            background: var(--topbar);
+            margin-top: 50px;
+            padding: 25px 0 40px;
             color: var(--secondary);
             text-align: center;
-            padding: 25px 15px;
             font-size: 13px;
         }
 
-        @media (max-width: 850px) {
+        @media (max-width: 900px) {
             .layout {
                 grid-template-columns: 1fr;
             }
@@ -331,31 +420,34 @@
                 position: static;
             }
 
-            .power-grid {
-                grid-template-columns: 1fr;
+            .infobox {
+                max-width: 500px;
+                margin: auto;
             }
         }
 
-        @media (max-width: 560px) {
-            .topbar {
-                padding: 12px 16px;
+        @media (max-width: 650px) {
+            .page {
+                padding: 18px;
             }
 
-            .logo {
-                font-size: 19px;
-            }
-
-            .home-link {
-                font-size: 12px;
-            }
-
-            .container {
-                width: 94%;
-                padding-top: 25px;
-            }
-
-            .character-header h1 {
+            .page-header h1 {
                 font-size: 30px;
+            }
+
+            .info-grid,
+            .power-grid,
+            .stat-grid,
+            .equipment-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .topbar {
+                padding: 0 16px;
+            }
+
+            h2 {
+                font-size: 24px;
             }
         }
     </style>
@@ -367,7 +459,6 @@
 
     <div class="logo">
         Reartval Wiki
-        <span>Official Universe Database</span>
     </div>
 
     <a class="home-link" href="/Reartval-Wiki/index.html">
@@ -377,20 +468,15 @@
 </header>
 
 
-<main class="container">
+<main class="page">
 
-    <a class="back" href="/Reartval-Wiki/index.html">
-        ← กลับหน้าหลัก
-    </a>
-
-
-    <div class="character-header">
+    <div class="page-header">
 
         <h1>Whatteir Foieh</h1>
 
-        <div class="subtitle">
-            Professor Foieh
-        </div>
+        <p>
+            Professor Foieh · God · DAM
+        </p>
 
     </div>
 
@@ -398,80 +484,85 @@
     <div class="layout">
 
 
-        <!-- SIDEBAR -->
+        <!-- =========================
+             SIDEBAR
+        ========================= -->
 
         <aside class="sidebar">
 
-            <div class="image-box">
+            <div class="infobox">
 
                 <img
                     src="Foieh.png"
                     alt="Whatteir Foieh"
+                    class="character-image"
                 >
 
+                <div class="infobox-title">
+                    Whatteir Foieh
+                </div>
+
+                <table>
+
+                    <tr>
+                        <th>ชื่อทางการ</th>
+                        <td>Professor Foieh</td>
+                    </tr>
+
+                    <tr>
+                        <th>เพศ</th>
+                        <td>ชาย</td>
+                    </tr>
+
+                    <tr>
+                        <th>เผ่าพันธุ์</th>
+                        <td>เทพเจ้า</td>
+                    </tr>
+
+                    <tr>
+                        <th>สถานะ</th>
+                        <td>
+                            <span class="tag">มีชีวิตอยู่</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>กำเนิด</th>
+                        <td>ก่อนการสร้างจักรวาล</td>
+                    </tr>
+
+                    <tr>
+                        <th>ส่วนสูง</th>
+                        <td>170 ซม.</td>
+                    </tr>
+
+                    <tr>
+                        <th>องค์กร</th>
+                        <td>DAM</td>
+                    </tr>
+
+                    <tr>
+                        <th>ตำแหน่ง</th>
+                        <td>หนึ่งในผู้ควบคุมระดับสูงของ DAM</td>
+                    </tr>
+
+                </table>
+
             </div>
-
-
-            <table class="infobox">
-
-                <tr>
-                    <th>ชื่อ</th>
-                    <td>Whatteir Foieh</td>
-                </tr>
-
-                <tr>
-                    <th>ชื่อทางการ</th>
-                    <td>Professor Foieh</td>
-                </tr>
-
-                <tr>
-                    <th>เพศ</th>
-                    <td>ชาย</td>
-                </tr>
-
-                <tr>
-                    <th>เผ่าพันธุ์</th>
-                    <td>พระเจ้า</td>
-                </tr>
-
-                <tr>
-                    <th>สถานะ</th>
-                    <td>มีชีวิตอยู่</td>
-                </tr>
-
-                <tr>
-                    <th>เกิด</th>
-                    <td>ก่อนการกำเนิดจักรวาล</td>
-                </tr>
-
-                <tr>
-                    <th>ส่วนสูง</th>
-                    <td>170 cm</td>
-                </tr>
-
-                <tr>
-                    <th>องค์กร</th>
-                    <td>DAM</td>
-                </tr>
-
-                <tr>
-                    <th>ตำแหน่ง</th>
-                    <td>
-                        หนึ่งในผู้ควบคุมระดับสูงของ DAM
-                    </td>
-                </tr>
-
-            </table>
 
         </aside>
 
 
-        <!-- CONTENT -->
+        <!-- =========================
+             MAIN CONTENT
+        ========================= -->
 
         <div class="content">
 
 
-            <!-- TABLE OF CONTENTS -->
+            <!-- =========================
+                 TOC
+            ========================= -->
 
             <nav class="toc">
 
@@ -481,813 +572,2254 @@
 
                 <ol>
 
-                    <li>
-                        <a href="#names">
-                            ชื่อและชื่อเรียก
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#identity">
-                            ข้อมูลทั่วไป
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#personality">
-                            บุคลิก
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#likes">
-                            สิ่งที่ชอบและไม่ชอบ
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#dreams">
-                            ความฝัน
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#history">
-                            ประวัติ
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#powers">
-                            ความสามารถและพลังปัจจุบัน
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#technology">
-                            เทคโนโลยี
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#weapons">
-                            อุปกรณ์ต่อสู้
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#weaknesses">
-                            จุดอ่อน
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#relationships">
-                            ความสัมพันธ์
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#timeline">
-                            Timeline
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#appearances">
-                            เรื่องที่ปรากฏ
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#additional">
-                            ข้อมูลเพิ่มเติม
-                        </a>
-                    </li>
+                    <li><a href="#names">ชื่อต่าง ๆ</a></li>
+                    <li><a href="#general">ข้อมูลทั่วไป</a></li>
+                    <li><a href="#personality">บุคลิกภาพ</a></li>
+                    <li><a href="#likes">สิ่งที่ชอบ / ไม่ชอบ</a></li>
+                    <li><a href="#dreams">ความต้องการและเป้าหมาย</a></li>
+                    <li><a href="#history">ประวัติ</a></li>
+                    <li><a href="#powers">ความสามารถและพลัง</a></li>
+                    <li><a href="#technology">เทคโนโลยีของ DAM</a></li>
+                    <li><a href="#equipment">อุปกรณ์ต่อสู้</a></li>
+                    <li><a href="#weaknesses">จุดอ่อน</a></li>
+                    <li><a href="#relationships">ความสัมพันธ์</a></li>
+                    <li><a href="#timeline">เส้นเวลา</a></li>
+                    <li><a href="#appearances">การปรากฏตัว</a></li>
+                    <li><a href="#additional">ข้อมูลเพิ่มเติม</a></li>
 
                 </ol>
 
             </nav>
 
 
-            <div class="notice">
-
-                ข้อมูลของ Whatteir Foieh เป็นข้อมูลจากจักรวาล Reartval
-                และอาจมีการเปลี่ยนแปลงตามเนื้อเรื่อง
-
-            </div>
-
-
-            <!-- 1 -->
+            <!-- =========================
+                 1 NAMES
+            ========================= -->
 
             <section id="names">
 
-                <h2>
-                    1. ชื่อและชื่อเรียก
-                </h2>
+                <h2>1. ชื่อต่าง ๆ</h2>
 
-                <ul>
+                <div class="info-grid">
 
-                    <li>
+                    <div class="info-card">
                         <strong>Whatteir Foieh</strong>
-                        — ชื่อจริงของตัวละคร
-                    </li>
+                        ชื่อหลักของตัวละคร
+                    </div>
 
-                    <li>
+                    <div class="info-card">
                         <strong>Professor Foieh</strong>
-                        — ชื่อทางการ
-                    </li>
+                        ชื่อทางการที่ใช้เรียก Foieh โดยเฉพาะใน DAM
+                    </div>
 
-                    <li>
+                    <div class="info-card">
                         <strong>Foieh</strong>
-                        — ชื่อที่มักใช้เรียกสั้น ๆ
-                    </li>
+                        ชื่อเรียกแบบสั้น
+                    </div>
 
-                </ul>
-
-            </section>
-
-
-            <!-- 2 -->
-
-            <section id="identity">
-
-                <h2>
-                    2. ข้อมูลทั่วไป
-                </h2>
-
-                <ul>
-
-                    <li>
-                        เพศ: ชาย
-                    </li>
-
-                    <li>
-                        เผ่าพันธุ์: พระเจ้า
-                    </li>
-
-                    <li>
-                        เกิดก่อนการกำเนิดจักรวาล
-                    </li>
-
-                    <li>
-                        ส่วนสูง: 170 cm
-                    </li>
-
-                    <li>
-                        เป็นหนึ่งในผู้ควบคุมระดับสูงของ DAM
-                    </li>
-
-                    <li>
-                        มีอำนาจเกี่ยวข้องกับโครงสร้างของ Multiverse
-                    </li>
-
-                </ul>
+                </div>
 
             </section>
 
 
-            <!-- 3 -->
+            <!-- =========================
+                 2 GENERAL
+            ========================= -->
+
+            <section id="general">
+
+                <h2>2. ข้อมูลทั่วไป</h2>
+
+                <p>
+                    Whatteir Foieh หรือ Professor Foieh เป็นเทพเจ้าที่มีตัวตน
+                    อยู่ก่อนการสร้างจักรวาล และเป็นหนึ่งในผู้ควบคุมระดับสูง
+                    ของ DAM
+                </p>
+
+                <p>
+                    Foieh ไม่ได้เป็นเพียงสิ่งมีชีวิตที่สามารถเดินทางข้าม
+                    Universe ได้ แต่สามารถรับรู้โครงสร้างที่ทำให้ Universe,
+                    Timeline, Dimension และ Reality จำนวนมหาศาลเชื่อมโยง
+                    เข้าด้วยกัน
+                </p>
+
+                <p>
+                    การรับรู้ของเขาสามารถครอบคลุม Universe จำนวนมาก
+                    Timeline ที่แตกแขนง และความเป็นไปได้ของเหตุการณ์
+                    หลายรูปแบบพร้อมกัน ทำให้ระยะทางระหว่าง Universe
+                    ไม่ใช่ข้อจำกัดแบบเดียวกับสิ่งมีชีวิตทั่วไป
+                </p>
+
+                <p>
+                    ความสามารถของ Foieh ไม่ได้มีเพียงการโจมตีหรือการทำลาย
+                    แต่ครอบคลุมการสร้าง เปลี่ยนแปลง แยก รวม ลบ ฟื้นฟู
+                    และจัดโครงสร้าง Universe, Timeline, Reality
+                    และ Multiverse ใหม่
+                </p>
+
+                <p>
+                    นอกจากนี้เขายังสามารถควบคุมเหตุและผล ความน่าจะเป็น
+                    การดำรงอยู่ ตัวแปรของสิ่งมีชีวิต และความสัมพันธ์
+                    ระหว่างโครงสร้างต่าง ๆ ของ Multiverse
+                </p>
+
+            </section>
+
+
+            <!-- =========================
+                 3 PERSONALITY
+            ========================= -->
 
             <section id="personality">
 
-                <h2>
-                    3. บุคลิก
-                </h2>
+                <h2>3. บุคลิกภาพ</h2>
 
                 <p>
-                    Foieh เป็นสิ่งมีชีวิตที่มีพลังมหาศาล
-                    แต่กลับมีบุคลิกค่อนข้างเล่น ๆ
-                    และไม่ค่อยจริงจังกับสถานการณ์ส่วนใหญ่
+                    แม้ Foieh จะเป็นหนึ่งในตัวตนที่มีพลังสูงที่สุดในเรื่อง
+                    แต่บุคลิกของเขากลับแตกต่างจากภาพของเทพเจ้าที่จริงจัง
+                    และเคร่งขรึมอย่างมาก
                 </p>
 
                 <p>
-                    เขามักทักทายผู้คน แม้กระทั่งศัตรู
-                    ราวกับเป็นคนที่รู้จักกันมานาน
-                    ทำให้หลายครั้งคนอื่นไม่สามารถคาดเดาได้ว่า
-                    เขากำลังจริงจังอยู่หรือไม่
+                    Foieh เป็นคนขี้เล่น ชอบสนุก และมักไม่จริงจังกับสถานการณ์
+                    ในช่วงแรกของการเผชิญหน้า เขามักมองศัตรูเป็นสิ่งที่น่าสนใจ
+                    มากกว่าจะมองเป็นภัยคุกคามที่ต้องกำจัดทันที
                 </p>
 
                 <p>
-                    Foieh มีความมั่นใจในตัวเองสูงมาก
-                    และมักเชื่อว่าตัวเองสามารถรับมือกับ
-                    ทุกสิ่งที่เกิดขึ้นได้
+                    เขาสามารถทักทายแม้กระทั่งศัตรูด้วยท่าทีเหมือนกำลังพบ
+                    เพื่อนเก่าหรือคนรู้จัก และสามารถพูดคุยกับอีกฝ่ายอย่าง
+                    สบาย ๆ แม้สถานการณ์ตรงหน้าจะมีความรุนแรงสูงก็ตาม
+                </p>
+
+                <p>
+                    Foieh มีความมั่นใจในตัวเองสูงมาก เนื่องจากเขารู้ว่า
+                    ความสามารถของตัวเองสามารถส่งผลต่อโครงสร้างขนาดใหญ่
+                    ที่สิ่งมีชีวิตทั่วไปแทบไม่สามารถเข้าไปยุ่งเกี่ยวได้
+                </p>
+
+                <p>
+                    อย่างไรก็ตาม ความมั่นใจดังกล่าวก็กลายเป็นจุดอ่อน
+                    เพราะทำให้เขามีแนวโน้มประเมินคู่ต่อสู้ต่ำเกินไป
+                    และบางครั้งเลือกเล่นกับสถานการณ์แทนที่จะจบปัญหา
+                    ตั้งแต่ต้น
                 </p>
 
             </section>
 
 
-            <!-- 4 -->
+            <!-- =========================
+                 4 LIKES
+            ========================= -->
 
             <section id="likes">
 
-                <h2>
-                    4. สิ่งที่ชอบและไม่ชอบ
-                </h2>
+                <h2>4. สิ่งที่ชอบ / ไม่ชอบ</h2>
+
+                <div class="info-grid">
+
+                    <div class="info-card">
+
+                        <strong>สิ่งที่ชอบ</strong>
+
+                        <ul>
+                            <li>การค้นพบสิ่งใหม่</li>
+                            <li>การเฝ้าดูเหตุการณ์ใน Multiverse</li>
+                            <li>มนุษย์</li>
+                            <li>การทดลอง</li>
+                            <li>เหตุการณ์ที่คาดเดาไม่ได้</li>
+                            <li>ปรากฏการณ์ใหม่ ๆ</li>
+                            <li>การเล่น</li>
+                            <li>กินเหรียญที่ได้รับเป็นเงินทอน</li>
+                        </ul>
+
+                    </div>
 
 
-                <h3>
-                    สิ่งที่ชอบ
-                </h3>
+                    <div class="info-card">
 
-                <ul>
+                        <strong>สิ่งที่ไม่ชอบ</strong>
 
-                    <li>
-                        การค้นหาสิ่งใหม่ ๆ
-                    </li>
+                        <ul>
+                            <li>ความเบื่อ</li>
+                            <li>การไม่มีอะไรให้ทำ</li>
+                        </ul>
 
-                    <li>
-                        การดูสิ่งที่เกิดขึ้นใน Multiverse
-                    </li>
+                    </div>
 
-                    <li>
-                        มนุษย์
-                    </li>
-
-                    <li>
-                        การทดลองและสิ่งที่คาดเดาไม่ได้
-                    </li>
-
-                    <li>
-                        เหรียญที่ได้รับเป็นเงินทอน
-                    </li>
-
-                </ul>
-
-
-                <h3>
-                    สิ่งที่ไม่ชอบ
-                </h3>
-
-                <ul>
-
-                    <li>
-                        ความน่าเบื่อ
-                    </li>
-
-                    <li>
-                        การไม่มีอะไรให้ทำ
-                    </li>
-
-                </ul>
+                </div>
 
             </section>
 
 
-            <!-- 5 -->
+            <!-- =========================
+                 5 DREAMS
+            ========================= -->
 
             <section id="dreams">
 
-                <h2>
-                    5. ความฝัน
-                </h2>
+                <h2>5. ความต้องการและเป้าหมาย</h2>
 
                 <p>
-                    Foieh ไม่ได้มีความฝันในแบบมนุษย์ทั่วไปอย่างชัดเจน
-                    สิ่งที่ผลักดันเขามากที่สุดคือการค้นหาสิ่งที่สามารถ
-                    ทำให้เขาหายเบื่อ และค้นหาสิ่งที่น่าสนใจภายใน Multiverse
+                    Foieh ไม่ได้มีเป้าหมายในรูปแบบของการครอง Multiverse
+                    หรือการพิสูจน์ว่าตัวเองแข็งแกร่งที่สุด
+                </p>
+
+                <p>
+                    สิ่งที่เขาสนใจมากกว่าคือการหาอะไรทำเพื่อแก้ความเบื่อ
+                    และการได้เห็นว่าเหตุการณ์ต่าง ๆ ใน Multiverse
+                    จะพัฒนาไปในทิศทางใด
+                </p>
+
+                <p>
+                    เขาสนใจสิ่งที่คาดเดาไม่ได้เป็นพิเศษ เพราะเมื่อสิ่งหนึ่ง
+                    สามารถทำให้ผลลัพธ์แตกต่างจากสิ่งที่เขาคาดไว้ได้
+                    สิ่งนั้นจะกลายเป็นเรื่องน่าสนใจสำหรับเขา
                 </p>
 
             </section>
 
 
-            <!-- 6 -->
+            <!-- =========================
+                 6 HISTORY
+            ========================= -->
 
             <section id="history">
 
-                <h2>
-                    6. ประวัติ
-                </h2>
+                <h2>6. ประวัติ</h2>
 
-
-                <h3>
-                    ก่อนการกำเนิดจักรวาล
-                </h3>
+                <h3>การดำรงอยู่ก่อนการสร้างจักรวาล</h3>
 
                 <p>
-                    Whatteir Foieh เป็นเทพที่ถือกำเนิดขึ้นก่อนจักรวาล
-                    ทำให้เขาไม่ได้ผูกพันอยู่กับจักรวาลใดจักรวาลหนึ่ง
-                    และสามารถมองเห็นโครงสร้างของ Multiverse
-                    ได้ในระดับที่สิ่งมีชีวิตทั่วไปไม่สามารถทำได้
-                </p>
-
-
-                <h3>
-                    การเข้าร่วม DAM
-                </h3>
-
-                <p>
-                    ในช่วงที่ DAM กำลังก่อตัว
-                    Foieh ได้ค้นพบองค์กรนี้
-                    และตัดสินใจเข้าร่วมส่วนหนึ่งเพราะต้องการดูว่า
-                    องค์กรจะทำอะไรกับ Multiverse ที่ไม่มีที่สิ้นสุด
+                    Foieh มีตัวตนอยู่ก่อนการสร้างจักรวาล ทำให้การดำรงอยู่
+                    ของเขาไม่ได้เริ่มต้นจากระบบ Universe แบบเดียวกับ
+                    สิ่งมีชีวิตทั่วไป
                 </p>
 
                 <p>
-                    เขาได้ส่งพลังจำนวนมหาศาลให้กับ DAM
-                    และบางครั้งก็ทำงานอยู่ภายในองค์กร
-                    เพราะ DAM มีสิ่งต่าง ๆ ให้เขาทำมากมาย
+                    จากการดำรงอยู่มาเป็นเวลายาวนาน เขาสามารถรับรู้
+                    และเข้าใจการเปลี่ยนแปลงของโครงสร้าง Multiverse
+                    ได้อย่างลึกซึ้ง
                 </p>
 
 
-                <h3>
-                    การหายตัวไป
-                </h3>
+                <h3>การเข้ามาเกี่ยวข้องกับ DAM</h3>
 
                 <p>
-                    หลังจากเวลาผ่านไป Foieh เริ่มรู้สึกเบื่อ
-                    และหายออกจาก DAM เป็นเวลาหลายเดือน
-                </p>
-
-
-                <h3>
-                    The Father Prime
-                </h3>
-
-                <p>
-                    ในเวลาต่อมา Foieh ได้พบกับ The Father Prime
-                    ซึ่งมีเป้าหมายที่จะทำลาย Multiverse ทั้งหมด
+                    ในช่วงที่ DAM กำลังก่อตัวขึ้น Foieh ได้เข้ามามีส่วนร่วม
+                    กับองค์กร และเป็นหนึ่งในผู้ที่ช่วยสนับสนุนองค์กร
+                    ด้วยพลังของตนเอง
                 </p>
 
                 <p>
-                    เนื่องจาก Foieh ไม่มีอะไรทำในเวลานั้น
-                    เขาจึงตัดสินใจส่งพลังจำนวนมหาศาลให้ The Father Prime
-                    และเฝ้าดูว่าอีกฝ่ายจะทำอะไรกับ Multiverse
+                    เขามอบพลังจำนวนมหาศาลให้กับ DAM ส่วนหนึ่งเพราะต้องการ
+                    ดูว่าองค์กรจะสามารถทำอะไรกับ Multiverse ที่มีอยู่
+                    ได้บ้าง
+                </p>
+
+                <p>
+                    Foieh เคยทำงานอยู่ภายใน DAM เป็นช่วง ๆ และบางครั้ง
+                    ก็เลือกอยู่ที่องค์กรเพียงเพราะที่นั่นมีสิ่งต่าง ๆ
+                    ให้เขาทำมากกว่าการอยู่เฉย ๆ
+                </p>
+
+
+                <h3>การหายตัวไป</h3>
+
+                <p>
+                    เมื่อเวลาผ่านไป Foieh เริ่มรู้สึกเบื่อกับสิ่งที่กำลังทำ
+                    และตัดสินใจหายตัวออกจาก DAM เป็นเวลาหลายเดือน
+                </p>
+
+
+                <h3>The Father Prime</h3>
+
+                <p>
+                    ในช่วงหนึ่ง Foieh ได้พบกับ The Father Prime
+                    ซึ่งมีเป้าหมายในการทำลาย Multiverse ทั้งหมด
+                </p>
+
+                <p>
+                    แทนที่จะหยุด The Father Prime ทันที Foieh กลับมอบ
+                    พลังจำนวนมหาศาลให้กับเขา และมีส่วนทำให้เขากลับมา
+                    จากนั้นจึงเลือกเฝ้าดูว่า The Father Prime จะทำอะไรต่อไป
+                </p>
+
+                <p>
+                    เหตุผลหลักของ Foieh คือความเบื่อและความอยากรู้
+                    ว่าบุคคลที่มีเป้าหมายเช่นนั้นจะทำอะไรได้บ้าง
+                    เมื่อได้รับพลังในระดับดังกล่าว
                 </p>
 
             </section>
 
 
-            <!-- 7 -->
+            <!-- =========================
+                 7 POWERS
+            ========================= -->
 
             <section id="powers">
 
-                <h2>
-                    7. ความสามารถและพลังปัจจุบัน
-                </h2>
+                <h2>7. ความสามารถและพลัง</h2>
 
+
+                <!-- 7.1 -->
+
+                <h3>7.1 Multiverse Awareness และการรับรู้โครงสร้าง</h3>
 
                 <div class="power-grid">
 
+                    <div class="power-card">
+                        <h3>การรับรู้ Universe จำนวนมหาศาล</h3>
 
-                    <div class="power-box">
-                        <strong>Multiversal Awareness</strong>
+                        <p>
+                            Foieh สามารถรับรู้ Universe จำนวนมากพร้อมกัน
+                            และสามารถตรวจสอบการเปลี่ยนแปลงที่เกิดขึ้น
+                            ในแต่ละ Universe ได้โดยไม่จำเป็นต้องเดินทาง
+                            ไปยังสถานที่นั้นก่อน
+                        </p>
 
-                        <span>
-                            รับรู้จักรวาล เส้นเวลา
-                            และความเป็นไปได้จำนวนมหาศาลพร้อมกัน
-                        </span>
+                        <p>
+                            การรับรู้นี้ไม่ได้หมายถึงเพียงการมองเห็น
+                            แต่รวมถึงการรับรู้โครงสร้าง ความผิดปกติ
+                            และความสัมพันธ์ระหว่างเหตุการณ์ต่าง ๆ
+                        </p>
                     </div>
 
 
-                    <div class="power-box">
-                        <strong>Multiverse Manipulation</strong>
+                    <div class="power-card">
+                        <h3>การรับรู้โครงสร้าง Multiverse</h3>
 
-                        <span>
-                            ควบคุมโครงสร้างและความเชื่อมโยง
-                            ระหว่างจักรวาล
-                        </span>
+                        <p>
+                            สามารถมองเห็นความสัมพันธ์ระหว่าง Universe,
+                            Dimension, Timeline และ Reality รวมถึงรู้ว่า
+                            โครงสร้างใดเชื่อมต่อ แยกออก ซ้อนทับ
+                            หรือกำลังเกิดความผิดปกติ
+                        </p>
                     </div>
 
 
-                    <div class="power-box">
-                        <strong>Universe Creation</strong>
+                    <div class="power-card">
+                        <h3>การรับรู้ Timeline</h3>
 
-                        <span>
-                            สามารถสร้างจักรวาลและโครงสร้างใหม่ขึ้นมาได้
-                        </span>
+                        <p>
+                            สามารถมองเห็นอดีต ปัจจุบัน อนาคต และความเป็นไปได้
+                            ของเหตุการณ์ต่าง ๆ รวมถึง Timeline ที่แตกแขนง
+                            จากเหตุการณ์เดียวกัน
+                        </p>
+
+                        <p>
+                            การรับรู้นี้ทำให้ Foieh สามารถพิจารณา
+                            ผลลัพธ์ที่เป็นไปได้หลายเส้นทางก่อนตัดสินใจ
+                        </p>
                     </div>
 
 
-                    <div class="power-box">
-                        <strong>Universe Destruction</strong>
+                    <div class="power-card">
+                        <h3>การรับรู้จากภายนอก Multiverse</h3>
 
-                        <span>
-                            สามารถทำลายหรือยกเลิกโครงสร้างระดับจักรวาลได้
-                        </span>
+                        <p>
+                            Foieh สามารถมอง Multiverse จากภายนอก
+                            โครงสร้างปกติของมัน ทำให้เขาสามารถมองเห็น
+                            ความสัมพันธ์ของโครงสร้างขนาดใหญ่ที่สิ่งมีชีวิต
+                            ภายใน Universe ไม่สามารถมองเห็นได้
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- 7.2 -->
+
+                <h3>7.2 Multiverse Structure Manipulation</h3>
+
+                <div class="power-grid">
+
+                    <div class="power-card">
+                        <h3>ควบคุมโครงสร้าง Multiverse</h3>
+
+                        <p>
+                            Foieh สามารถเปลี่ยนแปลงโครงสร้างที่เชื่อม Universe
+                            จำนวนมากเข้าด้วยกัน รวมถึงความสัมพันธ์ระหว่าง
+                            Universe, Timeline และ Reality
+                        </p>
+
+                        <p>
+                            การเปลี่ยนแปลงดังกล่าวอาจเป็นการเชื่อม
+                            แยก สลับ จัดลำดับ หรือเปลี่ยนเส้นทางของ
+                            โครงสร้างเหล่านี้
+                        </p>
                     </div>
 
 
-                    <div class="power-box">
-                        <strong>Timeline Manipulation</strong>
+                    <div class="power-card">
+                        <h3>สลับ Universe</h3>
 
-                        <span>
-                            แยก รวม เปลี่ยนแปลง หรือแก้ไขเส้นเวลา
-                        </span>
+                        <p>
+                            สามารถสลับตำแหน่งหรือความสัมพันธ์ของ Universe
+                            ภายในโครงสร้าง Multiverse ทำให้ Universe
+                            ที่เดิมอยู่คนละตำแหน่งหรือคนละความสัมพันธ์
+                            ถูกจัดวางใหม่ได้
+                        </p>
                     </div>
 
 
-                    <div class="power-box">
-                        <strong>Probability Manipulation</strong>
+                    <div class="power-card">
+                        <h3>รวม Universe</h3>
 
-                        <span>
-                            เปลี่ยนแปลงความเป็นไปได้ของเหตุการณ์ต่าง ๆ
-                        </span>
+                        <p>
+                            สามารถรวม Universe ที่แยกจากกันให้กลายเป็น
+                            โครงสร้างเดียวกัน โดยสามารถจัดการกับความแตกต่าง
+                            ของกฎ Space, Time, Reality และโครงสร้างภายใน
+                            แต่ละ Universe ได้
+                        </p>
                     </div>
 
 
-                    <div class="power-box">
-                        <strong>Reality Manipulation</strong>
+                    <div class="power-card">
+                        <h3>แยก Universe</h3>
 
-                        <span>
-                            สามารถเปลี่ยนแปลงโครงสร้าง
-                            และกฎของความเป็นจริง
-                        </span>
+                        <p>
+                            สามารถแยก Universe ที่กำลังเชื่อมต่อ
+                            หรือซ้อนทับกันออกจากกัน เพื่อเปลี่ยนโครงสร้าง
+                            หรือป้องกันไม่ให้ผลกระทบจาก Universe หนึ่ง
+                            แพร่ไปยังอีก Universe
+                        </p>
                     </div>
 
 
-                    <div class="power-box">
-                        <strong>Dimensional Travel</strong>
+                    <div class="power-card">
+                        <h3>จัดลำดับโครงสร้าง Universe</h3>
 
-                        <span>
-                            เดินทางระหว่างจักรวาลและมิติที่แตกต่างกัน
-                        </span>
+                        <p>
+                            สามารถเปลี่ยนลำดับและตำแหน่งเชิงโครงสร้าง
+                            ของ Universe ภายใน Multiverse รวมถึงเปลี่ยน
+                            วิธีที่ Universe เหล่านั้นเชื่อมโยงกัน
+                        </p>
                     </div>
 
 
-                    <div class="power-box">
-                        <strong>Portal Creation</strong>
+                    <div class="power-card">
+                        <h3>จัดการ Multiverse หลายชุด</h3>
 
-                        <span>
-                            สร้างช่องทางเชื่อมต่อระหว่างพื้นที่
-                            และความเป็นจริงต่าง ๆ
-                        </span>
+                        <p>
+                            สามารถจัดการกับชุดของ Multiverse มากกว่าหนึ่งชุด
+                            และสามารถเชื่อม แยก ซ้อน หรือจัดโครงสร้าง
+                            ของแต่ละชุดได้
+                        </p>
                     </div>
 
 
-                    <div class="power-box">
-                        <strong>Timeline Isolation</strong>
+                    <div class="power-card">
+                        <h3>Multiverse Overlay</h3>
 
-                        <span>
-                            แยกเหตุการณ์หรือเส้นเวลาออกจากโครงสร้างอื่น
-                        </span>
+                        <p>
+                            สามารถนำโครงสร้างของ Multiverse หลายชุด
+                            มาซ้อนทับกัน ทำให้โครงสร้างที่แยกจากกัน
+                            สามารถมีความสัมพันธ์หรือส่งผลต่อกันได้
+                        </p>
                     </div>
 
 
-                    <div class="power-box">
-                        <strong>Event Propagation</strong>
+                    <div class="power-card">
+                        <h3>Multiverse Separation</h3>
 
-                        <span>
-                            ส่งผลของเหตุการณ์หนึ่งไปยังหลายจักรวาล
-                        </span>
+                        <p>
+                            สามารถแยก Multiverse ที่ซ้อนทับหรือเชื่อมต่อกัน
+                            ออกจากกัน เพื่อลดการแพร่กระจายของเหตุการณ์
+                            หรือคืนโครงสร้างให้กลับเป็นชุดที่แยกจากกัน
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- 7.3 -->
+
+                <h3>7.3 Universe Creation</h3>
+
+                <div class="power-grid">
+
+                    <div class="power-card">
+                        <h3>สร้าง Universe ใหม่</h3>
+
+                        <p>
+                            Foieh สามารถสร้าง Universe ใหม่ขึ้นมาได้
+                            โดยไม่จำเป็นต้องใช้ Universe เดิมเป็นต้นแบบ
+                            และสามารถกำหนดโครงสร้างพื้นฐานของ Universe
+                            ที่สร้างขึ้นได้
+                        </p>
                     </div>
 
 
-                    <div class="power-box">
-                        <strong>Existence Manipulation</strong>
+                    <div class="power-card">
+                        <h3>กำหนดกฎของ Universe</h3>
 
-                        <span>
-                            ควบคุมสถานะการมีอยู่ของสิ่งต่าง ๆ
-                        </span>
+                        <p>
+                            สามารถกำหนดกฎพื้นฐานของ Universe ที่สร้างขึ้น
+                            รวมถึงรูปแบบการทำงานของ Space, Time,
+                            Matter, Energy และกฎทางฟิสิกส์
+                        </p>
                     </div>
 
 
-                    <div class="power-box">
-                        <strong>Self Restoration</strong>
+                    <div class="power-card">
+                        <h3>สร้าง Reality รูปแบบพิเศษ</h3>
 
-                        <span>
-                            สามารถฟื้นฟูตัวเองกลับมาได้
-                            แม้ได้รับความเสียหายอย่างรุนแรง
-                        </span>
+                        <p>
+                            สามารถสร้าง Universe หรือ Reality ที่มีกฎ
+                            แตกต่างจาก Reality ปกติ รวมถึงสร้างโครงสร้าง
+                            ที่ไม่ได้ทำงานตามกฎ Reality ทั่วไป
+                        </p>
                     </div>
 
 
-                    <div class="power-box">
-                        <strong>Regeneration</strong>
+                    <div class="power-card">
+                        <h3>สร้างพื้นที่นอก Multiverse</h3>
 
-                        <span>
-                            สามารถฟื้นฟูร่างกายได้ในระดับสูงมาก
-                        </span>
+                        <p>
+                            Foieh สามารถสร้างพื้นที่ที่อยู่นอกโครงสร้าง
+                            Multiverse ปกติ เพื่อใช้เป็นพื้นที่แยก
+                            พื้นที่พิเศษ หรือพื้นที่ที่ไม่จำเป็นต้อง
+                            ปฏิบัติตามโครงสร้างของ Universe ทั่วไป
+                        </p>
                     </div>
 
 
-                    <div class="power-box">
-                        <strong>Script Manipulation</strong>
+                    <div class="power-card">
+                        <h3>สร้าง Multiverse ใหม่</h3>
 
-                        <span>
-                            สามารถแก้ไขหรือบิดเบือนเหตุการณ์
-                            ในอดีต ปัจจุบัน และอนาคต
-                        </span>
+                        <p>
+                            ในขอบเขตสูงสุด Foieh สามารถสร้างโครงสร้าง
+                            Multiverse ใหม่ขึ้นมาได้ ไม่จำเป็นต้องใช้
+                            Multiverse เดิมเป็นจุดเริ่มต้น
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- 7.4 -->
+
+                <h3>7.4 Universe และ Multiverse Destruction</h3>
+
+                <div class="power-grid">
+
+                    <div class="power-card">
+                        <h3>ทำลาย Universe</h3>
+
+                        <p>
+                            สามารถทำลาย Universe ทั้งระบบ ไม่ใช่เพียง
+                            ดาวเคราะห์หรือวัตถุภายใน แต่สามารถทำลาย
+                            Space-Time และโครงสร้างที่ทำให้ Universe
+                            นั้นดำรงอยู่ได้
+                        </p>
                     </div>
 
 
-                    <div class="power-box">
-                        <strong>Psychic Powers</strong>
+                    <div class="power-card">
+                        <h3>ทำลายโครงสร้าง Multiverse</h3>
 
-                        <span>
-                            มีความสามารถทางจิตและสามารถส่งผลต่อ
-                            จิตใจ ความทรงจำ และความคิด
-                        </span>
+                        <p>
+                            สามารถขยายผลการทำลายไปยัง Universe จำนวนมาก
+                            และสามารถโจมตีโครงสร้างที่ทำหน้าที่เชื่อม
+                            Universe เหล่านั้นเข้าด้วยกัน
+                        </p>
+
+                        <p>
+                            ในขอบเขตสูงสุด ผลกระทบสามารถไปถึงโครงสร้าง
+                            Multiverse โดยรวมได้
+                        </p>
                     </div>
 
 
-                    <div class="power-box">
-                        <strong>Power Manipulation</strong>
+                    <div class="power-card">
+                        <h3>ทำลายแบบเลือกเป้าหมาย</h3>
 
-                        <span>
-                            เพิ่ม ลด หรือเปลี่ยนแปลงพลังของสิ่งมีชีวิตได้
-                        </span>
+                        <p>
+                            Foieh สามารถเลือกทำลายเพียง Universe,
+                            Timeline, Reality, เหตุการณ์ หรือสิ่งมีชีวิต
+                            ที่ต้องการ โดยไม่จำเป็นต้องทำลายทุกอย่าง
+                            รอบเป้าหมาย
+                        </p>
                     </div>
 
 
-                    <div class="power-box">
-                        <strong>Magic Resistance</strong>
+                    <div class="power-card">
+                        <h3>ลบโครงสร้างการดำรงอยู่</h3>
 
-                        <span>
-                            เวทมนตร์และกฎทั่วไปไม่สามารถควบคุมเขาได้โดยง่าย
-                        </span>
+                        <p>
+                            สามารถลบโครงสร้างหรือเงื่อนไขที่ทำให้บางสิ่ง
+                            ดำรงอยู่ ทำให้การทำลายของเขาไม่จำเป็นต้อง
+                            เป็นการทำลายทางกายภาพเท่านั้น
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- 7.5 -->
+
+                <h3>7.5 Space และ Dimensional Manipulation</h3>
+
+                <div class="power-grid">
+
+                    <div class="power-card">
+                        <h3>Space Manipulation</h3>
+
+                        <p>
+                            สามารถบิด เปลี่ยน เชื่อม แยก และจัดเรียง Space
+                            ใหม่ ทำให้ระยะทางตามปกติไม่เป็นข้อจำกัด
+                            สำหรับการเคลื่อนที่ของเขา
+                        </p>
+
+                        <p>
+                            ความสามารถนี้เป็นการควบคุมโครงสร้าง Space
+                            ไม่ใช่การเพิ่มความเร็วในการวิ่งหรือบิน
+                            ของร่างกายโดยตรง
+                        </p>
                     </div>
 
 
-                    <div class="power-box">
-                        <strong>Multiple Selves</strong>
+                    <div class="power-card">
+                        <h3>Dimensional Travel</h3>
 
-                        <span>
-                            สามารถมีตัวตนหลายรูปแบบ
-                            และรับรู้ตัวตนเหล่านั้นได้
-                        </span>
+                        <p>
+                            สามารถเดินทางระหว่าง Dimension, Universe
+                            และ Reality ที่มีกฎแตกต่างกันได้
+                            โดยไม่จำเป็นต้องเดินทางผ่านระยะทางทั้งหมด
+                            ด้วยวิธีทางกายภาพ
+                        </p>
                     </div>
 
 
-                    <div class="power-box">
-                        <strong>Higher-Reality Interaction</strong>
+                    <div class="power-card">
+                        <h3>Dimensional Gate</h3>
 
-                        <span>
-                            สามารถรับรู้และสร้างพื้นที่
-                            ที่อยู่นอกโครงสร้าง Multiverse
-                        </span>
+                        <p>
+                            สามารถสร้างช่องทางเชื่อมระหว่างสถานที่
+                            ที่อยู่คนละ Universe หรือ Reality
+                            โดยผู้เดินทางสามารถข้ามไปยังอีกโครงสร้างหนึ่ง
+                            ผ่านช่องทางที่สร้างขึ้น
+                        </p>
                     </div>
 
+
+                    <div class="power-card">
+                        <h3>พื้นที่นอก Multiverse</h3>
+
+                        <p>
+                            สามารถสร้างหรือเข้าถึงพื้นที่ที่อยู่นอก
+                            โครงสร้าง Multiverse และใช้พื้นที่ดังกล่าว
+                            เป็นจุดแยกหรือพื้นที่พิเศษได้
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- 7.6 -->
+
+                <h3>7.6 Time และ Timeline Manipulation</h3>
+
+                <div class="power-grid">
+
+                    <div class="power-card">
+                        <h3>Time Manipulation</h3>
+
+                        <p>
+                            สามารถหยุด ชะลอ ล็อก แช่แข็ง และฟื้นฟูเวลา
+                            ในพื้นที่หรือเป้าหมายที่กำหนด
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Timeline Creation</h3>
+
+                        <p>
+                            สามารถสร้าง Timeline ใหม่จากเหตุการณ์เดียว
+                            ทำให้เหตุการณ์ดังกล่าวสามารถนำไปสู่
+                            ประวัติศาสตร์และอนาคตอีกเส้นหนึ่ง
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Timeline Split</h3>
+
+                        <p>
+                            สามารถแยก Timeline หนึ่งออกเป็นหลาย Timeline
+                            จากเหตุการณ์เดียวกัน ทำให้ผลลัพธ์ของเหตุการณ์
+                            เดิมสามารถดำเนินต่อไปในหลายเส้นทาง
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Timeline Merge</h3>
+
+                        <p>
+                            สามารถรวม Timeline หลายเส้นเข้าด้วยกัน
+                            และจัดการกับความแตกต่างของเหตุการณ์
+                            ที่เกิดขึ้นในแต่ละเส้นทาง
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Timeline Selection</h3>
+
+                        <p>
+                            สามารถเลือก Timeline ที่ต้องการให้ดำเนินต่อ
+                            และเปลี่ยนเส้นทางจาก Timeline เดิม
+                            ไปยังเส้นทางที่ต้องการ
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Timeline Erasure</h3>
+
+                        <p>
+                            สามารถลบ Timeline หรือส่วนหนึ่งของประวัติศาสตร์
+                            ออกจากโครงสร้างเวลา ทำให้เส้นทางดังกล่าว
+                            ไม่สามารถดำเนินต่อไปในรูปแบบเดิม
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Timeline Restoration</h3>
+
+                        <p>
+                            สามารถคืน Timeline หรือเหตุการณ์กลับไปยัง
+                            สภาพก่อนที่จะเกิดการเปลี่ยนแปลงได้
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Timeline Isolation</h3>
+
+                        <p>
+                            สามารถแยก Timeline หนึ่งออกจาก Timeline อื่น
+                            เพื่อไม่ให้การเปลี่ยนแปลงหรือเหตุการณ์
+                            ในเส้นทางหนึ่งแพร่ไปยังอีกเส้นทาง
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- 7.7 -->
+
+                <h3>7.7 Causality และ Probability Manipulation</h3>
+
+                <div class="power-grid">
+
+                    <div class="power-card">
+                        <h3>Causality Manipulation</h3>
+
+                        <p>
+                            สามารถเปลี่ยนความสัมพันธ์ระหว่างเหตุและผล
+                            ทำให้เหตุการณ์หนึ่งนำไปสู่ผลลัพธ์ที่แตกต่าง
+                            จากเส้นทางเดิมได้
+                        </p>
+
+                        <p>
+                            การเปลี่ยนแปลงนี้สามารถใช้กับเหตุการณ์
+                            ในระดับบุคคล เหตุการณ์ขนาดใหญ่ หรือโครงสร้าง
+                            ของ Timeline ตามขอบเขตที่ Foieh เลือกใช้
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Probability Manipulation</h3>
+
+                        <p>
+                            สามารถเพิ่มหรือลดความน่าจะเป็นของเหตุการณ์
+                            ทำให้ผลลัพธ์ที่ต้องการมีโอกาสเกิดขึ้นมากขึ้น
+                            หรือลดโอกาสของผลลัพธ์ที่ไม่ต้องการ
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Event Propagation</h3>
+
+                        <p>
+                            สามารถทำให้เหตุการณ์เดียวกันเกิดขึ้น
+                            หรือส่งผลไปยัง Universe จำนวนมาก
+                            ในช่วงเวลาเดียวกัน
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Event Isolation</h3>
+
+                        <p>
+                            สามารถแยกเหตุการณ์ออกจาก Timeline หรือ Universe
+                            อื่น เพื่อไม่ให้ผลกระทบแพร่กระจายออกจาก
+                            ขอบเขตที่กำหนด
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- 7.8 -->
+
+                <h3>7.8 Reality, Existence และ Concept Manipulation</h3>
+
+                <div class="power-grid">
+
+                    <div class="power-card">
+                        <h3>Reality Manipulation</h3>
+
+                        <p>
+                            สามารถเปลี่ยนคุณสมบัติของ Reality รวมถึง
+                            Space, Time, Matter, Energy และกฎพื้นฐาน
+                            ที่ใช้ควบคุม Universe
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Existence Manipulation</h3>
+
+                        <p>
+                            สามารถเปลี่ยนสถานะการดำรงอยู่ของสิ่งมีชีวิต
+                            วัตถุ เหตุการณ์ Universe หรือโครงสร้าง Reality
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Existence Erasure</h3>
+
+                        <p>
+                            สามารถลบสิ่งมีชีวิต วัตถุ เหตุการณ์ หรือโครงสร้าง
+                            ออกจาก Reality โดยไม่จำเป็นต้องทำลายร่างกาย
+                            ด้วยวิธีทางกายภาพก่อน
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Existence Condition Manipulation</h3>
+
+                        <p>
+                            สามารถลบหรือเปลี่ยนเหตุผลและเงื่อนไขที่ทำให้
+                            สิ่งหนึ่งสามารถดำรงอยู่ได้ เช่น เงื่อนไข
+                            ที่ทำให้โครงสร้างหนึ่งยังคงมีอยู่
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Concept Manipulation</h3>
+
+                        <p>
+                            สามารถส่งผลต่อ Concept ที่เกี่ยวข้องกับ
+                            Reality และการดำรงอยู่ โดยขอบเขตขึ้นอยู่กับ
+                            Concept ที่กำลังถูกควบคุม
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Reality Rule Manipulation</h3>
+
+                        <p>
+                            สามารถเปลี่ยนกฎที่ควบคุม Reality ภายใน
+                            ขอบเขตที่กำหนด ทำให้กฎเดิมถูกแทนที่ด้วยกฎใหม่
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Higher-Reality Interaction</h3>
+
+                        <p>
+                            Foieh สามารถโต้ตอบกับโครงสร้าง Reality
+                            ที่อยู่เหนือระบบ Reality ปกติของ Universe
+                            ทำให้เขาไม่ได้จำกัดอยู่เพียงสิ่งที่เกิดขึ้น
+                            ภายในกฎของ Universe เดียว
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Multiverse Hierarchy Manipulation</h3>
+
+                        <p>
+                            สามารถเปลี่ยนลำดับหรือโครงสร้างความสัมพันธ์
+                            ระหว่าง Universe, Reality และโครงสร้าง
+                            Multiverse ที่อยู่ในระบบเดียวกัน
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- 7.9 -->
+
+                <h3>7.9 Script Manipulation</h3>
+
+                <div class="power-grid">
+
+                    <div class="power-card">
+                        <h3>Script Manipulation</h3>
+
+                        <p>
+                            Foieh สามารถแก้ไขโครงสร้างของเหตุการณ์
+                            ในอดีต ปัจจุบัน และอนาคต เหมือนการเปลี่ยน
+                            เส้นทางของเหตุการณ์ที่กำลังถูกดำเนินอยู่
+                        </p>
+
+                        <p>
+                            ความสามารถนี้สามารถทำงานร่วมกับ Time,
+                            Timeline, Reality และ Causality Manipulation
+                            เพื่อเปลี่ยนผลลัพธ์ของเหตุการณ์
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>แก้ไขอดีต</h3>
+
+                        <p>
+                            สามารถเปลี่ยนเหตุการณ์ในอดีต และทำให้
+                            ประวัติศาสตร์รวมถึงผลลัพธ์ในปัจจุบัน
+                            เปลี่ยนแปลงตามไปด้วย
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>แก้ไขปัจจุบัน</h3>
+
+                        <p>
+                            สามารถเปลี่ยนเหตุการณ์ที่กำลังเกิดขึ้น
+                            ก่อนที่ผลลัพธ์ของเหตุการณ์นั้นจะสมบูรณ์
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>แก้ไขอนาคต</h3>
+
+                        <p>
+                            สามารถเปลี่ยนเส้นทางของเหตุการณ์ในอนาคต
+                            และเลือกเส้นทางที่ต้องการให้เกิดขึ้น
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Event Distortion</h3>
+
+                        <p>
+                            สามารถบิดเบือนเส้นทางของเหตุการณ์
+                            ทำให้เหตุการณ์เดียวกันสามารถนำไปสู่
+                            ผลลัพธ์ที่แตกต่างกันได้
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Event Path Alteration</h3>
+
+                        <p>
+                            สามารถเปลี่ยนเส้นทางที่เหตุการณ์กำลังดำเนินไป
+                            โดยไม่จำเป็นต้องลบเหตุการณ์ทั้งหมด
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Desired Timeline Selection</h3>
+
+                        <p>
+                            หลังจากมองเห็นเส้นทางความเป็นไปได้จำนวนมาก
+                            Foieh สามารถเลือกเส้นทางที่ต้องการ
+                            และทำให้โครงสร้างเหตุการณ์ดำเนินไปตามเส้นทางนั้น
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- 7.10 -->
+
+                <h3>7.10 การควบคุมพลัง คุณสมบัติ และสิ่งมีชีวิตอื่น</h3>
+
+                <div class="power-grid">
+
+                    <div class="power-card">
+                        <h3>Power Manipulation</h3>
+
+                        <p>
+                            สามารถเพิ่ม ลด เปลี่ยนแปลง หรือรบกวนพลัง
+                            ของผู้อื่น รวมถึงลดประสิทธิภาพของความสามารถ
+                            ที่กำลังถูกใช้
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Power Granting</h3>
+
+                        <p>
+                            สามารถมอบพลังจำนวนมหาศาลให้กับสิ่งมีชีวิตอื่น
+                            โดยเหตุการณ์ที่ชัดเจนที่สุดคือการมอบพลัง
+                            ให้กับ The Father Prime
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Power Removal</h3>
+
+                        <p>
+                            สามารถดึงพลังหรือความสามารถบางอย่าง
+                            ออกจากเป้าหมาย ทำให้เป้าหมายสูญเสีย
+                            ความสามารถดังกล่าว
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Attribute Manipulation</h3>
+
+                        <p>
+                            สามารถดึงคุณสมบัติบางอย่างจากผู้อื่น
+                            มาใช้กับตัวเอง หรือเอาคุณสมบัติของเป้าหมาย
+                            ออกไป
+                        </p>
+
+                        <p>
+                            คุณสมบัติที่ถูกดึงออกมาสามารถเกี่ยวข้องกับ
+                            ความแข็งแกร่ง ความทนทาน หรือคุณสมบัติอื่น
+                            ที่อยู่ในขอบเขตพลังของเป้าหมาย
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Mind Manipulation</h3>
+
+                        <p>
+                            สามารถควบคุมจิตใจ ความคิด และพฤติกรรม
+                            ของเป้าหมาย
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Memory Manipulation</h3>
+
+                        <p>
+                            สามารถแก้ไข ลบ หรือสร้างความทรงจำ
+                            รวมถึงสร้างความทรงจำปลอมที่ไม่เคยเกิดขึ้นจริง
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Thought Manipulation</h3>
+
+                        <p>
+                            สามารถส่งผลโดยตรงต่อความคิดของเป้าหมาย
+                            และเปลี่ยนทิศทางของความคิดที่กำลังเกิดขึ้น
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Habit / Behavior Manipulation</h3>
+
+                        <p>
+                            สามารถเปลี่ยนนิสัย รูปแบบพฤติกรรม
+                            และการตอบสนองของเป้าหมาย
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Perception Manipulation</h3>
+
+                        <p>
+                            สามารถเปลี่ยนสิ่งที่เป้าหมายรับรู้
+                            ทำให้เป้าหมายมองเห็นหรือเข้าใจสิ่งต่าง ๆ
+                            แตกต่างจากความจริง
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Illusion Creation</h3>
+
+                        <p>
+                            สามารถสร้างภาพ เสียง หรือข้อมูลปลอม
+                            เพื่อทำให้เป้าหมายรับรู้สิ่งที่ไม่ได้เกิดขึ้นจริง
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>False Memory</h3>
+
+                        <p>
+                            สามารถสร้างความทรงจำปลอมที่มีรายละเอียด
+                            เหมือนเป็นประสบการณ์จริงของเป้าหมาย
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Psychic Power</h3>
+
+                        <p>
+                            สามารถใช้พลังจิตเพื่อส่งผลต่อวัตถุ สิ่งมีชีวิต
+                            และจิตใจของเป้าหมายโดยตรง
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Telekinesis</h3>
+
+                        <p>
+                            สามารถเคลื่อนย้ายหรือควบคุมวัตถุด้วยพลังจิต
+                            โดยไม่จำเป็นต้องสัมผัสวัตถุโดยตรง
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- 7.11 -->
+
+                <h3>7.11 Regeneration และการดำรงอยู่ของ Foieh</h3>
+
+                <div class="power-grid">
+
+                    <div class="power-card">
+                        <h3>Regeneration</h3>
+
+                        <p>
+                            สามารถฟื้นฟูร่างกายจากความเสียหายรุนแรง
+                            และสามารถสร้างส่วนที่สูญเสียไปกลับมาได้
+                        </p>
+
+                        <p>
+                            ขอบเขตการฟื้นฟูสามารถไปถึงระดับที่ไม่จำเป็น
+                            ต้องเหลือร่างกายสมบูรณ์เหมือนเดิม โดยข้อมูล
+                            การดำรงอยู่ของ Foieh สามารถถูกใช้เพื่อคืนสภาพ
+                            ของตัวเขาเอง
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Self-Restoration</h3>
+
+                        <p>
+                            สามารถคืนสภาพตัวเองหลังจากได้รับผลกระทบ
+                            ต่อร่างกาย Reality หรือ Existence
+                            และสามารถคืนสภาพเดิมด้วยการควบคุมโครงสร้าง
+                            ของตัวเอง
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Origin Independence</h3>
+
+                        <p>
+                            การดำรงอยู่ของ Foieh ไม่ได้ผูกติดกับ Universe
+                            แห่งเดียว ดังนั้นการทำลาย Universe ที่เป็น
+                            จุดกำเนิดของเขาไม่ได้หมายความว่าเขาจะถูกลบ
+                            ไปโดยอัตโนมัติ
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Identity Protection</h3>
+
+                        <p>
+                            การลบตัวตนหรือ Identity ของเขาไม่สามารถ
+                            ทำให้ Foieh หายไปโดยอัตโนมัติ เพราะเขาสามารถ
+                            คืนโครงสร้างตัวตนของตัวเองได้
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Multiple Selves</h3>
+
+                        <p>
+                            สามารถมีตัวตนของตนเองอยู่ใน Universe
+                            หลายแห่ง และสามารถเชื่อมโยงการรับรู้
+                            ระหว่างตัวตนเหล่านั้น
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Cross-Universe Awareness</h3>
+
+                        <p>
+                            ตัวตนของ Foieh ใน Universe ต่าง ๆ
+                            สามารถเชื่อมโยงข้อมูลและการรับรู้
+                            เข้าด้วยกัน ทำให้ข้อมูลจากตัวตนหนึ่ง
+                            สามารถถูกนำไปใช้กับอีกตัวตนหนึ่งได้
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Multiverse Restoration</h3>
+
+                        <p>
+                            Foieh สามารถฟื้นฟู Universe หรือโครงสร้าง
+                            Multiverse ที่ถูกทำลายกลับคืนมาได้
+                            โดยการคืนโครงสร้างที่เสียหายหรือสร้าง
+                            โครงสร้างใหม่ขึ้นมาแทน
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Existence Reconstruction</h3>
+
+                        <p>
+                            หากโครงสร้างการดำรงอยู่ของบางสิ่งถูกทำลาย
+                            Foieh สามารถสร้างหรือคืนโครงสร้างนั้น
+                            ด้วยการควบคุม Existence และ Reality
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- 7.12 -->
+
+                <h3>7.12 การป้องกัน การย้อนผล และผลโจมตีแบบย้อนกลับไม่ได้</h3>
+
+                <div class="power-grid">
+
+                    <div class="power-card">
+                        <h3>Magic Resistance</h3>
+
+                        <p>
+                            เวทมนตร์ทั่วไปไม่สามารถส่งผลต่อ Foieh
+                            ในลักษณะเดียวกับสิ่งมีชีวิตทั่วไป
+                            เนื่องจากเขาไม่ได้อยู่ภายใต้ข้อจำกัด
+                            ของระบบเวทมนตร์ปกติ
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Rule Resistance</h3>
+
+                        <p>
+                            กฎของ Reality ทั่วไปไม่สามารถบังคับ Foieh
+                            ได้โดยตรงในลักษณะเดียวกับสิ่งมีชีวิต
+                            ที่ดำรงอยู่ภายใต้กฎเหล่านั้น
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Effect Cancellation</h3>
+
+                        <p>
+                            หากถูกความสามารถบางประเภทโจมตี Foieh
+                            สามารถใช้ Reality, Time, Existence
+                            หรือ Script เพื่อย้อนหรือยกเลิกผลที่เกิดขึ้น
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Irreversible Attack Effect</h3>
+
+                        <p>
+                            Foieh สามารถสร้างผลจากการโจมตีที่ไม่สามารถ
+                            ฟื้นฟู ย้อนเวลา สะท้อนกลับ หรือเปลี่ยนแปลง
+                            ได้ตามปกติ จนกว่า Foieh จะยอมให้ผลนั้น
+                            ถูกยกเลิก
+                        </p>
+
+                        <p>
+                            ความสามารถนี้ไม่ได้หมายความว่า Foieh
+                            ไม่สามารถถูกโจมตี แต่หมายถึงผลจากการโจมตี
+                            ที่เขากำหนดสามารถถูกทำให้คงอยู่โดยไม่สามารถ
+                            แก้ไขด้วยวิธีทั่วไป
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Self-Effect Reversal</h3>
+
+                        <p>
+                            หาก Foieh ได้รับผลจากความสามารถบางประเภท
+                            เขาสามารถย้อนสถานะของตัวเองกลับไปยัง
+                            สภาพก่อนเกิดผลกระทบ หรือทำให้ผลดังกล่าว
+                            กลายเป็นสิ่งที่ไม่เคยเกิดขึ้นกับตัวเขา
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- 7.13 -->
+
+                <h3>7.13 การเปลี่ยนแปลงร่างกาย</h3>
+
+                <div class="power-grid">
+
+                    <div class="power-card">
+                        <h3>Shapeshifting</h3>
+
+                        <p>
+                            สามารถเปลี่ยนรูปร่างและลักษณะทางกายภาพ
+                            ของตัวเองได้ตามต้องการ
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Appearance Manipulation</h3>
+
+                        <p>
+                            สามารถเปลี่ยนใบหน้า รูปร่าง และรายละเอียด
+                            ของร่างกายเพื่อเปลี่ยนรูปลักษณ์
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Voice Manipulation</h3>
+
+                        <p>
+                            สามารถเปลี่ยนเสียงและควบคุมลักษณะการทำงาน
+                            ของกล่องเสียงเพื่อสร้างเสียงในรูปแบบต่าง ๆ
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- 7.14 -->
+
+                <h3>7.14 Multiversal Variable Manipulation</h3>
+
+                <div class="power-grid">
+
+                    <div class="power-card">
+                        <h3>ควบคุมตัวแปรของ Multiverse</h3>
+
+                        <p>
+                            Foieh สามารถควบคุมตัวแปรต่าง ๆ ที่เกี่ยวข้องกับ
+                            สิ่งมีชีวิต เหตุการณ์ และโครงสร้างของ Multiverse
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>ควบคุมตัวแปรของสิ่งมีชีวิต</h3>
+
+                        <p>
+                            สามารถส่งผลต่อตัวแปรของผู้ที่กำลังมีชีวิต
+                            หรือผู้ที่เคยเกิดขึ้นภายใน Multiverse
+                            โดยขอบเขตขึ้นอยู่กับตัวแปรและความสามารถ
+                            ที่กำลังถูกใช้
+                        </p>
+                    </div>
+
+
+                    <div class="power-card">
+                        <h3>Variable Alteration</h3>
+
+                        <p>
+                            สามารถเปลี่ยนค่าหรือสถานะของตัวแปรบางประเภท
+                            เพื่อทำให้พฤติกรรม ความสามารถ หรือผลลัพธ์
+                            ของสิ่งที่เกี่ยวข้องเปลี่ยนไป
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- 7.15 -->
+
+                <h3>7.15 ค่าสถานะการต่อสู้</h3>
+
+                <div class="stat-grid">
+
+                    <div class="stat-card">
+                        <strong>AP — Attack Potency</strong>
+                        <span>สูงสุดตามความสามารถที่ส่งผลต่อโครงสร้าง Multiverse</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <strong>DC — Destructive Capacity</strong>
+                        <span>สูงสุดถึงโครงสร้าง Multiverse</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <strong>LS — Lifting Strength</strong>
+                        <span>ยังไม่มีค่าที่ระบุแน่นอน</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <strong>SS — Striking Strength</strong>
+                        <span>ยังไม่มีค่าพละกำลังพื้นฐานที่ยืนยัน</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <strong>Dura — Durability</strong>
+                        <span>สูงมาก แต่ยังไม่มีค่าความเสียหายสูงสุดที่ยืนยัน</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <strong>การฟื้นฟู</strong>
+                        <span>Regeneration + Self-Restoration</span>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-explanation">
+
+                    <ul>
+
+                        <li>
+                            <strong>AP:</strong>
+                            หมายถึงพลังของการโจมตีหนึ่งครั้งที่สามารถสร้าง
+                            ผลกระทบได้สูงสุด Foieh สามารถใช้ความสามารถ
+                            ระดับสูงที่สามารถส่งผลต่อโครงสร้าง Multiverse
+                            อย่างไรก็ตามไม่ได้หมายความว่าการโจมตีทุกครั้ง
+                            จะมีผลกระทบขนาดนี้
+                        </li>
+
+                        <li>
+                            <strong>DC:</strong>
+                            หมายถึงขนาดหรือโครงสร้างที่สามารถถูกทำลายได้
+                            Foieh สามารถทำลาย Universe ทั้งระบบ รวมถึง
+                            Space-Time และโครงสร้างที่ทำให้ Universe
+                            ดำรงอยู่ และในขอบเขตสูงสุดสามารถส่งผลต่อ
+                            โครงสร้าง Multiverse
+                        </li>
+
+                        <li>
+                            <strong>LS:</strong>
+                            หมายถึงน้ำหนักสูงสุดที่สามารถยก ผลัก หรือลาก
+                            ด้วยพละกำลังทางกายภาพโดยตรง ยังไม่มีเหตุการณ์
+                            ที่ระบุค่า LS ของ Foieh จึงไม่ควรนำขนาดของ Universe
+                            หรือ Multiverse มาใช้เป็นค่าพละกำลังในการยก
+                        </li>
+
+                        <li>
+                            <strong>SS:</strong>
+                            หมายถึงแรงของหมัด เตะ หรือการโจมตีทางกายภาพ
+                            โดยไม่รวมความสามารถเหนือธรรมชาติ ดังนั้น
+                            การที่ Foieh มีความสามารถควบคุมโครงสร้าง Multiverse
+                            ไม่ได้หมายความว่าหมัดธรรมดาของเขาจะมีพลัง
+                            ในขนาดเดียวกัน
+                        </li>
+
+                        <li>
+                            <strong>Dura:</strong>
+                            หมายถึงความเสียหายสูงสุดที่ร่างกายสามารถรับได้
+                            โดยไม่เสียชีวิตโดยตรง ยังไม่มีค่าตัวเลขที่แน่นอน
+                            สำหรับ Dura ของ Foieh และต้องแยกออกจาก
+                            Regeneration กับ Self-Restoration
+                        </li>
+
+                        <li>
+                            <strong>Regeneration:</strong>
+                            เป็นความสามารถในการซ่อมแซมและสร้างร่างกาย
+                            กลับมา ไม่ใช่ค่าความทนทานโดยตรง
+                        </li>
+
+                        <li>
+                            <strong>Self-Restoration:</strong>
+                            เป็นความสามารถในการคืนสภาพตัวเองหลังจาก
+                            ได้รับผลกระทบต่อ Reality, Existence หรือโครงสร้าง
+                            ของตัวเอง จึงไม่ควรนำไปรวมกับ Dura เช่นกัน
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- 7.16 -->
+
+                <h3>7.16 การควบคุมขนาดของพลัง</h3>
+
+                <p>
+                    Foieh ไม่ได้ใช้พลังระดับสูงสุดทุกครั้งที่ต่อสู้
+                    เขาสามารถเลือกขนาดของผลกระทบให้เหมาะกับสถานการณ์
+                </p>
+
+                <p>
+                    การโจมตีหนึ่งครั้งจึงอาจส่งผลต่อเป้าหมายเพียงคนเดียว
+                    ในขณะที่ความสามารถอีกประเภทหนึ่งสามารถส่งผลต่อ
+                    Universe จำนวนมากได้
+                </p>
+
+                <p>
+                    ตัวอย่างเช่น Foieh สามารถใช้พลังกับเป้าหมายเพียงคนเดียว
+                    โดยไม่ทำลายพื้นที่รอบข้าง หรือสามารถเลือกขยายผลของ
+                    เหตุการณ์หนึ่งให้เกิดขึ้นพร้อมกันใน Universe จำนวนมาก
+                </p>
+
+                <p>
+                    การที่ Foieh สามารถทำลายโครงสร้าง Multiverse
+                    จึงไม่ควรตีความว่าทุกการต่อสู้ที่เขาเข้าร่วม
+                    จะทำลาย Multiverse โดยอัตโนมัติ
+                </p>
+
+
+                <div class="note-box">
+
+                    <strong>หมายเหตุเกี่ยวกับการประเมินพลัง</strong>
+
+                    <p>
+                        ขนาดของพลังเหนือธรรมชาติไม่ควรถูกนำไปแปลงเป็น
+                        ค่าพละกำลังทางกายภาพโดยอัตโนมัติ เช่น การสร้าง
+                        Universe ไม่ได้หมายความว่า Foieh สามารถยก Universe
+                        ด้วยกล้ามเนื้อ
+                    </p>
+
+                    <p>
+                        เช่นเดียวกัน การเดินทางข้าม Universe ด้วย
+                        Dimensional Gate ไม่ได้หมายความว่าความเร็ว
+                        ในการวิ่งหรือบินของเขามีค่าเท่ากับการเดินทางนั้น
+                    </p>
+
+                    <p>
+                        การควบคุม Time ก็ไม่ได้หมายความว่าร่างกายของ Foieh
+                        ต้องเคลื่อนที่ด้วยความเร็วเท่ากับผลของ Time Manipulation
+                    </p>
+
+                    <p>
+                        และ Regeneration ไม่ควรถูกนำมารวมกับ Dura
+                        เพราะการฟื้นฟูความเสียหายกับการทนรับความเสียหาย
+                        เป็นความสามารถคนละประเภท
+                    </p>
+
+                </div>
+
+
+                <section id="technology">
+
+                <h2>8. เทคโนโลยีของ DAM</h2>
+
+                <p>
+                    นอกจากพลังของ Foieh เอง เขายังสามารถเข้าถึงระบบและ
+                    เทคโนโลยีระดับสูงของ DAM ซึ่งถูกพัฒนาสำหรับการควบคุม
+                    Time, Universe, Reality และ Multiverse
+                </p>
+
+                <div class="equipment-grid">
+
+                    <div class="equipment-card">
+                        <h3>Time Stop</h3>
+                        <p>
+                            ระบบที่สามารถหยุดการไหลของเวลาในพื้นที่
+                            หรือเป้าหมายที่กำหนด เพื่อหยุดการดำเนิน
+                            ของเหตุการณ์ชั่วคราว
+                        </p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <h3>Time Slow</h3>
+                        <p>
+                            ลดอัตราการไหลของเวลาในพื้นที่ที่เลือก
+                            ทำให้เหตุการณ์ภายในดำเนินช้าลงเมื่อเทียบกับ
+                            พื้นที่ภายนอก
+                        </p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <h3>Time Lock</h3>
+                        <p>
+                            ล็อกสถานะของช่วงเวลาหรือเป้าหมาย
+                            เพื่อป้องกันไม่ให้เกิดการเปลี่ยนแปลง
+                            ตามปกติ
+                        </p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <h3>Temporal Freeze</h3>
+                        <p>
+                            แช่แข็งเหตุการณ์หรือวัตถุไว้ในสถานะทางเวลา
+                            ที่กำหนด ทำให้สถานะนั้นคงอยู่จนกว่าระบบ
+                            จะถูกยกเลิก
+                        </p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <h3>Time Anchor</h3>
+                        <p>
+                            สร้างจุดยึดของเวลาเพื่อป้องกันการเปลี่ยนแปลง
+                            หรือการเคลื่อนย้าย Timeline โดยไม่ได้รับอนุญาต
+                        </p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <h3>Temporal Detection</h3>
+                        <p>
+                            ตรวจจับความผิดปกติที่เกิดขึ้นภายใน Time
+                            และ Timeline
+                        </p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <h3>Time Restoration</h3>
+                        <p>
+                            ฟื้นฟูช่วงเวลาหรือเหตุการณ์กลับไปยังสถานะก่อนหน้า
+                            เพื่อแก้ไขผลกระทบจากการเปลี่ยนแปลงทางเวลา
+                        </p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <h3>Chrono Seal</h3>
+                        <p>
+                            ผนึกการเปลี่ยนแปลงทางเวลาและจำกัดการเข้าถึง
+                            Timeline ที่ถูกล็อก
+                        </p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <h3>Universe Scan</h3>
+                        <p>
+                            ตรวจสอบ Universe เพื่อค้นหาความผิดปกติ
+                            สิ่งมีชีวิต หรือเหตุการณ์ที่เกิดขึ้นภายใน
+                        </p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <h3>Multiverse Tracking</h3>
+                        <p>
+                            ติดตามเหตุการณ์และเป้าหมายผ่าน Universe
+                            จำนวนมาก รวมถึงติดตามความเปลี่ยนแปลง
+                            ที่เกิดขึ้นระหว่างโครงสร้างเหล่านั้น
+                        </p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <h3>Reality Lock</h3>
+                        <p>
+                            ล็อก Reality เพื่อจำกัดการเปลี่ยนแปลง
+                            และการบิดเบือนจากภายนอก
+                        </p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <h3>Universe Isolation</h3>
+                        <p>
+                            แยก Universe ออกจากโครงสร้างอื่น
+                            เพื่อป้องกันการแพร่กระจายของความเสียหาย
+                        </p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <h3>Dimensional Gate</h3>
+                        <p>
+                            สร้างช่องทางเดินทางระหว่าง Universe
+                            และ Dimension
+                        </p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <h3>Multiversal Communication</h3>
+                        <p>
+                            ทำให้ DAM สามารถสื่อสารระหว่าง Universe
+                            ที่แยกจากกันได้
+                        </p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <h3>Reality Stabilization</h3>
+                        <p>
+                            รักษาเสถียรภาพของ Reality หลังจากเกิด
+                            การบิดเบือนหรือความเสียหาย
+                        </p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <h3>Power Suppression</h3>
+                        <p>
+                            ลดหรือระงับพลังของเป้าหมายที่ถูกควบคุมตัว
+                            เพื่อป้องกันการใช้ความสามารถหลบหนี
+                        </p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <h3>Reality Restraint</h3>
+                        <p>
+                            ใช้ Reality เป็นส่วนหนึ่งของระบบกักกัน
+                            เพื่อจำกัดการเคลื่อนไหวของเป้าหมาย
+                        </p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <h3>Dimensional Restraint</h3>
+                        <p>
+                            จำกัดความสามารถในการเดินทางระหว่าง Dimension
+                            เพื่อไม่ให้เป้าหมายหลบหนีไปยังโครงสร้างอื่น
+                        </p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <h3>Temporal Restraint</h3>
+                        <p>
+                            ล็อกเป้าหมายไว้ในตำแหน่งหนึ่งของ Timeline
+                            ทำให้ไม่สามารถหลบหนีด้วยการเดินทางข้ามเวลา
+                            หรือข้าม Universe ได้ตามปกติ
+                        </p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <h3>Teleportation Block</h3>
+                        <p>
+                            ปิดกั้นความสามารถในการ Teleport
+                            ของเป้าหมายภายในพื้นที่ที่กำหนด
+                        </p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <h3>Regeneration Block</h3>
+                        <p>
+                            จำกัดหรือหยุดการฟื้นฟูของเป้าหมาย
+                            เพื่อป้องกันการกลับคืนสู่สภาพเดิม
+                        </p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <h3>Immortality Seal</h3>
+                        <p>
+                            ใช้ผนึกความสามารถที่ทำให้เป้าหมาย
+                            สามารถหลีกเลี่ยงความตายหรือกลับคืนมาได้
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <h3>Multiversal Emergency Protocol</h3>
+
+                <div class="power-scale-box">
+
+                    <p>
+                        เป็นระบบฉุกเฉินของ DAM สำหรับสถานการณ์ที่ภัยคุกคาม
+                        สามารถแพร่กระจายผ่าน Universe หรือ Timeline
+                        จำนวนมาก
+                    </p>
+
+                    <p>
+                        ระบบนี้ไม่ได้มีหน้าที่โจมตีภัยคุกคามเพียงอย่างเดียว
+                        แต่มีหน้าที่ควบคุมโครงสร้างโดยรอบเพื่อไม่ให้
+                        ความเสียหายขยายตัวไปยัง Universe อื่น
+                    </p>
+
+                    <ul>
+
+                        <li>
+                            หยุดการเดินทางระหว่าง Universe
+                        </li>
+
+                        <li>
+                            ปิด Dimensional Gate
+                        </li>
+
+                        <li>
+                            ล็อก Timeline ที่ถูกโจมตี
+                        </li>
+
+                        <li>
+                            ปิดการ Teleportation
+                        </li>
+
+                        <li>
+                            เปิดระบบป้องกันของ Universe
+                        </li>
+
+                        <li>
+                            เรียกเจ้าหน้าที่จากหลาย Universe
+                        </li>
+
+                        <li>
+                            ตรวจจับภัยคุกคามผ่าน Timeline จำนวนมาก
+                        </li>
+
+                        <li>
+                            สร้างพื้นที่ต้องห้าม
+                        </li>
+
+                        <li>
+                            กักกัน Universe ที่ได้รับความเสียหาย
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <h3>Absolute Temporal Lock — Omega Final Order</h3>
+
+                <div class="power-scale-box">
+
+                    <p>
+                        คำสั่งระดับสูงสุดของระบบ DAM ที่มีเป้าหมาย
+                        เพื่อหยุดทุกสิ่งที่เกี่ยวข้องกับกาลเวลา
+                        จนกว่าภัยคุกคามจะถูกกำจัด
+                    </p>
+
+                    <p>
+                        การใช้คำสั่งนี้มีความเสี่ยงสูงมาก เพราะต้องดึง
+                        พลังงานจำนวนมหาศาลจากโครงสร้างของ Multiverse
+                    </p>
+
+                    <p>
+                        หากใช้ในขอบเขตเต็มที่ สามารถสร้างความเสียหาย
+                        อย่างหนักต่อ Core ของ Multiverse ทุกแห่ง
+                        จึงไม่ใช่ระบบที่ควรถูกใช้งานโดยไม่จำเป็น
+                    </p>
+
+                    <p>
+                        เนื่องจากผลกระทบต่อ Core ของ Multiverse
+                        การใช้งานคำสั่งนี้ถือเป็นมาตรการสุดท้าย
+                        มากกว่าจะเป็นความสามารถที่ใช้ในการต่อสู้ทั่วไป
+                    </p>
 
                 </div>
 
             </section>
 
 
-            <!-- 8 -->
+            <!-- =========================
+                 9 EQUIPMENT
+            ========================= -->
 
-            <section id="technology">
+            <section id="equipment">
 
-                <h2>
-                    8. เทคโนโลยี
-                </h2>
+                <h2>9. อุปกรณ์ต่อสู้</h2>
 
-
-                <h3>
-                    เทคโนโลยีที่เกี่ยวข้องกับ DAM
-                </h3>
-
-                <ul>
-
-                    <li>
-                        ระบบตรวจจับความผิดปกติของเวลา
-                    </li>
-
-                    <li>
-                        ระบบติดตาม Multiverse
-                    </li>
-
-                    <li>
-                        ระบบล็อกความเป็นจริง
-                    </li>
-
-                    <li>
-                        ระบบแยกจักรวาล
-                    </li>
-
-                    <li>
-                        ระบบรักษาเสถียรภาพของ Reality
-                    </li>
-
-                    <li>
-                        ระบบกักกันความผิดปกติระหว่างจักรวาล
-                    </li>
-
-                </ul>
+                <div class="equipment-grid">
 
 
-                <h3>
-                    Multiversal Emergency Protocol
-                </h3>
+                    <div class="equipment-card">
 
-                <p>
-                    Foieh เป็นหนึ่งในผู้ที่มีส่วนเกี่ยวข้องกับระบบฉุกเฉิน
-                    ระดับ Multiverse ของ DAM
-                    ซึ่งถูกออกแบบมาเพื่อรับมือกับภัยคุกคาม
-                    ที่ส่งผลต่อหลายจักรวาล
-                </p>
+                        <h3>Writer's Pen</h3>
 
-                <ul>
+                        <p>
+                            ปากกาโบราณจากยุคของ Foieh สามารถใช้วาดหรือเขียน
+                            สิ่งต่าง ๆ ลงในพื้นที่ แล้วทำให้สิ่งที่ถูกวาด
+                            ปรากฏขึ้นจริง
+                        </p>
 
-                    <li>
-                        หยุดการเดินทางระหว่างจักรวาล
-                    </li>
+                        <p>
+                            สามารถใช้สร้างสิ่งต่าง ๆ มอบชีวิตให้สิ่งที่ถูกสร้าง
+                            ใช้คำสาป และสามารถใช้ฆ่าเป้าหมายด้วยการแทง
+                        </p>
 
-                    <li>
-                        ปิด Dimensional Gates
-                    </li>
+                        <p>
+                            ปากกามีพลังทำลายสูง และเมื่อถูกขว้างสามารถ
+                            เคลื่อนที่ด้วยความเร็วสูงมากจนทำให้เกิด
+                            การบิดเบือนต่อโครงสร้างระดับ Universe
+                        </p>
 
-                    <li>
-                        ล็อก Timeline ที่ถูกโจมตี
-                    </li>
+                        <p>
+                            <strong>ข้อจำกัด:</strong>
+                            จำนวนปากกามีจำกัด
+                        </p>
 
-                    <li>
-                        ป้องกันการเคลื่อนย้ายข้ามมิติ
-                    </li>
-
-                    <li>
-                        สร้างเกราะป้องกันจักรวาล
-                    </li>
-
-                    <li>
-                        ตรวจจับภัยคุกคามข้าม Timeline
-                    </li>
-
-                    <li>
-                        กักกันจักรวาลที่ได้รับความเสียหาย
-                    </li>
-
-                </ul>
+                    </div>
 
 
-                <h3>
-                    Omega Final Order
-                </h3>
+                    <div class="equipment-card">
 
-                <p>
-                    คำสั่งฉุกเฉินระดับสูงสุดของ DAM คือ
-                    <strong>Absolute Temporal Lock</strong>
-                    ซึ่งสามารถหยุดความเคลื่อนไหวทางเวลาในระดับมหาศาล
-                    แต่มีความเสี่ยงต่อแกนกลางของ Multiverse
-                </p>
+                        <h3>Itfatex Time Baton</h3>
+
+                        <p>
+                            กระบองเวลาที่มีปลายพลังงานความร้อนสูง
+                            หากโจมตีเป้าหมายด้วยระบบดังกล่าว
+                            สามารถส่งเป้าหมายไปยัง The Unknown
+                            หรือเส้นทางแห่งความตาย
+                        </p>
+
+                        <p>
+                            แม้ปิดพลังงานความร้อน ตัวกระบองก็ยังสามารถ
+                            ใช้โจมตีทางกายภาพได้ ตั้งแต่ทำลายกระดูก
+                            ของสิ่งมีชีวิตเหนือมนุษย์ไปจนถึงสร้าง
+                            ความเสียหายต่อดาวเคราะห์
+                        </p>
+
+                        <p>
+                            อุปกรณ์นี้ยังสามารถใช้เป็นอาวุธระยะประชิด
+                            ได้ตามปกติ จึงต้องอาศัยทักษะการต่อสู้
+                            ในระยะใกล้ของผู้ใช้
+                        </p>
+
+                        <p>
+                            <strong>ข้อจำกัด:</strong>
+                            ต้องต่อสู้ในระยะใกล้ และสามารถถูกตอบโต้
+                            ได้หากคู่ต่อสู้ควบคุมระยะหรือหลบการโจมตีได้
+                        </p>
+
+                    </div>
+
+
+                    <div class="equipment-card">
+
+                        <h3>Higdt</h3>
+
+                        <p>
+                            ปืนเวลาแบบพกพาของ DAM เมื่อยิงโดนเป้าหมาย
+                            จะหยุดเป้าหมายเป็นเวลา 80 นาที
+                        </p>
+
+                        <p>
+                            ระบบไม่จำเป็นต้องใช้กระสุนแบบทั่วไป
+                            เพราะสามารถใช้ชิปที่ฝังอยู่ในมือของผู้ใช้
+                            เพื่อทำงาน
+                        </p>
+
+                        <p>
+                            จุดประสงค์หลักคือการหยุดเป้าหมาย
+                            เพื่อการจับกุม ไม่ใช่การสร้างความเสียหายสูง
+                        </p>
+
+                    </div>
+
+
+                    <div class="equipment-card">
+
+                        <h3>Hitsake</h3>
+
+                        <p>
+                            ปืนสังหารระดับสูงของ DAM มีพลังมากกว่า Higdt
+                            อย่างชัดเจน และสามารถสร้างความเสียหาย
+                            ได้ถึงระดับทวีป
+                        </p>
+
+                        <p>
+                            ใช้ชิปขั้นสูงที่ฝังอยู่ในมือของผู้ใช้
+                            และต้องชาร์จพลังจนถึง 100% ก่อน
+                            จึงสามารถปล่อยพลังสำหรับการทำลายเต็มรูปแบบ
+                        </p>
+
+                        <p>
+                            <strong>ข้อจำกัด:</strong>
+                            พลังงานที่สะสมไว้จะลดลงอย่างรวดเร็ว
+                            หลังจากใช้งาน
+                        </p>
+
+                    </div>
+
+
+                    <div class="equipment-card">
+
+                        <h3>Shide Force-Field Shield</h3>
+
+                        <p>
+                            โล่สนามพลังที่สามารถปรากฏขึ้นตามความคิด
+                            ของผู้ใช้
+                        </p>
+
+                        <p>
+                            สามารถป้องกันความร้อนในระดับสูง
+                            รวมถึงแรงกระแทกและการโจมตีทางกายภาพ
+                        </p>
+
+                        <p>
+                            สนามพลังสามารถสะท้อนการโจมตีบางประเภท
+                            และสะสมพลังงานจากความเสียหายที่รับเข้ามา
+                            ก่อนปล่อยพลังทั้งหมดกลับออกไป
+                        </p>
+
+                        <p>
+                            ขอบของโล่ยังสามารถใช้เป็นส่วนคมในการโจมตี
+                        </p>
+
+                        <p>
+                            <strong>ข้อจำกัด:</strong>
+                            ต้องมีระบบพลังงานสำหรับเก็บพลัง
+                            และโดยทั่วไปผู้ใช้จะเปิดใช้งานเมื่อจำเป็นจริง ๆ
+                        </p>
+
+                    </div>
+
+
+                    <div class="equipment-card">
+
+                        <h3>Nanonian Nano Armor</h3>
+
+                        <p>
+                            ชุดเกราะนาโนระดับสูงของ DAM
+                            สามารถปรากฏขึ้นตามความคิดของผู้ใช้
+                            และปกคลุมร่างกายทั้งหมด
+                        </p>
+
+                        <p>
+                            ประสิทธิภาพการป้องกันสูงกว่า Shide
+                            หลายสิบเท่า
+                        </p>
+
+                        <p>
+                            ระบบควบคุมผ่านชิปที่ฝังอยู่ในสมอง
+                        </p>
+
+                        <p>
+                            <strong>ข้อจำกัด:</strong>
+                            มีน้ำหนักมากและทำให้การเคลื่อนไหว
+                            ช้าลงเล็กน้อย
+                        </p>
+
+                    </div>
+
+
+                    <div class="equipment-card">
+
+                        <h3>Chrono Scanner</h3>
+
+                        <p>
+                            เครื่องตรวจจับความผิดปกติของเวลา
+                            ใช้โดย DAM โดยเฉพาะ DAM-CVD
+                        </p>
+
+                        <p>
+                            สามารถตรวจสอบความผิดปกติของ Timeline
+                            และใช้ข้อมูลทางเวลาเพื่อรับรู้เหตุการณ์
+                            ที่กำลังจะเกิดขึ้นได้
+                        </p>
+
+                        <p>
+                            <strong>ข้อจำกัด:</strong>
+                            ตัวอุปกรณ์ค่อนข้างเปราะบาง เสียหายได้ง่าย
+                            และสามารถพลาดเหตุการณ์บางอย่างได้
+                        </p>
+
+                    </div>
+
+
+                    <div class="equipment-card">
+
+                        <h3>Temporal Restraint</h3>
+
+                        <p>
+                            อุปกรณ์ที่ใช้ล็อกตำแหน่งของเป้าหมาย
+                            ภายใน Timeline
+                        </p>
+
+                        <p>
+                            ไม่ใช่การหยุดเวลาโดยตรง แต่เป็นการป้องกัน
+                            ไม่ให้เป้าหมายเปลี่ยนตำแหน่งผ่านระบบเวลา
+                        </p>
+
+                        <p>
+                            แม้เป้าหมายพยายาม Teleport หรือเดินทาง
+                            ไปยัง Universe อื่น ตำแหน่งที่ถูกล็อก
+                            ยังคงถูกจำกัดไว้
+                        </p>
+
+                        <p>
+                            <strong>ข้อจำกัด:</strong>
+                            เป็นอุปกรณ์สำหรับสถานการณ์ฉุกเฉิน
+                            และมีจำนวนจำกัด
+                        </p>
+
+                    </div>
+
+
+                    <div class="equipment-card">
+
+                        <h3>Reality Handcuff</h3>
+
+                        <p>
+                            กุญแจมือที่ผูกเป้าหมายเข้ากับ Reality
+                            ของตัวเอง
+                        </p>
+
+                        <p>
+                            เมื่อเป้าหมายพยายามหลบหนี
+                            จะถูกตัดการเข้าถึงพลังที่ใช้ข้าม Universe
+                        </p>
+
+                        <p>
+                            มีประสิทธิภาพในการจับกุมสูงมาก
+                            หากเป้าหมายไม่รู้วิธีปิดระบบ
+                        </p>
+
+                        <p>
+                            <strong>ข้อจำกัด:</strong>
+                            ผู้ที่รู้วิธีทำงานของระบบสามารถปิดการทำงานได้
+                        </p>
+
+                    </div>
+
+
+                    <div class="equipment-card">
+
+                        <h3>Chrono Tag</h3>
+
+                        <p>
+                            อุปกรณ์ติดตามของ DAM สามารถติดตามเป้าหมาย
+                            ผ่านการ Teleport การเปลี่ยน Universe
+                            และการเปลี่ยน Timeline
+                        </p>
+
+                        <p>
+                            สามารถติดตามเป้าหมายแม้จะเปลี่ยนรูปลักษณ์
+                            หรือเดินทางไปยัง Dimension อื่น
+                        </p>
+
+                        <p>
+                            <strong>ข้อจำกัด:</strong>
+                            แทบไม่มีข้อเสียสำคัญในการใช้งาน
+                        </p>
+
+                    </div>
+
+                </div>
 
             </section>
 
 
-            <!-- 9 -->
-
-            <section id="weapons">
-
-                <h2>
-                    9. อุปกรณ์ต่อสู้
-                </h2>
-
-                <p>
-                    Foieh มีอุปกรณ์และเครื่องมือจาก DAM หลายชนิด
-                    ซึ่งมีหน้าที่แตกต่างกันทั้งด้านเวลา
-                    ความเป็นจริง และการเดินทางระหว่างจักรวาล
-                </p>
-
-                <ul>
-
-                    <li>
-                        <strong>Writer's Pen</strong>
-                        — อุปกรณ์ที่เกี่ยวข้องกับการสร้างและแก้ไขสิ่งต่าง ๆ
-                    </li>
-
-                    <li>
-                        <strong>Itfatex Time Baton</strong>
-                        — อุปกรณ์ที่เกี่ยวข้องกับการควบคุมเวลา
-                    </li>
-
-                    <li>
-                        <strong>Higdt</strong>
-                        — อุปกรณ์เทคโนโลยีเกี่ยวกับเวลา
-                    </li>
-
-                    <li>
-                        <strong>Hitsake</strong>
-                        — อุปกรณ์พลังงานระดับสูง
-                    </li>
-
-                    <li>
-                        <strong>Shide Force-Field Shield</strong>
-                        — ระบบป้องกันด้วยสนามพลัง
-                    </li>
-
-                    <li>
-                        <strong>Nanonian Nano Armor</strong>
-                        — ชุดเกราะนาโนขั้นสูง
-                    </li>
-
-                    <li>
-                        <strong>Chrono Scanner</strong>
-                        — ตรวจจับความผิดปกติของเวลา
-                    </li>
-
-                    <li>
-                        <strong>Temporal Restraint</strong>
-                        — เครื่องมือสำหรับควบคุมตำแหน่งของเป้าหมายใน Timeline
-                    </li>
-
-                    <li>
-                        <strong>Reality Handcuff</strong>
-                        — เครื่องมือสำหรับยึดเป้าหมายเข้ากับ Reality
-                    </li>
-
-                    <li>
-                        <strong>Chrono Tag</strong>
-                        — เครื่องมือติดตามเป้าหมายข้ามเวลา
-                    </li>
-
-                </ul>
-
-            </section>
-
-
-            <!-- 10 -->
+            <!-- =========================
+                 10 WEAKNESSES
+            ========================= -->
 
             <section id="weaknesses">
 
-                <h2>
-                    10. จุดอ่อน
-                </h2>
+                <h2>10. จุดอ่อน</h2>
 
-                <ul>
+                <div class="weakness-box">
 
-                    <li>
-                        <strong>ความมั่นใจในตัวเองสูงเกินไป</strong>
-                        — มักคิดว่าตัวเองสามารถชนะทุกอย่างได้
-                    </li>
+                    <ul>
 
-                    <li>
-                        <strong>ไม่จริงจังกับคู่ต่อสู้</strong>
-                        — บางครั้งเล่นกับสถานการณ์มากเกินไป
-                    </li>
+                        <li>
+                            <strong>ความมั่นใจในตัวเองสูง:</strong>
+                            Foieh เชื่อว่าตัวเองสามารถจัดการกับสถานการณ์
+                            ส่วนใหญ่ได้ จึงมีโอกาสประเมินภัยคุกคามต่ำเกินไป
+                        </li>
 
-                    <li>
-                        <strong>ประเมินสถานการณ์ต่ำเกินไป</strong>
-                        — เนื่องจากมีพลังมหาศาล
-                        ทำให้บางครั้งลืมว่าคู่ต่อสู้อาจจริงจัง
-                    </li>
+                        <li>
+                            <strong>ความประมาท:</strong>
+                            เขามีพลังมากจนบางครั้งไม่เห็นความจำเป็น
+                            ที่จะต้องป้องกันตัวเองตั้งแต่ต้น
+                        </li>
 
-                    <li>
-                        <strong>Maha</strong>
-                        — เป็นหนึ่งในตัวตนที่ Foieh หวาดกลัวอย่างมาก
-                    </li>
+                        <li>
+                            <strong>ชอบเล่นกับคู่ต่อสู้:</strong>
+                            แทนที่จะจบการต่อสู้ทันที เขามักทดลอง
+                            หรือสังเกตสิ่งที่อีกฝ่ายทำ
+                        </li>
 
-                </ul>
+                        <li>
+                            <strong>ไม่จริงจังในช่วงแรก:</strong>
+                            ศัตรูอาจมีโอกาสดำเนินแผนของตัวเอง
+                            ก่อนที่ Foieh จะตัดสินใจจริงจัง
+                        </li>
+
+                        <li>
+                            <strong>การประเมินสถานการณ์:</strong>
+                            แม้เขาจะรับรู้ Multiverse ได้อย่างกว้างขวาง
+                            แต่การรับรู้ข้อมูลจำนวนมากไม่ได้หมายความว่า
+                            เขาจะตัดสินใจได้ถูกต้องทุกครั้ง
+                        </li>
+
+                        <li>
+                            <strong>Maha:</strong>
+                            Maha เป็นบุคคลที่ Foieh หวาดกลัวอย่างชัดเจน
+                            และเป็นหนึ่งในข้อยกเว้นที่ทำให้ท่าทีสบาย ๆ
+                            ของเขาเปลี่ยนไป
+                        </li>
+
+                    </ul>
+
+                </div>
 
             </section>
 
 
-            <!-- 11 -->
+            <!-- =========================
+                 11 RELATIONSHIPS
+            ========================= -->
 
             <section id="relationships">
 
-                <h2>
-                    11. ความสัมพันธ์
-                </h2>
+                <h2>11. ความสัมพันธ์</h2>
 
+                <h3>DAM</h3>
 
-                <div class="relationship">
+                <p>
+                    Foieh มีความเกี่ยวข้องกับ DAM มาตั้งแต่ช่วงแรก ๆ
+                    ของการก่อตัวขององค์กร เขาเคยมอบพลังจำนวนมหาศาล
+                    และทำงานร่วมกับ DAM เป็นช่วง ๆ
+                </p>
 
-                    <strong>DAM</strong>
+                <p>
+                    ความสัมพันธ์ของเขากับ DAM ไม่ได้เกิดจากความจำเป็น
+                    ที่ต้องพึ่งพาองค์กร แต่ส่วนหนึ่งเกิดจากความสนใจ
+                    ว่าองค์กรจะสามารถจัดการกับ Multiverse ได้อย่างไร
+                </p>
 
-                    <p>
-                        Foieh เป็นหนึ่งในผู้ควบคุมระดับสูงขององค์กร
-                        และเคยมีส่วนร่วมในการสร้างและสนับสนุนองค์กรตั้งแต่ช่วงแรก
-                    </p>
+                <h3>The Father Prime</h3>
 
-                </div>
+                <p>
+                    Foieh พบกับ The Father Prime และรับรู้ว่าเขามีเป้าหมาย
+                    ในการทำลาย Multiverse
+                </p>
 
+                <p>
+                    Foieh เลือกมอบพลังจำนวนมหาศาลให้กับ The Father Prime
+                    เพราะต้องการดูว่าจะเกิดอะไรขึ้นหลังจากที่เขาได้รับพลัง
+                    ดังกล่าว
+                </p>
 
-                <div class="relationship">
-
-                    <strong>The Father Prime</strong>
-
-                    <p>
-                        Foieh เคยพบกับ The Father Prime
-                        และมอบพลังจำนวนมหาศาลให้กับเขา
-                        เพื่อดูว่าเขาจะทำอะไรกับ Multiverse
-                    </p>
-
-                </div>
+                <p>
+                    การตัดสินใจนี้แสดงให้เห็นถึงนิสัยของ Foieh
+                    ที่ให้ความสำคัญกับความอยากรู้และความบันเทิง
+                    มากกว่าการเลือกวิธีที่ปลอดภัยที่สุด
+                </p>
 
             </section>
 
 
-            <!-- 12 -->
+            <!-- =========================
+                 12 TIMELINE
+            ========================= -->
 
             <section id="timeline">
 
-                <h2>
-                    12. Timeline
-                </h2>
-
+                <h2>12. เส้นเวลา</h2>
 
                 <div class="timeline">
 
-
                     <div class="timeline-item">
 
                         <div class="timeline-year">
-                            ก่อนการกำเนิดจักรวาล
+                            ก่อนการสร้างจักรวาล
                         </div>
 
-                        <div>
-                            Whatteir Foieh ถือกำเนิดขึ้นในฐานะเทพ
-                        </div>
+                        <p>
+                            Foieh มีตัวตนอยู่ก่อนการสร้างจักรวาล
+                        </p>
 
                     </div>
 
@@ -1295,13 +2827,13 @@
                     <div class="timeline-item">
 
                         <div class="timeline-year">
-                            ช่วงการก่อตัวของ DAM
+                            ยุคแรกของ Multiverse
                         </div>
 
-                        <div>
-                            Foieh ค้นพบ DAM
-                            และเข้ามามีส่วนร่วมในการสร้างองค์กร
-                        </div>
+                        <p>
+                            Foieh ดำรงอยู่และเฝ้าสังเกตการเปลี่ยนแปลง
+                            ของโครงสร้าง Multiverse
+                        </p>
 
                     </div>
 
@@ -1309,13 +2841,13 @@
                     <div class="timeline-item">
 
                         <div class="timeline-year">
-                            ช่วงเวลาต่อมา
+                            การก่อตัวของ DAM
                         </div>
 
-                        <div>
-                            Foieh ส่งพลังให้กับ DAM
-                            และทำงานร่วมกับองค์กรเป็นระยะ
-                        </div>
+                        <p>
+                            Foieh เข้ามามีส่วนร่วมกับ DAM
+                            และมอบพลังจำนวนมหาศาลให้กับองค์กร
+                        </p>
 
                     </div>
 
@@ -1323,13 +2855,14 @@
                     <div class="timeline-item">
 
                         <div class="timeline-year">
-                            หลายเดือนต่อมา
+                            ช่วงที่ทำงานกับ DAM
                         </div>
 
-                        <div>
-                            Foieh หายออกจาก DAM
-                            เนื่องจากเริ่มรู้สึกเบื่อ
-                        </div>
+                        <p>
+                            Foieh ทำงานอยู่ภายใน DAM เป็นช่วง ๆ
+                            และบางครั้งเลือกอยู่ที่องค์กรเพราะมีสิ่งต่าง ๆ
+                            ให้ทำมากกว่าการอยู่เฉย ๆ
+                        </p>
 
                     </div>
 
@@ -1337,128 +2870,334 @@
                     <div class="timeline-item">
 
                         <div class="timeline-year">
-                            เหตุการณ์ The Father Prime
+                            ช่วงที่หายตัวไป
                         </div>
 
-                        <div>
-                            Foieh พบ The Father Prime
-                            และส่งพลังจำนวนมหาศาลให้เขา
-                        </div>
+                        <p>
+                            Foieh เริ่มเบื่อและหายตัวออกจาก DAM
+                            เป็นเวลาหลายเดือน
+                        </p>
 
                     </div>
 
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-year">
+                            การพบกับ The Father Prime
+                        </div>
+
+                        <p>
+                            Foieh พบ The Father Prime และมอบพลัง
+                            จำนวนมหาศาลให้กับเขา รวมถึงมีส่วนทำให้เขากลับมา
+                        </p>
+
+                    </div>
+
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-year">
+                            ปัจจุบัน
+                        </div>
+
+                        <p>
+                            Foieh ยังคงมีชีวิตอยู่และยังคงสามารถ
+                            เคลื่อนไหวและมีปฏิสัมพันธ์กับเหตุการณ์
+                            ต่าง ๆ ใน Multiverse
+                        </p>
+
+                    </div>
 
                 </div>
 
             </section>
 
 
-            <!-- 13 -->
+            <!-- =========================
+                 13 APPEARANCES
+            ========================= -->
 
             <section id="appearances">
 
-                <h2>
-                    13. เรื่องที่ปรากฏ
-                </h2>
-
-                <p>
-                    ส่วนนี้สามารถเพิ่มรายชื่อเรื่อง ตอน หรือเหตุการณ์
-                    ที่ Whatteir Foieh ปรากฏตัวได้ภายหลัง
-                </p>
+                <h2>13. การปรากฏตัว</h2>
 
                 <ul>
 
-                    <li>
-                        Reartval Universe — ยังไม่มีข้อมูลเพิ่มเติม
-                    </li>
+                    <li>Reartval</li>
+
+                    <li>เหตุการณ์ที่เกี่ยวข้องกับ DAM</li>
+
+                    <li>เหตุการณ์ที่เกี่ยวข้องกับ The Father Prime</li>
 
                 </ul>
 
             </section>
 
 
-            <!-- 14 -->
+            <!-- =========================
+                 14 ADDITIONAL
+            ========================= -->
 
             <section id="additional">
 
-                <h2>
-                    14. ข้อมูลเพิ่มเติม
-                </h2>
+                <h2>14. ข้อมูลเพิ่มเติม</h2>
 
-                <ul>
+                <div class="info-grid">
 
-                    <li>
-                        Foieh มักทำตัวเหมือนคนที่ไม่จริงจัง
-                        แม้จะมีพลังในระดับมหาศาล
-                    </li>
 
-                    <li>
-                        เขามักทักทายแม้กระทั่งศัตรู
-                        ราวกับเป็นเพื่อนเก่า
-                    </li>
+                    <div class="info-card">
 
-                    <li>
-                        Foieh ชอบกินเหรียญที่ได้รับเป็นเงินทอน
-                        และมองว่ามันเป็นของแถม
-                    </li>
+                        <strong>Foieh ไม่ได้จริงจังตลอดเวลา</strong>
 
-                    <li>
-                        เขามีความรู้สึกที่ขัดแย้งต่อมนุษย์
-                        โดยบางครั้งชอบมนุษย์และบางครั้งก็ไม่ชอบมนุษย์
-                    </li>
+                        <p>
+                            แม้จะมีพลังในระดับสูงมาก แต่ Foieh มักเลือก
+                            ปฏิบัติต่อสถานการณ์เหมือนเป็นเรื่องเล่น
+                            จนกว่าจะมีเหตุผลให้เขาต้องจริงจัง
+                        </p>
 
-                    <li>
-                        การถูกลบหรือดูเหมือนเสียชีวิตในบางครั้ง
-                        อาจเป็นเพียงหนึ่งในวิธีหลอกคนอื่นของเขา
-                    </li>
+                    </div>
 
-                    <li>
-                        Foieh เคยเป็นผู้มอบพลังจำนวนมหาศาลให้ The Father Prime
-                        และมีส่วนทำให้เขากลับมาอีกครั้ง
-                    </li>
 
-                </ul>
+                    <div class="info-card">
+
+                        <strong>เขาชอบความคาดเดาไม่ได้</strong>
+
+                        <p>
+                            สิ่งที่ทำให้ Foieh สนใจมากที่สุดคือเหตุการณ์
+                            ที่ไม่เป็นไปตามสิ่งที่เขาคาดการณ์ไว้
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <strong>เขาชอบมนุษย์</strong>
+
+                        <p>
+                            Foieh มีความสนใจในมนุษย์และพฤติกรรม
+                            ของสิ่งมีชีวิตที่มีข้อจำกัดมากกว่าตัวเขา
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <strong>พฤติกรรมเกี่ยวกับเหรียญ</strong>
+
+                        <p>
+                            Foieh มีนิสัยแปลกในการกินเหรียญที่ได้รับ
+                            เป็นเงินทอน โดยมองว่าเป็นสิ่งที่ได้รับมาฟรี
+                            และไม่ได้สนใจกฎของมนุษย์เกี่ยวกับเรื่องนี้
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <strong>การแกล้งตายหรือถูกลบตัวตน</strong>
+
+                        <p>
+                            Foieh สามารถทำให้ตัวเองดูเหมือนตาย
+                            หรือดูเหมือนถูกลบตัวตนได้ และในบางกรณี
+                            สิ่งเหล่านี้เป็นเพียงกลลวงที่เขาตั้งใจใช้
+                            เพราะเขาชอบทำให้คนอื่นเข้าใจผิด
+                        </p>
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <strong>การต่อสู้ไม่ใช่สิ่งเดียวที่เขาทำได้</strong>
+
+                        <p>
+                            ความสามารถที่สำคัญของ Foieh ไม่ได้มีเพียง
+                            พลังทำลาย แต่รวมถึงการสร้าง การแก้ไข
+                            การฟื้นฟู การควบคุม และการเปลี่ยนโครงสร้าง
+                            ของ Reality และ Multiverse
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <strong>Foieh สามารถเลือกขอบเขตของผลกระทบ</strong>
+
+                        <p>
+                            เขาสามารถเลือกได้ว่าจะส่งผลต่อเป้าหมาย
+                            เพียงหนึ่งคน พื้นที่หนึ่งแห่ง Universe หนึ่งแห่ง
+                            หลาย Universe หรือโครงสร้างที่ใหญ่กว่านั้น
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <strong>การเดินทางข้าม Universe</strong>
+
+                        <p>
+                            การเดินทางของ Foieh ระหว่าง Universe
+                            ไม่ได้จำเป็นต้องใช้ความเร็วทางกายภาพ
+                            แต่ใช้การควบคุม Space, Dimension และ
+                            ช่องทางเชื่อมต่อระหว่าง Reality
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <strong>การฟื้นฟูไม่ใช่ความทนทาน</strong>
+
+                        <p>
+                            แม้ Foieh จะสามารถฟื้นฟูตัวเองจากความเสียหาย
+                            อย่างรุนแรง แต่ค่าความทนทานโดยตรงของเขา
+                            ยังไม่มีตัวเลขสูงสุดที่ยืนยัน
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <strong>พลังสูงสุดไม่ได้ถูกใช้ตลอดเวลา</strong>
+
+                        <p>
+                            ขอบเขตสูงสุดของความสามารถไม่ได้ถูกใช้ตลอดเวลา
+                            และไม่ใช่ขนาดของการโจมตีทุกครั้ง
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <strong>การสร้าง Universe ไม่เท่ากับพละกำลังในการยก</strong>
+
+                        <p>
+                            ความสามารถในการสร้างหรือทำลาย Universe
+                            เป็นผลจากการควบคุม Reality และโครงสร้าง
+                            ของ Multiverse ไม่ควรนำมาแปลงเป็นค่า LS
+                            หรือ SS โดยตรง
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <strong>ความเร็วในการเดินทางไม่ใช่ความเร็วร่างกาย</strong>
+
+                        <p>
+                            การข้าม Universe ด้วย Dimensional Gate,
+                            Space Manipulation หรือ Dimensional Travel
+                            เป็นการเปลี่ยนตำแหน่งผ่านโครงสร้าง Reality
+                            ไม่ใช่การวิ่งหรือบินด้วยความเร็วเท่ากัน
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <strong>Foieh สามารถสร้างสิ่งที่อยู่นอกระบบปกติ</strong>
+
+                        <p>
+                            นอกจาก Universe ปกติ เขายังสามารถสร้าง
+                            หรือเข้าถึงพื้นที่ที่อยู่นอกโครงสร้าง
+                            Multiverse เพื่อใช้เป็นพื้นที่พิเศษ
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <strong>ตัวตนของเขาไม่จำเป็นต้องมีเพียงหนึ่งเดียว</strong>
+
+                        <p>
+                            Foieh สามารถมีตัวตนใน Universe หลายแห่ง
+                            และเชื่อมโยงการรับรู้ระหว่างตัวตนเหล่านั้น
+                            ได้
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <strong>Foieh สามารถย้อนหรือแก้เหตุการณ์ได้</strong>
+
+                        <p>
+                            ด้วย Script Manipulation, Timeline Manipulation,
+                            Causality และ Reality Manipulation เขาสามารถ
+                            เปลี่ยนเส้นทางของเหตุการณ์แทนที่จะใช้
+                            การทำลายโดยตรง
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <strong>เขาสามารถมอบพลังให้ผู้อื่น</strong>
+
+                        <p>
+                            การมอบพลังให้ The Father Prime เป็นตัวอย่าง
+                            สำคัญที่แสดงว่า Foieh ไม่ได้เพียงควบคุม
+                            พลังของตัวเอง แต่สามารถเพิ่มพลังให้สิ่งมีชีวิตอื่น
+                            ได้ด้วย
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <strong>เขาสามารถควบคุมพลังของผู้อื่น</strong>
+
+                        <p>
+                            Foieh สามารถเพิ่ม ลด ถอด หรือเปลี่ยนแปลง
+                            ความสามารถของเป้าหมาย รวมถึงสามารถดึง
+                            คุณสมบัติบางอย่างจากเป้าหมายมาใช้กับตัวเอง
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <strong>การมีพลังสูงไม่ได้ทำให้เขาตัดสินใจถูกเสมอ</strong>
+
+                        <p>
+                            แม้ Foieh จะรับรู้ข้อมูลจำนวนมหาศาล
+                            แต่เขายังคงมีบุคลิกและการตัดสินใจของตัวเอง
+                            ความประมาท ความมั่นใจสูง และความชอบเล่น
+                            สามารถทำให้เขาเลือกวิธีที่ไม่ใช่วิธีที่ปลอดภัยที่สุด
+                        </p>
+
+                    </div>
+
+                </div>
 
             </section>
-
-
-            <!-- TAGS -->
-
-            <div class="tags">
-
-                <span class="tag">
-                    ตัวละคร
-                </span>
-
-                <span class="tag">
-                    พระเจ้า
-                </span>
-
-                <span class="tag">
-                    DAM
-                </span>
-
-                <span class="tag">
-                    Whatteir Foieh
-                </span>
-
-            </div>
 
 
         </div>
 
     </div>
 
+
+    <footer>
+        Reartval Wiki · Whatteir Foieh
+    </footer>
+
 </main>
-
-
-<footer>
-
-    Reartval Wiki<br>
-    Fan-made database for the Reartval Universe
-
-</footer>
-
 
 </body>
 </html>
